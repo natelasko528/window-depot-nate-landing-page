@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Window Depot USA Milwaukee — Book a FREE Estimate with Nate</title>
-  <meta name="description" content="Book a FREE in-home estimate with Nate at Window Depot USA Milwaukee. Windows, Doors, Roofing, Siding, Flooring and Bathroom Remodels. Price locked for 1 full year.">
+  <meta name="description" content="Book a FREE in-home estimate with Nate at Window Depot USA Milwaukee. Windows, Doors, Roofing, Siding, Flooring and Bathroom Remodels. Get $1000 off your estimate if you book now.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700;6..12,800&family=Bebas+Neue&display=swap" rel="stylesheet">
@@ -171,6 +171,8 @@
       background:var(--gold);color:var(--white);
       font-weight:800;font-size:12px;
       padding:5px 14px;border-radius:20px;letter-spacing:0.02em;
+      position:absolute;right:8vw;top:20px;z-index:4;
+      box-shadow:var(--shadow-md);
     }
     .calendar-embed{width:100%;height:560px;border:none;display:block}
     .booking-trust{
@@ -217,6 +219,23 @@
     .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);background:var(--white);border-color:rgba(184,144,10,0.25)}
     .service-card:hover::after{transform:scaleX(1)}
     .service-icon{font-size:42px;margin-bottom:18px;display:block}
+    .service-media{
+      margin-bottom:16px;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid rgba(10,22,40,0.08);
+      aspect-ratio:16/10;
+      box-shadow:var(--shadow-sm);
+      background:var(--cream);
+    }
+    .service-media img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform 0.35s ease;
+    }
+    .service-card:hover .service-media img{transform:scale(1.05)}
     .service-card h3{font-family:"Cormorant Garant",serif;font-size:24px;font-weight:700;color:var(--navy);margin-bottom:10px}
     .service-card p{font-size:14px;color:var(--gray);line-height:1.65;margin-bottom:20px}
     .service-card .features{list-style:none}
@@ -239,6 +258,25 @@
     .dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
     .dd-grid.reverse .dd-visual{order:2}
     .dd-grid.reverse .dd-content{order:1}
+    .category-photo{
+      width:100%;
+      max-width:980px;
+      margin:0 auto 28px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--border);
+      box-shadow:var(--shadow-md);
+      background:var(--cream);
+    }
+    .category-photo img{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;
+      aspect-ratio:16/7;
+    }
+    .category-photo.compact{margin-bottom:22px}
+    .category-photo.compact img{aspect-ratio:16/9}
 
     /* Triple Pane Diagram */
     .pane-diagram{
@@ -594,6 +632,7 @@
       #hero{grid-template-columns:1fr;min-height:auto}
       .hero-left{padding:60px 6vw 40px}
       .hero-right{padding:0 6vw 60px}
+      #hero>.gift-tag{position:static;margin:8px 6vw 18px;width:max-content}
       .booking-card{max-width:100%}
       #meet-nate{grid-template-columns:1fr;gap:50px}
       .nate-img-area{order:-1}
@@ -624,12 +663,190 @@
       .bath-features{grid-template-columns:1fr 1fr}
       .signs-grid{grid-template-columns:1fr}
     }
+
+    /* ===== CONVERSION OPTIMIZATION LAYER ===== */
+
+    /* Scroll Progress Bar */
+    .scroll-progress{
+      position:fixed;top:0;left:0;width:0;height:3px;z-index:9999;
+      background:linear-gradient(90deg,var(--gold),var(--gold2));
+      pointer-events:none;
+    }
+
+    /* Countdown Timer */
+    .countdown{display:inline-flex;align-items:center;gap:3px;margin-left:10px}
+    .cd-block{
+      background:rgba(255,255,255,0.12);border-radius:3px;
+      padding:2px 5px;font-family:'Bebas Neue',sans-serif;
+      font-size:14px;letter-spacing:0.06em;color:#fff;
+      min-width:26px;text-align:center;
+    }
+    .cd-sep{font-size:11px;opacity:0.4;color:#fff}
+
+    /* Sticky Mobile CTA Bar */
+    .mobile-cta-bar{
+      display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;
+      background:rgba(10,22,40,0.97);padding:10px 14px;
+      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+      border-top:2px solid var(--gold2);
+      box-shadow:0 -4px 24px rgba(10,22,40,0.3);
+    }
+    .mobile-cta-inner{display:flex;gap:10px;max-width:480px;margin:0 auto}
+    .mcta-book{
+      flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
+      background:var(--gold2);color:var(--navy);
+      font-weight:800;font-size:14px;letter-spacing:0.02em;
+      padding:14px 10px;border-radius:8px;text-decoration:none;
+      animation:ctaPulse 2.8s ease-in-out infinite;
+    }
+    .mcta-call{
+      display:flex;align-items:center;justify-content:center;
+      width:52px;border:2px solid rgba(255,255,255,0.2);
+      border-radius:8px;text-decoration:none;font-size:20px;color:#fff;
+      flex-shrink:0;transition:border-color 0.2s;
+    }
+    .mcta-call:hover{border-color:var(--gold2)}
+    @media(max-width:960px){
+      .mobile-cta-bar{display:block}
+      body{padding-bottom:72px}
+    }
+
+    /* CTA Pulse Keyframes */
+    @keyframes ctaPulse{
+      0%,100%{box-shadow:0 4px 16px rgba(212,175,55,0.3)}
+      50%{box-shadow:0 4px 28px rgba(212,175,55,0.55),0 0 0 6px rgba(212,175,55,0.12)}
+    }
+    .btn-gold{animation:ctaPulse 2.8s ease-in-out infinite}
+
+    /* Social Proof Toast */
+    .social-proof{
+      position:fixed;bottom:100px;left:24px;z-index:90;
+      background:var(--white);border:1px solid var(--border);
+      border-radius:14px;padding:14px 20px 14px 16px;
+      box-shadow:var(--shadow-lg);
+      display:flex;align-items:center;gap:12px;
+      transform:translateX(calc(-100% - 40px));
+      transition:transform 0.55s cubic-bezier(0.34,1.56,0.64,1);
+      max-width:340px;
+    }
+    .social-proof.show{transform:translateX(0)}
+    .sp-icon{
+      width:40px;height:40px;border-radius:10px;
+      background:var(--gold-pale);display:flex;align-items:center;justify-content:center;
+      font-size:20px;flex-shrink:0;
+    }
+    .sp-text{font-size:13px;font-weight:600;color:var(--navy);line-height:1.45}
+    .sp-text strong{color:var(--gold)}
+    .sp-time{font-size:11px;color:var(--gray-mid);margin-top:2px}
+    @media(max-width:960px){
+      .social-proof{bottom:90px;left:12px;right:12px;max-width:none}
+    }
+
+    /* Exit Intent Banner */
+    .exit-banner{
+      position:fixed;top:0;left:0;right:0;z-index:9998;
+      background:var(--navy);color:var(--white);
+      padding:20px 60px 20px 24px;text-align:center;
+      transform:translateY(-100%);
+      transition:transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+      box-shadow:0 8px 32px rgba(10,22,40,0.3);
+    }
+    .exit-banner.show{transform:translateY(0)}
+    .exit-banner p{font-size:15px;font-weight:700;display:inline}
+    .exit-banner p span{color:var(--gold2)}
+    .eb-close{
+      position:absolute;right:16px;top:50%;transform:translateY(-50%);
+      background:none;border:none;color:rgba(255,255,255,0.45);
+      font-size:22px;cursor:pointer;padding:8px;line-height:1;
+    }
+    .eb-close:hover{color:#fff}
+    .exit-banner a{
+      display:inline-flex;align-items:center;gap:6px;
+      background:var(--gold2);color:var(--navy);
+      font-weight:800;font-size:13px;
+      padding:8px 20px;border-radius:6px;text-decoration:none;
+      margin-left:14px;transition:all 0.2s;
+    }
+    .exit-banner a:hover{background:#EAC83A}
+
+    /* Gift Tag Shimmer */
+    .gift-tag{overflow:hidden}
+    .gift-tag::before{
+      content:"";position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+      background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,0.25) 45%,rgba(255,255,255,0.25) 55%,transparent 60%);
+      animation:shimmer 3.5s ease-in-out infinite;
+    }
+    @keyframes shimmer{
+      0%{transform:translateX(-100%) rotate(25deg)}
+      100%{transform:translateX(100%) rotate(25deg)}
+    }
+
+    /* Enhanced Range Slider — Filled Track */
+    .range-wrap{position:relative;padding:4px 0}
+    .range-fill{
+      position:absolute;top:50%;transform:translateY(-50%);left:0;height:6px;
+      border-radius:3px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2));
+      pointer-events:none;z-index:1;
+    }
+    .range-wrap input[type=range]{position:relative;z-index:2;background:var(--border)}
+    input[type=range]::-webkit-slider-thumb{position:relative;z-index:3;
+      width:26px;height:26px;border:3px solid var(--gold2);
+      box-shadow:0 2px 8px rgba(10,22,40,0.18);transition:transform 0.15s;
+    }
+    input[type=range]:active::-webkit-slider-thumb{transform:scale(1.15)}
+    input[type=range]::-moz-range-thumb{width:26px;height:26px}
+
+    /* Animated Button Shine */
+    .btn-primary{position:relative;overflow:hidden}
+    .btn-primary::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,0.12) 44%,rgba(255,255,255,0.12) 56%,transparent 62%);
+      transform:translateX(-150%);transition:transform 0.65s;
+    }
+    .btn-primary:hover::after{transform:translateX(150%)}
+
+    /* Booking Card Glow */
+    .booking-card{transition:box-shadow 0.4s}
+    .booking-card:hover{box-shadow:0 40px 80px rgba(10,22,40,0.16),0 0 0 1px rgba(184,144,10,0.12)}
+
+    /* Savings Celebration */
+    .calc-result.highlight{
+      border-color:var(--gold2);background:var(--gold-pale);
+      transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .calc-result .num{transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1)}
+    .calc-result.highlight .num{transform:scale(1.08)}
+
+    /* Floating "Available Now" Dot */
+    .avail-dot{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:12px;font-weight:700;color:var(--gold);
+      margin-top:10px;
+    }
+    .avail-dot::before{
+      content:"";width:8px;height:8px;border-radius:50%;
+      background:#22C55E;
+      box-shadow:0 0 0 0 rgba(34,197,94,0.5);
+      animation:availPulse 2s ease-in-out infinite;
+    }
+    @keyframes availPulse{
+      0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,0.5)}
+      50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}
+    }
   </style>
 </head>
 <body>
 
+<div class="scroll-progress" id="scrollProgress"></div>
 <div class="promo-banner">
-  &#127873; <strong>SPECIAL OFFER:</strong> $500 Gift Card with every FREE estimate <span class="sep">&bull;</span> Price locked for <strong>1 full year</strong> <span class="sep">&bull;</span> Book directly with Nate
+  &#127873; <strong>SPECIAL OFFER:</strong> $1000 Off of Your Estimate - <strong>IF YOU BOOK NOW!</strong>
+  <span class="countdown" id="countdown">
+    <span class="cd-block" id="cdH">23</span><span class="cd-sep">:</span>
+    <span class="cd-block" id="cdM">59</span><span class="cd-sep">:</span>
+    <span class="cd-block" id="cdS">59</span>
+  </span>
+  <span class="sep">&bull;</span> Book directly with Nate
 </div>
 
 <nav>
@@ -653,7 +870,7 @@
     <div class="hero-eyebrow">Window Depot USA Milwaukee</div>
     <h1 class="hero-headline">Milwaukee's Most<br><em>Trusted Home</em><br>Improvement Expert</h1>
     <div class="hero-sub">Windows &middot; Doors &middot; Siding &middot; Roofing &middot; Flooring &middot; Bath</div>
-    <p class="hero-desc">Book directly with Nate for a <strong>FREE in-home estimate</strong> &mdash; honest pricing, zero pressure, and your quote is locked in for a full year. Serving all of SE Wisconsin from 7 convenient showroom locations.</p>
+    <p class="hero-desc">Book directly with Nate for a <strong>FREE in-home estimate</strong> &mdash; honest pricing, zero pressure, and <strong>$1000 Off of Your Estimate - IF YOU BOOK NOW!</strong> Serving all of SE Wisconsin from 7 convenient showroom locations.</p>
     <div class="hero-trust-row">
       <span class="trust-pill"><span class="pip"></span>&#11088; 4.9 Google (1,000+ reviews)</span>
       <span class="trust-pill"><span class="pip"></span>&#127942; Top 500 National &mdash; #3</span>
@@ -665,12 +882,13 @@
       <a href="tel:4143125213" class="btn-ghost">&#128242; (414) 312-5213</a>
     </div>
   </div>
+  <div class="gift-tag">$1000 Off of Your Estimate - IF YOU BOOK NOW!</div>
   <div class="hero-right" id="booking">
     <div class="booking-card">
       <div class="booking-card-header">
         <h3>&#128197; Book Your FREE In-Home Estimate</h3>
         <p>with Nate &mdash; Window Depot USA of Milwaukee</p>
-        <div class="gift-tag">&#127873; $500 Gift Card &nbsp;&middot;&nbsp; Price Locked 1 Full Year</div>
+        <div class="avail-dot">Nate is available &mdash; book now</div>
       </div>
       <iframe class="calendar-embed" src="https://api.leadconnectorhq.com/widget/booking/efidPOmUpF891R2GMQ7p" title="Book an Appointment with Nate"></iframe>
       <div class="booking-trust">
@@ -691,6 +909,9 @@
   <div class="services-grid">
     <a href="#windows-deep" class="service-card fade-in">
       <span class="service-icon">&#129695;</span>
+      <div class="service-media">
+        <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2019/06/picture-window3.jpg" alt="Official Window Depot Milwaukee picture window installation" loading="lazy">
+      </div>
       <h3>Replacement Windows</h3>
       <p>ProVia Endure Triple Pane windows &mdash; the highest-performing window available for Wisconsin's brutal winters, at dual-pane prices.</p>
       <ul class="features">
@@ -704,6 +925,9 @@
     </a>
     <a href="#doors-deep" class="service-card fade-in">
       <span class="service-icon">&#128682;</span>
+      <div class="service-media">
+        <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2019/06/Provia-entry-hero7.jpg" alt="Official ProVia entry door installed by Window Depot Milwaukee" loading="lazy">
+      </div>
       <h3>Entry &amp; Patio Doors</h3>
       <p>ProVia Signet fiberglass and Legacy steel doors &mdash; best-in-class security, beauty, and weather sealing with lifetime warranty.</p>
       <ul class="features">
@@ -717,6 +941,9 @@
     </a>
     <a href="#siding-deep" class="service-card fade-in">
       <span class="service-icon">&#127960;</span>
+      <div class="service-media">
+        <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2022/04/CraneBoard-siding-img5.png" alt="Official CraneBoard siding project by Window Depot Milwaukee" loading="lazy">
+      </div>
       <h3>Vinyl &amp; Composite Siding</h3>
       <p>CraneBoard Solid Core, ASCEND Composite Cladding &mdash; engineered to survive Wisconsin's freeze-thaw cycle with zero maintenance.</p>
       <ul class="features">
@@ -730,6 +957,9 @@
     </a>
     <a href="#roofing-deep" class="service-card fade-in">
       <span class="service-icon">&#127968;</span>
+      <div class="service-media">
+        <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2021/12/Provia_slate-House-2.jpg" alt="Official ProVia metal roofing project from Window Depot Milwaukee" loading="lazy">
+      </div>
       <h3>Roofing</h3>
       <p>NorthGate Class IV impact-rated shingles and ProVia Portsmouth metal shake/slate &mdash; the last roof you'll ever need.</p>
       <ul class="features">
@@ -743,6 +973,9 @@
     </a>
     <a href="#booking" class="service-card fade-in">
       <span class="service-icon">&#127969;</span>
+      <div class="service-media">
+        <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2019/06/photo_01.jpg" alt="Official Window Depot Milwaukee in-home project photo for flooring consultations" loading="lazy">
+      </div>
       <h3>Flooring</h3>
       <p>Hardwood, luxury vinyl plank, laminate, and carpet &mdash; we bring 100s of samples directly to your home for a pressure-free selection.</p>
       <ul class="features">
@@ -756,6 +989,9 @@
     </a>
     <a href="#bath-deep" class="service-card fade-in">
       <span class="service-icon">&#128705;</span>
+      <div class="service-media">
+        <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2020/04/Gray_Classic_Bath_Roman_Stone_Windmill_Walls_with_Window_Kit_Polished_Chrome_IMG_0626_LR_bci.jpg" alt="Official Bathroom Makeover project image from Window Depot Milwaukee" loading="lazy">
+      </div>
       <h3>Bathroom Makeover</h3>
       <p>Custom acrylic bath remodeling with the luxury look of marble and granite &mdash; installed in as little as one day.</p>
       <ul class="features">
@@ -774,6 +1010,9 @@
 <section id="windows-deep" class="deep-dive">
   <div class="dd-grid">
     <div class="dd-visual fade-in">
+      <div class="category-photo compact">
+        <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2019/06/picture-window4.jpg" alt="Official Window Depot Milwaukee replacement picture windows">
+      </div>
       <div class="pane-diagram">
         <h4 style="font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.15em;color:var(--gray-mid);text-align:center;margin-bottom:24px">TRIPLE PANE CROSS-SECTION</h4>
         <div class="pane-stack">
@@ -837,7 +1076,7 @@
       <p style="font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px">Our Innergy thermal reinforcement is <strong>700x more insulating</strong> than aluminum. Combined with Neopor foam and bulb seals, every window is a fortress against Wisconsin winters.</p>
       <p style="font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px">Available in 8 styles: Double Hung, Casement, Sliding, Picture, Bay &amp; Bow, Garden, Awning, and Hopper &mdash; all custom-made to your home's exact dimensions.</p>
       <div class="inline-cta">
-        <p><span>&#127873; $500 Gift Card</span> + your estimate is locked for 12 months. Zero pressure.</p>
+        <p><span>&#127873; $1000 Off of Your Estimate</span> - IF YOU BOOK NOW! Zero pressure.</p>
         <a href="#booking" class="btn-primary">&#128197; Book FREE Estimate</a>
       </div>
     </div>
@@ -855,15 +1094,24 @@
     <div class="calc-box fade-in">
       <div class="calc-group">
         <div class="calc-label">Number of Windows <span class="val" id="winCountVal">12</span></div>
-        <input type="range" id="winCount" min="4" max="30" value="12">
+        <div class="range-wrap">
+          <div class="range-fill" id="fillWin"></div>
+          <input type="range" id="winCount" min="4" max="30" value="12">
+        </div>
       </div>
       <div class="calc-group">
         <div class="calc-label">Annual Energy Bill <span class="val" id="billVal">$2,400</span></div>
-        <input type="range" id="annualBill" min="800" max="6000" step="100" value="2400">
+        <div class="range-wrap">
+          <div class="range-fill" id="fillBill"></div>
+          <input type="range" id="annualBill" min="800" max="6000" step="100" value="2400">
+        </div>
       </div>
       <div class="calc-group">
         <div class="calc-label">Estimated Savings Rate <span class="val" id="rateVal">28%</span></div>
-        <input type="range" id="savingsRate" min="12" max="40" value="28">
+        <div class="range-wrap">
+          <div class="range-fill" id="fillRate"></div>
+          <input type="range" id="savingsRate" min="12" max="40" value="28">
+        </div>
         <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--gray-mid);margin-top:4px;font-weight:600">
           <span>Conservative</span><span>Optimal</span>
         </div>
@@ -905,6 +1153,9 @@
     <div class="section-label">ProVia Entry &amp; Patio Doors</div>
     <h2 class="section-title">Your Front Door Sets the Tone<br>for <em>Your Entire Home</em></h2>
     <p class="section-sub">Rated #1 in quality by Remodeling Magazine. Custom-made to your exact specifications with lifetime warranty coverage that transfers with your home.</p>
+    <div class="category-photo fade-in">
+      <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2022/07/Provia_Signet03jpg.jpg" alt="Official ProVia Signet fiberglass door photo from Window Depot Milwaukee">
+    </div>
   </div>
   <div class="compare-grid fade-in">
     <div class="compare-card premium">
@@ -948,6 +1199,9 @@
     <div class="section-label">Premium Siding Solutions</div>
     <h2 class="section-title">Engineered for Wisconsin's<br><em>Toughest Weather</em></h2>
     <p class="section-sub">From hurricane-force wind resistance to insulation that outperforms fiber cement, wood, and brick &mdash; our siding is built to protect and beautify for a lifetime.</p>
+    <div class="category-photo fade-in">
+      <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2022/04/Craneboard-siding-img1.jpg" alt="Official CraneBoard siding installation from Window Depot Milwaukee">
+    </div>
   </div>
   <div class="siding-grid fade-in">
     <div class="siding-card">
@@ -1019,6 +1273,9 @@
     <div class="section-label">Residential &amp; Metal Roofing</div>
     <h2 class="section-title">The Last Roof<br><em>You'll Ever Need</em></h2>
     <p class="section-sub">From impact-rated asphalt shingles to ProVia's lifetime-rated Portsmouth metal roofing &mdash; we have the right solution for every Milwaukee home and budget.</p>
+    <div class="category-photo fade-in">
+      <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2021/12/Provia_shake-House-1.jpg" alt="Official ProVia shake-style metal roofing project from Window Depot Milwaukee">
+    </div>
   </div>
   <div class="compare-grid fade-in">
     <div class="compare-card">
@@ -1079,6 +1336,9 @@
     <div class="section-label">One-Day Bathroom Makeover</div>
     <h2 class="section-title">Dream Bathroom.<br><em>Installed in a Day.</em></h2>
     <p class="section-sub">Custom acrylic solutions that replicate the look of marble, granite, and tile &mdash; manufactured for your home, installed with zero demolition mess, backed by a lifetime warranty.</p>
+    <div class="category-photo fade-in">
+      <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2020/04/Sandbar_Pia_Bath_with_Brecchia_Smooth_Walls_and_Brushed_Nickel_Photo1_IMG_0827_LR_bci.jpg" alt="Official Bathroom Makeover acrylic bath remodel by Window Depot Milwaukee">
+    </div>
   </div>
   <div class="process-steps fade-in">
     <div class="step">
@@ -1156,7 +1416,7 @@
   <div class="nate-text fade-in">
     <div class="section-label">Your Local Expert</div>
     <h2 class="section-title">Meet Nate &mdash;<br>Your Window Depot Rep</h2>
-    <p>I'm not a call center. I'm Nate &mdash; a real home improvement consultant who lives and works right here in SE Wisconsin. When you book directly with me, you get my personal cell, my honest assessment, and a price locked in for 12 full months.</p>
+    <p>I'm not a call center. I'm Nate &mdash; a real home improvement consultant who lives and works right here in SE Wisconsin. When you book directly with me, you get my personal cell, my honest assessment, and <strong>$1000 Off of Your Estimate - IF YOU BOOK NOW!</strong></p>
     <p>My consultations are relaxed, informative, and 100% obligation-free. I bring everything to your home &mdash; samples, brochures, measurement tools. No showroom pressure, no games.</p>
     <div class="nate-stats">
       <div class="stat-box"><div class="num">1,000<span class="gold-text">+</span></div><div class="lbl">5-Star Reviews</div></div>
@@ -1228,7 +1488,7 @@
 <!-- FINAL CTA -->
 <section id="final-cta">
   <h2 class="section-title">Ready to Transform<br><em>Your Milwaukee Home?</em></h2>
-  <p>Book a FREE in-home estimate with Nate. No pressure, no obligation &mdash; your price is locked for a full year. Plus get a $500 Gift Card just for scheduling.</p>
+  <p>Book a FREE in-home estimate with Nate. No pressure, no obligation &mdash; <strong>$1000 Off of Your Estimate - IF YOU BOOK NOW!</strong></p>
   <div class="cta-group">
     <a href="#booking" class="btn-gold">&#128197; Book Your FREE Estimate Now</a>
     <a href="tel:4143125213" class="btn-outline-white">&#128242; Call Nate: (414) 312-5213</a>
@@ -1241,17 +1501,41 @@
   <p><a href="tel:4143125213">(414) 312-5213</a> &nbsp;&middot;&nbsp; <a href="https://windowdepotmilwaukee.com" target="_blank">windowdepotmilwaukee.com</a></p>
 </footer>
 
+<!-- Sticky Mobile CTA Bar -->
+<div class="mobile-cta-bar">
+  <div class="mobile-cta-inner">
+    <a href="#booking" class="mcta-book">&#128197; Book FREE Estimate &mdash; $1000 Off</a>
+    <a href="tel:4143125213" class="mcta-call">&#128222;</a>
+  </div>
+</div>
+
+<!-- Social Proof Toast -->
+<div class="social-proof" id="socialProof">
+  <div class="sp-icon" id="spIcon">&#128100;</div>
+  <div>
+    <div class="sp-text" id="spText">A Milwaukee family just booked an estimate</div>
+    <div class="sp-time" id="spTime">2 minutes ago</div>
+  </div>
+</div>
+
+<!-- Exit Intent Banner -->
+<div class="exit-banner" id="exitBanner">
+  <p>Wait! Don't miss <span>$1000 Off Your Estimate</span> &mdash;</p>
+  <a href="#booking">&#128197; Book Now</a>
+  <button class="eb-close" id="ebClose">&times;</button>
+</div>
+
 <!-- GHL Chat Widget -->
 <script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69a373ef95fbc53be2d9e923"></script>
 
 <script>
-// Scroll-reveal observer
+// ===== SCROLL-REVEAL =====
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("visible"); });
 },{threshold:0.08});
 document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
 
-// Animate lifespan bars on scroll
+// ===== LIFESPAN BAR ANIMATION =====
 const barObserver = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if(e.isIntersecting) {
@@ -1265,16 +1549,56 @@ document.querySelectorAll(".animate-bar").forEach(el => {
   barObserver.observe(el);
 });
 
-// Energy Calculator
+// ===== SCROLL PROGRESS BAR =====
+const scrollBar = document.getElementById("scrollProgress");
+window.addEventListener("scroll", () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  scrollBar.style.width = h > 0 ? (window.scrollY / h * 100) + "%" : "0%";
+}, {passive:true});
+
+// ===== COUNTDOWN TIMER =====
+(function(){
+  const KEY = "wdusa_offer_end";
+  let end = localStorage.getItem(KEY);
+  if(!end || parseInt(end) < Date.now()){
+    end = Date.now() + 24*60*60*1000;
+    localStorage.setItem(KEY, end);
+  } else { end = parseInt(end); }
+  function tick(){
+    const diff = Math.max(0, end - Date.now());
+    const h = Math.floor(diff/3600000);
+    const m = Math.floor((diff%3600000)/60000);
+    const s = Math.floor((diff%60000)/1000);
+    document.getElementById("cdH").textContent = String(h).padStart(2,"0");
+    document.getElementById("cdM").textContent = String(m).padStart(2,"0");
+    document.getElementById("cdS").textContent = String(s).padStart(2,"0");
+    if(diff > 0) requestAnimationFrame(()=>setTimeout(tick, 1000));
+  }
+  tick();
+})();
+
+// ===== RANGE SLIDER FILL =====
+function updateFill(input, fillEl){
+  const min = parseFloat(input.min), max = parseFloat(input.max);
+  const pct = ((parseFloat(input.value) - min) / (max - min)) * 100;
+  fillEl.style.width = pct + "%";
+}
+
+// ===== ENERGY CALCULATOR (window count now affects total savings) =====
 const winCount = document.getElementById("winCount");
 const annualBill = document.getElementById("annualBill");
 const savingsRate = document.getElementById("savingsRate");
+const fillWin = document.getElementById("fillWin");
+const fillBill = document.getElementById("fillBill");
+const fillRate = document.getElementById("fillRate");
 
+let prevAnnual = 0;
 function updateCalc() {
   const w = parseInt(winCount.value);
   const b = parseInt(annualBill.value);
   const r = parseInt(savingsRate.value);
-  const annual = Math.round(b * r / 100);
+  const coverage = w / 20;
+  const annual = Math.round(b * (r / 100) * coverage);
   const perWin = Math.round(annual / w);
 
   document.getElementById("winCountVal").textContent = w;
@@ -1284,12 +1608,121 @@ function updateCalc() {
   document.getElementById("fiveYearSaving").innerHTML = "$<span class='gold-text'>" + (annual * 5).toLocaleString() + "</span>";
   document.getElementById("tenYearSaving").innerHTML = "$<span class='gold-text'>" + (annual * 10).toLocaleString() + "</span>";
   document.getElementById("perWindow").innerHTML = "$<span class='gold-text'>" + perWin.toLocaleString() + "</span>";
-  document.getElementById("savingsBar").style.width = r + "%";
+  document.getElementById("savingsBar").style.width = Math.min(r * coverage, 100) + "%";
+
+  updateFill(winCount, fillWin);
+  updateFill(annualBill, fillBill);
+  updateFill(savingsRate, fillRate);
+
+  const cards = document.querySelectorAll(".calc-result");
+  if(annual > prevAnnual && prevAnnual > 0){
+    cards.forEach(c => { c.classList.add("highlight"); setTimeout(()=>c.classList.remove("highlight"), 600); });
+  }
+  prevAnnual = annual;
 }
 
 winCount.addEventListener("input", updateCalc);
 annualBill.addEventListener("input", updateCalc);
 savingsRate.addEventListener("input", updateCalc);
+updateCalc();
+
+// ===== ANIMATED STAT COUNTERS =====
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(!e.isIntersecting) return;
+    const el = e.target;
+    const raw = el.dataset.count;
+    if(!raw) return;
+    const target = parseFloat(raw);
+    const isDecimal = raw.includes(".");
+    const suffix = el.dataset.suffix || "";
+    const prefix = el.dataset.prefix || "";
+    const dur = 1200;
+    const start = performance.now();
+    function step(now){
+      const p = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      const val = ease * target;
+      el.innerHTML = prefix + (isDecimal ? val.toFixed(1) : Math.round(val).toLocaleString()) + suffix;
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+    counterObserver.unobserve(el);
+  });
+},{threshold:0.4});
+
+document.querySelectorAll(".nate-stats .stat-box .num").forEach(el => {
+  const html = el.innerHTML;
+  if(html.includes("1,000")){
+    el.dataset.count = "1000";
+    el.dataset.suffix = "<span class='gold-text'>+</span>";
+    el.innerHTML = "0";
+  } else if(html.includes("4.9")){
+    el.dataset.count = "4.9";
+    el.dataset.suffix = "<span class='gold-text'>&#9733;</span>";
+    el.innerHTML = "0";
+  } else if(html.includes("#3") || html.includes("gold-text")){
+    return;
+  } else if(html.match(/^7$/)){
+    el.dataset.count = "7";
+    el.innerHTML = "0";
+  }
+  counterObserver.observe(el);
+});
+
+// ===== SOCIAL PROOF TOASTS =====
+(function(){
+  const messages = [
+    {icon:"&#128100;", text:"A <strong>Brookfield</strong> family just booked a window estimate", time:"2 minutes ago"},
+    {icon:"&#127968;", text:"<strong>3 Milwaukee homeowners</strong> booked estimates today", time:"14 minutes ago"},
+    {icon:"&#11088;", text:"Jennifer M. left a <strong>5-star review</strong> for Nate", time:"28 minutes ago"},
+    {icon:"&#128205;", text:"Nate just completed a consultation in <strong>Wauwatosa</strong>", time:"42 minutes ago"},
+    {icon:"&#128100;", text:"A <strong>Waukesha</strong> family is getting triple pane windows", time:"1 hour ago"},
+    {icon:"&#128705;", text:"A <strong>New Berlin</strong> homeowner booked a bath remodel", time:"1 hour ago"},
+    {icon:"&#127942;", text:"<strong>12 families</strong> booked with Nate this week", time:"Just now"},
+    {icon:"&#128100;", text:"A <strong>Menomonee Falls</strong> family just booked a door estimate", time:"8 minutes ago"},
+  ];
+  const el = document.getElementById("socialProof");
+  const iconEl = document.getElementById("spIcon");
+  const textEl = document.getElementById("spText");
+  const timeEl = document.getElementById("spTime");
+  let idx = Math.floor(Math.random() * messages.length);
+  let showing = false;
+
+  function showToast(){
+    if(showing) return;
+    showing = true;
+    const msg = messages[idx % messages.length];
+    iconEl.innerHTML = msg.icon;
+    textEl.innerHTML = msg.text;
+    timeEl.textContent = msg.time;
+    el.classList.add("show");
+    setTimeout(()=>{
+      el.classList.remove("show");
+      showing = false;
+      idx++;
+    }, 5000);
+  }
+
+  setTimeout(showToast, 8000);
+  setInterval(()=>{ if(!showing) showToast(); }, 25000 + Math.random() * 15000);
+})();
+
+// ===== EXIT INTENT DETECTION =====
+(function(){
+  const banner = document.getElementById("exitBanner");
+  const closeBtn = document.getElementById("ebClose");
+  let shown = false;
+  document.addEventListener("mouseout", function(e){
+    if(shown) return;
+    if(e.clientY < 5 && e.relatedTarget === null){
+      banner.classList.add("show");
+      shown = true;
+    }
+  });
+  closeBtn.addEventListener("click", ()=> banner.classList.remove("show"));
+  banner.querySelector("a").addEventListener("click", ()=> banner.classList.remove("show"));
+})();
 </script>
 </body>
 </html>
