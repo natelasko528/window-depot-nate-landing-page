@@ -705,7 +705,7 @@
       footer{flex-direction:column;align-items:center;text-align:center;gap:16px;padding:32px 6vw}
       .exit-banner{padding:16px 48px 16px 16px}
       .category-photo img{aspect-ratio:16/9}
-      chat-widget{position:fixed!important;bottom:90px!important;right:0!important;z-index:997!important}
+      chat-widget{z-index:997!important}
     }
     @media(max-width:600px){
       .hero-headline{font-size:2.6rem}
@@ -1836,6 +1836,26 @@ document.querySelectorAll(".nate-stats .stat-box .num").forEach(el => {
   });
   closeBtn.addEventListener("click", ()=> banner.classList.remove("show"));
   banner.querySelector("a").addEventListener("click", ()=> banner.classList.remove("show"));
+})();
+
+// ===== PUSH CHAT WIDGET ABOVE MOBILE CTA BAR =====
+(function(){
+  if(window.innerWidth > 960) return;
+  function nudgeWidget(){
+    var widget = document.querySelector("chat-widget");
+    if(!widget || !widget.shadowRoot) return false;
+    var existing = widget.shadowRoot.querySelector("#mobile-cta-offset");
+    if(existing) return true;
+    var s = document.createElement("style");
+    s.id = "mobile-cta-offset";
+    s.textContent = ".chat-widget-container, .lc_text_widget, [class*='widget-container'], :host > div { bottom: 85px !important; } .chat-bubble, [class*='bubble'], [class*='Bubble'] { bottom: 85px !important; }";
+    widget.shadowRoot.appendChild(s);
+    return true;
+  }
+  var attempts = 0;
+  var timer = setInterval(function(){
+    if(nudgeWidget() || ++attempts > 40){ clearInterval(timer); }
+  }, 500);
 })();
 </script>
 </body>
