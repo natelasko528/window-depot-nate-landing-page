@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Depot USA Milwaukee — Book a FREE Estimate with Nate</title>
+  <meta name="description" content="Book a FREE in-home estimate with Nate at Window Depot USA Milwaukee. Windows, Doors, Roofing, Siding, Flooring and Bathroom Remodels. Price locked for 1 full year.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700;6..12,800&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#0A1628;--navy2:#1A2F50;--blue:#1565C0;
+      --gold:#B8900A;--gold2:#D4AF37;--gold-pale:#FDF8EC;
+      --ivory:#FAFAF6;--cream:#F0EDE5;--white:#FFFFFF;
+      --gray:#64748B;--gray-mid:#94A3B8;--border:#E5E0D5;
+      --shadow-sm:0 1px 3px rgba(10,22,40,0.08),0 1px 2px rgba(10,22,40,0.05);
+      --shadow-md:0 4px 16px rgba(10,22,40,0.10),0 2px 6px rgba(10,22,40,0.06);
+      --shadow-lg:0 20px 60px rgba(10,22,40,0.12),0 8px 24px rgba(10,22,40,0.08);
+      --shadow-xl:0 40px 80px rgba(10,22,40,0.14),0 16px 40px rgba(10,22,40,0.08);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:"Nunito Sans",sans-serif;background:var(--ivory);color:var(--navy);overflow-x:hidden}
+
+    /* BANNER */
+    .promo-banner{
+      background:var(--navy);color:var(--gold2);
+      text-align:center;padding:11px 20px;
+      font-size:13px;font-weight:700;letter-spacing:0.04em;
+      position:relative;z-index:200;
+    }
+    .promo-banner strong{color:#fff}
+    .promo-banner .sep{opacity:0.35;margin:0 10px}
+
+    /* NAV */
+    nav{
+      position:sticky;top:0;z-index:100;
+      background:rgba(255,255,255,0.97);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+      padding:0 6vw;
+      display:flex;align-items:center;justify-content:space-between;
+      height:68px;
+      box-shadow:0 2px 12px rgba(10,22,40,0.07);
+    }
+    .nav-logo{display:flex;align-items:center;gap:14px}
+    .nav-logo img{height:40px}
+    .nav-badge{
+      font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--gold);border:1.5px solid var(--gold2);
+      padding:3px 10px;border-radius:20px;background:var(--gold-pale);
+    }
+    .nav-cta{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--navy);color:var(--white);
+      font-family:"Nunito Sans",sans-serif;
+      font-weight:800;font-size:13px;letter-spacing:0.04em;
+      padding:11px 24px;border-radius:8px;text-decoration:none;
+      transition:all 0.2s;white-space:nowrap;
+      box-shadow:var(--shadow-md);
+    }
+    .nav-cta:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+    .nav-cta .pip{width:7px;height:7px;border-radius:50%;background:var(--gold2);flex-shrink:0}
+
+    /* HERO */
+    #hero{
+      background:var(--ivory);
+      display:grid;grid-template-columns:1fr 1fr;
+      min-height:calc(100vh - 68px - 42px);
+      position:relative;overflow:hidden;
+    }
+    .hero-pattern{
+      position:absolute;inset:0;
+      background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+      background-size:48px 48px;opacity:0.45;pointer-events:none;
+    }
+    .hero-glow{
+      position:absolute;top:-150px;right:-80px;
+      width:700px;height:700px;border-radius:50%;
+      background:radial-gradient(circle,rgba(184,144,10,0.07) 0%,transparent 65%);
+      pointer-events:none;
+    }
+    .hero-left{
+      position:relative;z-index:2;
+      padding:80px 5vw 80px 8vw;
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .hero-eyebrow{
+      display:inline-flex;align-items:center;gap:12px;
+      font-size:11px;font-weight:800;letter-spacing:0.2em;
+      color:var(--gold);text-transform:uppercase;margin-bottom:28px;
+    }
+    .hero-eyebrow::before{
+      content:"";display:block;width:36px;height:2px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2));
+    }
+    .hero-headline{
+      font-family:"Cormorant Garant",serif;
+      font-size:clamp(3rem,5.2vw,4.6rem);
+      font-weight:700;line-height:1.05;
+      color:var(--navy);margin-bottom:12px;letter-spacing:-0.01em;
+    }
+    .hero-headline em{font-style:italic;color:var(--gold)}
+    .hero-sub{
+      font-family:"Bebas Neue",sans-serif;
+      font-size:clamp(1rem,1.7vw,1.35rem);
+      letter-spacing:0.15em;color:var(--gray-mid);margin-bottom:30px;
+    }
+    .hero-desc{font-size:16px;line-height:1.78;color:var(--gray);max-width:480px;margin-bottom:36px}
+    .hero-trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+    .trust-pill{
+      display:inline-flex;align-items:center;gap:7px;
+      background:var(--white);border:1px solid var(--border);
+      border-radius:100px;padding:8px 16px;
+      font-size:13px;font-weight:600;color:var(--navy);
+      box-shadow:var(--shadow-sm);
+    }
+    .trust-pill .pip{width:6px;height:6px;border-radius:50%;background:var(--gold2);flex-shrink:0}
+    .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+
+    .btn-primary{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--navy);color:var(--white);
+      font-family:"Nunito Sans",sans-serif;
+      font-weight:800;font-size:15px;
+      padding:16px 32px;border-radius:10px;
+      text-decoration:none;border:none;cursor:pointer;
+      transition:all 0.25s;letter-spacing:0.02em;
+      box-shadow:var(--shadow-md);
+    }
+    .btn-primary:hover{background:var(--navy2);transform:translateY(-2px);box-shadow:var(--shadow-xl)}
+    .btn-ghost{
+      display:inline-flex;align-items:center;gap:8px;
+      background:transparent;color:var(--navy);
+      font-family:"Nunito Sans",sans-serif;
+      font-weight:700;font-size:15px;
+      padding:16px 28px;border-radius:10px;
+      text-decoration:none;border:2px solid var(--border);
+      cursor:pointer;transition:all 0.25s;
+    }
+    .btn-ghost:hover{border-color:var(--navy);background:var(--cream)}
+
+    /* BOOKING CARD */
+    .hero-right{
+      position:relative;z-index:2;
+      display:flex;align-items:center;justify-content:center;
+      padding:60px 8vw 60px 4vw;
+    }
+    .booking-card{
+      background:var(--white);border-radius:20px;
+      width:100%;max-width:460px;overflow:hidden;
+      box-shadow:var(--shadow-xl);border:1px solid var(--border);
+    }
+    .booking-card-header{
+      background:var(--navy);padding:24px 28px 20px;
+      position:relative;
+    }
+    .booking-card-header::after{
+      content:"";position:absolute;bottom:0;left:28px;right:28px;
+      height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2),transparent);
+    }
+    .booking-card-header h3{
+      font-family:"Cormorant Garant",serif;
+      font-size:21px;font-weight:700;color:var(--white);margin-bottom:4px;
+    }
+    .booking-card-header p{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:10px}
+    .gift-tag{
+      display:inline-flex;align-items:center;gap:6px;
+      background:var(--gold);color:var(--white);
+      font-weight:800;font-size:12px;
+      padding:5px 14px;border-radius:20px;letter-spacing:0.02em;
+    }
+    .calendar-embed{width:100%;height:560px;border:none;display:block}
+    .booking-trust{
+      padding:14px 24px;background:var(--ivory);
+      display:flex;justify-content:space-around;
+      border-top:1px solid var(--border);
+    }
+    .trust-item{text-align:center;font-size:11px;color:var(--gray);font-weight:600;letter-spacing:0.02em}
+    .trust-item strong{display:block;font-size:17px;color:var(--navy);font-weight:800}
+
+    /* SECTIONS */
+    .section-label{font-size:11px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+    .section-title{
+      font-family:"Cormorant Garant",serif;
+      font-size:clamp(2.2rem,4vw,3.2rem);
+      font-weight:700;line-height:1.12;
+      color:var(--navy);margin-bottom:16px;letter-spacing:-0.01em;
+    }
+    .section-sub{font-size:17px;color:var(--gray);max-width:580px;line-height:1.75;margin-bottom:56px}
+
+    /* SERVICES */
+    #services{background:var(--white);padding:100px 8vw;position:relative}
+    #services::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2),transparent);
+    }
+    .services-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px;
+    }
+    .service-card{
+      background:var(--ivory);border-radius:16px;padding:32px 28px;
+      border:1px solid var(--border);
+      transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      cursor:pointer;text-decoration:none;display:block;
+      position:relative;overflow:hidden;
+    }
+    .service-card::after{
+      content:"";position:absolute;bottom:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2));
+      transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;
+    }
+    .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);background:var(--white);border-color:rgba(184,144,10,0.25)}
+    .service-card:hover::after{transform:scaleX(1)}
+    .service-icon{font-size:42px;margin-bottom:18px;display:block}
+    .service-card h3{font-family:"Cormorant Garant",serif;font-size:24px;font-weight:700;color:var(--navy);margin-bottom:10px}
+    .service-card p{font-size:14px;color:var(--gray);line-height:1.65;margin-bottom:20px}
+    .service-card .features{list-style:none}
+    .service-card .features li{
+      font-size:13px;color:var(--navy);padding:5px 0;
+      display:flex;align-items:center;gap:10px;font-weight:600;
+    }
+    .service-card .features li::before{content:"✓";color:var(--gold);font-weight:800;font-size:14px;flex-shrink:0}
+    .service-cta-link{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:13px;font-weight:800;color:var(--navy);
+      margin-top:22px;text-decoration:none;letter-spacing:0.02em;
+      transition:gap 0.2s;
+    }
+    .service-card:hover .service-cta-link{gap:10px}
+
+    /* MEET NATE */
+    #meet-nate{
+      background:var(--cream);padding:100px 8vw;
+      display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+    }
+    .nate-img-area{position:relative}
+    .nate-img-frame{
+      border-radius:24px;overflow:hidden;aspect-ratio:4/5;
+      box-shadow:var(--shadow-xl);position:relative;
+    }
+    .nate-img-frame::after{
+      content:"";position:absolute;inset:0;z-index:1;
+      background:linear-gradient(to top,rgba(10,22,40,0.12) 0%,transparent 40%);
+    }
+    .nate-img-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+    .nate-img-deco{
+      position:absolute;top:-16px;right:-16px;
+      width:120px;height:120px;
+      border-top:3px solid var(--gold2);border-right:3px solid var(--gold2);
+      border-radius:0 16px 0 0;pointer-events:none;
+    }
+    .nate-img-deco-2{
+      position:absolute;bottom:-16px;left:-16px;
+      width:120px;height:120px;
+      border-bottom:3px solid var(--gold2);border-left:3px solid var(--gold2);
+      border-radius:0 0 0 16px;pointer-events:none;
+    }
+    .nate-badge{
+      position:absolute;bottom:24px;right:-20px;z-index:10;
+      background:var(--white);border-radius:14px;
+      padding:16px 20px;box-shadow:var(--shadow-lg);
+      border:1px solid var(--border);text-align:center;min-width:110px;
+    }
+    .nate-badge .big{font-family:"Cormorant Garant",serif;font-size:32px;font-weight:700;color:var(--navy)}
+    .nate-badge .small{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.05em;text-transform:uppercase;margin-top:2px}
+    .nate-text p{font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px}
+    .nate-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:36px 0}
+    .stat-box{
+      background:var(--white);border:1px solid var(--border);
+      border-radius:14px;padding:20px 22px;box-shadow:var(--shadow-sm);transition:box-shadow 0.2s;
+    }
+    .stat-box:hover{box-shadow:var(--shadow-md)}
+    .stat-box .num{font-family:"Cormorant Garant",serif;font-size:38px;font-weight:700;color:var(--navy);line-height:1}
+    .stat-box .num .gold-text{color:var(--gold)}
+    .stat-box .lbl{font-size:12px;font-weight:700;color:var(--gray-mid);margin-top:4px;letter-spacing:0.04em;text-transform:uppercase}
+    .nate-contact{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+    .contact-link{
+      display:flex;align-items:center;gap:14px;
+      color:var(--navy);text-decoration:none;
+      font-size:15px;font-weight:700;
+      padding:12px 16px;background:var(--white);
+      border:1px solid var(--border);border-radius:10px;
+      transition:all 0.2s;box-shadow:var(--shadow-sm);
+    }
+    .contact-link:hover{border-color:var(--gold2);background:var(--gold-pale);transform:translateX(4px)}
+    .contact-link .icon{
+      width:38px;height:38px;border-radius:10px;
+      background:var(--navy);display:flex;align-items:center;justify-content:center;
+      font-size:17px;flex-shrink:0;
+    }
+
+    /* REVIEWS */
+    #reviews{padding:100px 8vw;background:var(--white)}
+    .reviews-header{
+      display:flex;align-items:flex-end;justify-content:space-between;
+      flex-wrap:wrap;gap:24px;margin-bottom:48px;
+    }
+    .reviews-score{
+      display:flex;align-items:center;gap:20px;
+      background:var(--gold-pale);border:1px solid rgba(184,144,10,0.2);
+      border-radius:14px;padding:18px 24px;
+    }
+    .reviews-score .big-rating{font-family:"Cormorant Garant",serif;font-size:52px;font-weight:700;color:var(--navy);line-height:1}
+    .reviews-score .stars-row{color:#F59E0B;font-size:20px;letter-spacing:2px}
+    .reviews-score .sub{font-size:12px;font-weight:700;color:var(--gray);margin-top:3px;text-transform:uppercase;letter-spacing:0.08em}
+    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+    .review-card{
+      background:var(--ivory);border-radius:16px;padding:28px;
+      border:1px solid var(--border);transition:box-shadow 0.2s;position:relative;
+    }
+    .review-card:hover{box-shadow:var(--shadow-md)}
+    .review-card::before{
+      content:open-quote;
+      position:absolute;top:12px;right:20px;
+      font-family:"Cormorant Garant",serif;font-size:80px;line-height:1;
+      color:var(--border);font-weight:700;
+    }
+    .stars{color:#F59E0B;font-size:16px;margin-bottom:14px;letter-spacing:2px}
+    .review-text{font-size:15px;line-height:1.72;color:#374151;margin-bottom:18px;font-style:italic;position:relative;z-index:1}
+    .reviewer{font-weight:800;font-size:14px;color:var(--navy)}
+    .reviewer span{font-weight:400;color:var(--gray)}
+
+    /* FINAL CTA */
+    #final-cta{
+      background:var(--navy);padding:100px 8vw;
+      text-align:center;position:relative;overflow:hidden;
+    }
+    #final-cta::before{
+      content:"";position:absolute;inset:0;
+      background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+      background-size:60px 60px;
+    }
+    #final-cta .section-title{color:var(--white);position:relative;z-index:2}
+    #final-cta .section-title em{font-style:italic;color:var(--gold2)}
+    #final-cta p{color:rgba(255,255,255,0.62);font-size:18px;margin:20px auto 44px;max-width:560px;position:relative;z-index:2;line-height:1.7}
+    .cta-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
+    .btn-gold{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--gold2);color:var(--navy);
+      font-family:"Nunito Sans",sans-serif;
+      font-weight:800;font-size:16px;
+      padding:18px 40px;border-radius:10px;
+      text-decoration:none;cursor:pointer;border:none;
+      transition:all 0.25s;
+      box-shadow:0 8px 32px rgba(212,175,55,0.35);
+    }
+    .btn-gold:hover{background:#EAC83A;transform:translateY(-2px);box-shadow:0 16px 48px rgba(212,175,55,0.45)}
+    .btn-outline-white{
+      display:inline-flex;align-items:center;gap:8px;
+      background:transparent;color:var(--white);
+      font-family:"Nunito Sans",sans-serif;
+      font-weight:700;font-size:16px;
+      padding:18px 36px;border-radius:10px;text-decoration:none;
+      border:2px solid rgba(255,255,255,0.25);transition:all 0.25s;
+    }
+    .btn-outline-white:hover{border-color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.06)}
+
+    /* FOOTER */
+    footer{
+      background:#060F1C;padding:40px 8vw;
+      display:flex;align-items:center;justify-content:space-between;
+      flex-wrap:wrap;gap:20px;border-top:1px solid rgba(184,144,10,0.15);
+    }
+    footer img{height:36px}
+    footer p{font-size:13px;color:rgba(255,255,255,0.35)}
+    footer a{color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s}
+    footer a:hover{color:var(--gold2)}
+
+    /* ANIMATIONS */
+    .fade-in{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+    .fade-in:nth-child(2){transition-delay:0.08s}
+    .fade-in:nth-child(3){transition-delay:0.16s}
+    .fade-in:nth-child(4){transition-delay:0.24s}
+    .fade-in:nth-child(5){transition-delay:0.32s}
+    .fade-in:nth-child(6){transition-delay:0.40s}
+
+    /* RESPONSIVE */
+    @media(max-width:960px){
+      #hero{grid-template-columns:1fr;min-height:auto}
+      .hero-left{padding:60px 6vw 40px}
+      .hero-right{padding:0 6vw 60px}
+      .booking-card{max-width:100%}
+      #meet-nate{grid-template-columns:1fr;gap:50px}
+      .nate-img-area{order:-1}
+      .nate-img-frame{aspect-ratio:3/2}
+      .nate-badge{right:16px;bottom:16px}
+      .nate-img-deco,.nate-img-deco-2{display:none}
+      .reviews-header{flex-direction:column;align-items:flex-start}
+    }
+    @media(max-width:600px){
+      .hero-headline{font-size:2.6rem}
+      .section-title{font-size:2rem}
+      .services-grid{grid-template-columns:1fr}
+      .reviews-grid{grid-template-columns:1fr}
+      nav{padding:0 4vw}
+      .hero-ctas{flex-direction:column}
+      .hero-ctas .btn-primary,.hero-ctas .btn-ghost{text-align:center;justify-content:center}
+    }
+  </style>
+</head>
+<body>
+
+<div class="promo-banner">
+  🎁 <strong>SPECIAL OFFER:</strong> $500 Gift Card with every FREE estimate <span class="sep">•</span> Price locked for <strong>1 full year</strong> <span class="sep">•</span> Book directly with Nate
+</div>
+
+<nav>
+  <div class="nav-logo">
+    <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2021/03/WDUSA_MilwaukeeLogo.png" alt="Window Depot USA Milwaukee" onerror="this.style.display='none'">
+    <span class="nav-badge">SE Wisconsin</span>
+  </div>
+  <a href="#booking" class="nav-cta"><span class="pip"></span>Book FREE Estimate</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Window Depot USA Milwaukee</div>
+    <h1 class="hero-headline">Milwaukee's Most<br><em>Trusted Home</em><br>Improvement Expert</h1>
+    <div class="hero-sub">Windows &middot; Doors &middot; Siding &middot; Roofing &middot; Flooring &middot; Bath</div>
+    <p class="hero-desc">Book directly with Nate for a <strong>FREE in-home estimate</strong> &mdash; honest pricing, zero pressure, and your quote is locked in for a full year. Serving all of SE Wisconsin from 7 convenient showroom locations.</p>
+    <div class="hero-trust-row">
+      <span class="trust-pill"><span class="pip"></span>⭐ 4.9 Google (1,000+ reviews)</span>
+      <span class="trust-pill"><span class="pip"></span>🏆 Top 500 National &mdash; #3</span>
+      <span class="trust-pill"><span class="pip"></span>✅ A+ BBB Rated</span>
+      <span class="trust-pill"><span class="pip"></span>📍 7 SE WI Showrooms</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#booking" class="btn-primary">📅 Book Your FREE Estimate</a>
+      <a href="tel:4149394528" class="btn-ghost">📲 (414) 939-4528</a>
+    </div>
+  </div>
+  <div class="hero-right" id="booking">
+    <div class="booking-card">
+      <div class="booking-card-header">
+        <h3>📅 Book Your FREE In-Home Estimate</h3>
+        <p>with Nate &mdash; Window Depot USA of Milwaukee</p>
+        <div class="gift-tag">🎁 $500 Gift Card &nbsp;&middot;&nbsp; Price Locked 1 Full Year</div>
+      </div>
+      <iframe class="calendar-embed" src="https://api.leadconnectorhq.com/widget/booking/efidPOmUpF891R2GMQ7p" title="Book an Appointment with Nate"></iframe>
+      <div class="booking-trust">
+        <div class="trust-item"><strong>4.9★</strong>Google</div>
+        <div class="trust-item"><strong>A+</strong>BBB Rated</div>
+        <div class="trust-item"><strong>#3</strong>National</div>
+        <div class="trust-item"><strong>Free</strong>Estimate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-label">What We Offer</div>
+  <h2 class="section-title">Six Ways to Transform<br>Your Milwaukee Home</h2>
+  <p class="section-sub">From energy-efficient ProVia Triple Pane windows to stunning one-day bathroom makeovers &mdash; Nate is your single trusted expert for every home improvement project.</p>
+  <div class="services-grid">
+    <a href="#booking" class="service-card fade-in">
+      <span class="service-icon">🪟</span>
+      <h3>Replacement Windows</h3>
+      <p>ProVia Endure Triple Pane windows &mdash; the highest-performing window available for Wisconsin's brutal winters, at dual-pane prices.</p>
+      <ul class="features">
+        <li>Up to 30&ndash;40% lower energy bills</li>
+        <li>Eliminates drafts &amp; condensation</li>
+        <li>Energy Star Most Efficient certified</li>
+        <li>Transferable Lifetime Warranty</li>
+        <li>Installed in a single day</li>
+      </ul>
+      <span class="service-cta-link">Book FREE estimate &rarr;</span>
+    </a>
+    <a href="#booking" class="service-card fade-in">
+      <span class="service-icon">🚪</span>
+      <h3>Entry &amp; Patio Doors</h3>
+      <p>ProVia Signet fiberglass and Legacy steel doors &mdash; best-in-class security, beauty, and weather sealing with lifetime warranty coverage.</p>
+      <ul class="features">
+        <li>Fiberglass &amp; 20-gauge steel options</li>
+        <li>Custom colors, glass &amp; hardware</li>
+        <li>Energy Star certified</li>
+        <li>Won't warp, crack, or rot</li>
+        <li>Lifetime warranty &mdash; transfers with home</li>
+      </ul>
+      <span class="service-cta-link">Book FREE estimate &rarr;</span>
+    </a>
+    <a href="#booking" class="service-card fade-in">
+      <span class="service-icon">🏘️</span>
+      <h3>Vinyl &amp; Composite Siding</h3>
+      <p>CraneBoard Solid Core, ASCEND Composite Cladding &mdash; engineered to survive Wisconsin's freeze-thaw cycle with zero maintenance.</p>
+      <ul class="features">
+        <li>Withstands 160&ndash;180 mph winds</li>
+        <li>Insulated solid-core options</li>
+        <li>Dramatic curb appeal upgrade</li>
+        <li>Never needs painting or scraping</li>
+        <li>Life of Home warranty</li>
+      </ul>
+      <span class="service-cta-link">Book FREE estimate &rarr;</span>
+    </a>
+    <a href="#booking" class="service-card fade-in">
+      <span class="service-icon">🏚️</span>
+      <h3>Roofing</h3>
+      <p>NorthGate Class IV impact-rated shingles and ProVia Portsmouth metal shake/slate &mdash; the last roof you'll ever need, built for Wisconsin.</p>
+      <ul class="features">
+        <li>Portsmouth metal &mdash; lifetime rated</li>
+        <li>Class IV hail &amp; impact resistance</li>
+        <li>Fire resistant Class A</li>
+        <li>Insurance claims assistance</li>
+        <li>Licensed &amp; certified installers</li>
+      </ul>
+      <span class="service-cta-link">Book FREE estimate &rarr;</span>
+    </a>
+    <a href="#booking" class="service-card fade-in">
+      <span class="service-icon">🏠</span>
+      <h3>Flooring</h3>
+      <p>Hardwood, luxury vinyl plank, laminate, and carpet &mdash; we bring 100s of samples directly to your home for a pressure-free selection experience.</p>
+      <ul class="features">
+        <li>In-home sample consultation</li>
+        <li>Hardwood, LVP, carpet &amp; more</li>
+        <li>Professional certified installation</li>
+        <li>Financing available</li>
+        <li>No showroom pressure</li>
+      </ul>
+      <span class="service-cta-link">Book FREE estimate &rarr;</span>
+    </a>
+    <a href="#booking" class="service-card fade-in">
+      <span class="service-icon">🛁</span>
+      <h3>Bathroom Makeover</h3>
+      <p>Custom acrylic bath remodeling with the luxury look of marble and granite &mdash; manufactured for your home, installed in as little as one day.</p>
+      <ul class="features">
+        <li>As little as 1-day installation</li>
+        <li>Marble, stone &amp; tile looks</li>
+        <li>Mold-resistant &mdash; no grout lines</li>
+        <li>Walk-in showers &amp; tub conversions</li>
+        <li>Lifetime warranty against damage</li>
+      </ul>
+      <span class="service-cta-link">Book FREE estimate &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<section id="meet-nate">
+  <div class="nate-img-area fade-in">
+    <div class="nate-img-frame">
+      <img src="/nate.jpg" alt="Nate Teicher, Owner of Window Depot USA Milwaukee">
+    </div>
+    <div class="nate-img-deco"></div>
+    <div class="nate-img-deco-2"></div>
+    <div class="nate-badge">
+      <div class="big">4.9★</div>
+      <div class="small">1,000+ Reviews</div>
+    </div>
+  </div>
+  <div class="nate-text fade-in">
+    <div class="section-label">Your Local Expert</div>
+    <h2 class="section-title">Meet Nate &mdash;<br>Your Window Depot Rep</h2>
+    <p>I'm not a call center. I'm Nate Teicher &mdash; a real person who lives and works right here in SE Wisconsin with my wife Jennifer and our four kids. When you book directly with me, you get my personal cell, my honest assessment, and a price locked in for 12 full months.</p>
+    <p>With over a decade of experience in home improvement and sales, I know what Milwaukee homeowners need &mdash; and what they don't want: pressure. My consultations are relaxed, informative, and 100% obligation-free.</p>
+    <div class="nate-stats">
+      <div class="stat-box"><div class="num">1,000<span class="gold-text">+</span></div><div class="lbl">5-Star Reviews</div></div>
+      <div class="stat-box"><div class="num">4.9<span class="gold-text">★</span></div><div class="lbl">Google Rating</div></div>
+      <div class="stat-box"><div class="num">7</div><div class="lbl">SE WI Showrooms</div></div>
+      <div class="stat-box"><div class="num"><span class="gold-text">#3</span></div><div class="lbl">National Top 500</div></div>
+    </div>
+    <div class="nate-contact">
+      <a href="tel:4149394528" class="contact-link"><div class="icon">📲</div>(414) 939-4528 &mdash; Text or Call Nate</a>
+      <a href="mailto:nate@windowdepotmilwaukee.com" class="contact-link"><div class="icon">✉️</div>nate@windowdepotmilwaukee.com</a>
+      <a href="https://windowdepotmilwaukee.com" target="_blank" class="contact-link"><div class="icon">🌐</div>windowdepotmilwaukee.com</a>
+    </div>
+    <div style="margin-top:34px">
+      <a href="#booking" class="btn-primary" style="display:inline-flex">📅 Book with Nate &mdash; It's FREE</a>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="reviews-header">
+    <div>
+      <div class="section-label">What Homeowners Say</div>
+      <h2 class="section-title" style="margin-bottom:0">Trusted by 1,000+<br>Milwaukee Families</h2>
+    </div>
+    <div class="reviews-score">
+      <div class="big-rating">4.9</div>
+      <div>
+        <div class="stars-row">★★★★★</div>
+        <div class="sub">1,000+ Reviews</div>
+        <div style="font-size:12px;color:#6B7280;margin-top:4px">Google &middot; A+ BBB</div>
+      </div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-in">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Nate came out, was honest about what we needed, didn't try to upsell us. The windows are incredible &mdash; our heating bill dropped immediately. Couldn't be happier."</p>
+      <div class="reviewer">Jennifer M. <span>&mdash; Brookfield, WI</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"We got 3 quotes and Window Depot was the best value by far. The installation team was professional, clean, and done in one day. Our new door looks absolutely stunning."</p>
+      <div class="reviewer">Mike &amp; Sarah T. <span>&mdash; Wauwatosa, WI</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"The bathroom makeover was done in a single day. Demo out, new surround in &mdash; it looks like a luxury spa. Called Nate directly and he made the whole process completely painless."</p>
+      <div class="reviewer">Rachel K. <span>&mdash; Mequon, WI</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Got the Portsmouth metal roof &mdash; best decision I've ever made for this house. It looks incredible and I'll never worry about my roof again. Nate walked me through everything."</p>
+      <div class="reviewer">Dave L. <span>&mdash; Waukesha, WI</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Triple pane windows throughout the whole house. The difference in noise reduction alone was worth it. Our energy bills are down 28% since installation. Highly recommend Nate."</p>
+      <div class="reviewer">Amanda F. <span>&mdash; New Berlin, WI</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Booking directly with Nate was the best call. He came out within 2 days, gave a fair quote, and the crew was fantastic. New siding completely transformed our house."</p>
+      <div class="reviewer">Tom B. <span>&mdash; Menomonee Falls, WI</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="final-cta">
+  <h2 class="section-title">Ready to Transform<br><em>Your Milwaukee Home?</em></h2>
+  <p>Book a FREE in-home estimate with Nate. No pressure, no obligation &mdash; your price is locked for a full year. Plus get a $500 Gift Card just for scheduling.</p>
+  <div class="cta-group">
+    <a href="#booking" class="btn-gold">📅 Book Your FREE Estimate Now</a>
+    <a href="tel:4149394528" class="btn-outline-white">📲 Call Nate: (414) 939-4528</a>
+  </div>
+</section>
+
+<footer>
+  <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2021/03/WDUSA_MilwaukeeLogo.png" alt="Window Depot USA Milwaukee" onerror="this.style.display='none'">
+  <p>&copy; 2026 Window Depot USA of Milwaukee. All rights reserved.<br>Serving Greater Milwaukee &amp; SE Wisconsin.</p>
+  <p><a href="tel:4149394528">(414) 939-4528</a> &nbsp;&middot;&nbsp; <a href="https://windowdepotmilwaukee.com" target="_blank">windowdepotmilwaukee.com</a></p>
+</footer>
+
+<script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69a370f0a27e8caba17afc86"></script>
+
+<script src="kb.js"></script>
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("visible"); });
+},{threshold:0.08});
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
