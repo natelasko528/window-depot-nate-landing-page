@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Window Depot USA Milwaukee — Book a FREE Estimate with Nate</title>
+  <meta name="description" content="Book a FREE in-home estimate with Nate at Window Depot USA Milwaukee. Windows, Doors, Roofing, Siding, Flooring and Bathroom Remodels. Price locked for 1 full year.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700;6..12,800&family=Bebas+Neue&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --navy:#0A1628;--navy2:#1A2F50;--blue:#1565C0;
+      --gold:#B8900A;--gold2:#D4AF37;--gold-pale:#FDF8EC;
+      --ivory:#FAFAF6;--cream:#F0EDE5;--white:#FFFFFF;
+      --gray:#64748B;--gray-mid:#94A3B8;--border:#E5E0D5;
+      --shadow-sm:0 1px 3px rgba(10,22,40,0.08),0 1px 2px rgba(10,22,40,0.05);
+      --shadow-md:0 4px 16px rgba(10,22,40,0.10),0 2px 6px rgba(10,22,40,0.06);
+      --shadow-lg:0 20px 60px rgba(10,22,40,0.12),0 8px 24px rgba(10,22,40,0.08);
+      --shadow-xl:0 40px 80px rgba(10,22,40,0.14),0 16px 40px rgba(10,22,40,0.08);
+      --radius:16px;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:"Nunito Sans",sans-serif;background:var(--ivory);color:var(--navy);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+    .promo-banner{
+      background:var(--navy);color:var(--gold2);
+      text-align:center;padding:11px 20px;
+      font-size:13px;font-weight:700;letter-spacing:0.04em;
+      position:relative;z-index:200;
+    }
+    .promo-banner strong{color:#fff}
+    .promo-banner .sep{opacity:0.35;margin:0 10px}
+
+    nav{
+      position:sticky;top:0;z-index:100;
+      background:rgba(255,255,255,0.97);
+      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+      padding:0 6vw;
+      display:flex;align-items:center;justify-content:space-between;
+      height:68px;
+      box-shadow:0 2px 12px rgba(10,22,40,0.07);
+    }
+    .nav-logo{display:flex;align-items:center;gap:14px}
+    .nav-logo img{height:40px}
+    .nav-badge{
+      font-size:11px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
+      color:var(--gold);border:1.5px solid var(--gold2);
+      padding:3px 10px;border-radius:20px;background:var(--gold-pale);
+    }
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-link{font-size:13px;font-weight:700;color:var(--gray);text-decoration:none;transition:color 0.2s;letter-spacing:0.02em}
+    .nav-link:hover{color:var(--navy)}
+    .nav-cta{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--navy);color:var(--white);
+      font-family:"Nunito Sans",sans-serif;
+      font-weight:800;font-size:13px;letter-spacing:0.04em;
+      padding:11px 24px;border-radius:8px;text-decoration:none;
+      transition:all 0.2s;white-space:nowrap;
+      box-shadow:var(--shadow-md);
+    }
+    .nav-cta:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+    .nav-cta .pip{width:7px;height:7px;border-radius:50%;background:var(--gold2);flex-shrink:0}
+
+    /* HERO */
+    #hero{
+      background:var(--ivory);
+      display:grid;grid-template-columns:1fr 1fr;
+      min-height:calc(100vh - 68px - 42px);
+      position:relative;overflow:hidden;
+    }
+    .hero-pattern{
+      position:absolute;inset:0;
+      background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);
+      background-size:48px 48px;opacity:0.45;pointer-events:none;
+    }
+    .hero-glow{
+      position:absolute;top:-150px;right:-80px;
+      width:700px;height:700px;border-radius:50%;
+      background:radial-gradient(circle,rgba(184,144,10,0.07) 0%,transparent 65%);
+      pointer-events:none;
+    }
+    .hero-left{
+      position:relative;z-index:2;
+      padding:80px 5vw 80px 8vw;
+      display:flex;flex-direction:column;justify-content:center;
+    }
+    .hero-eyebrow{
+      display:inline-flex;align-items:center;gap:12px;
+      font-size:11px;font-weight:800;letter-spacing:0.2em;
+      color:var(--gold);text-transform:uppercase;margin-bottom:28px;
+    }
+    .hero-eyebrow::before{
+      content:"";display:block;width:36px;height:2px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2));
+    }
+    .hero-headline{
+      font-family:"Cormorant Garant",serif;
+      font-size:clamp(3rem,5.2vw,4.6rem);
+      font-weight:700;line-height:1.05;
+      color:var(--navy);margin-bottom:12px;letter-spacing:-0.01em;
+    }
+    .hero-headline em{font-style:italic;color:var(--gold)}
+    .hero-sub{
+      font-family:"Bebas Neue",sans-serif;
+      font-size:clamp(1rem,1.7vw,1.35rem);
+      letter-spacing:0.15em;color:var(--gray-mid);margin-bottom:30px;
+    }
+    .hero-desc{font-size:16px;line-height:1.78;color:var(--gray);max-width:480px;margin-bottom:36px}
+    .hero-trust-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}
+    .trust-pill{
+      display:inline-flex;align-items:center;gap:7px;
+      background:var(--white);border:1px solid var(--border);
+      border-radius:100px;padding:8px 16px;
+      font-size:13px;font-weight:600;color:var(--navy);
+      box-shadow:var(--shadow-sm);
+    }
+    .trust-pill .pip{width:6px;height:6px;border-radius:50%;background:var(--gold2);flex-shrink:0}
+    .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+
+    .btn-primary{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--navy);color:var(--white);
+      font-family:"Nunito Sans",sans-serif;
+      font-weight:800;font-size:15px;
+      padding:16px 32px;border-radius:10px;
+      text-decoration:none;border:none;cursor:pointer;
+      transition:all 0.25s;letter-spacing:0.02em;
+      box-shadow:var(--shadow-md);
+    }
+    .btn-primary:hover{background:var(--navy2);transform:translateY(-2px);box-shadow:var(--shadow-xl)}
+    .btn-ghost{
+      display:inline-flex;align-items:center;gap:8px;
+      background:transparent;color:var(--navy);
+      font-family:"Nunito Sans",sans-serif;
+      font-weight:700;font-size:15px;
+      padding:16px 28px;border-radius:10px;
+      text-decoration:none;border:2px solid var(--border);
+      cursor:pointer;transition:all 0.25s;
+    }
+    .btn-ghost:hover{border-color:var(--navy);background:var(--cream)}
+
+    .hero-right{
+      position:relative;z-index:2;
+      display:flex;align-items:center;justify-content:center;
+      padding:60px 8vw 60px 4vw;
+    }
+    .booking-card{
+      background:var(--white);border-radius:20px;
+      width:100%;max-width:460px;overflow:hidden;
+      box-shadow:var(--shadow-xl);border:1px solid var(--border);
+    }
+    .booking-card-header{
+      background:var(--navy);padding:24px 28px 20px;
+      position:relative;
+    }
+    .booking-card-header::after{
+      content:"";position:absolute;bottom:0;left:28px;right:28px;
+      height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2),transparent);
+    }
+    .booking-card-header h3{
+      font-family:"Cormorant Garant",serif;
+      font-size:21px;font-weight:700;color:var(--white);margin-bottom:4px;
+    }
+    .booking-card-header p{font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:10px}
+    .gift-tag{
+      display:inline-flex;align-items:center;gap:6px;
+      background:var(--gold);color:var(--white);
+      font-weight:800;font-size:12px;
+      padding:5px 14px;border-radius:20px;letter-spacing:0.02em;
+    }
+    .calendar-embed{width:100%;height:560px;border:none;display:block}
+    .booking-trust{
+      padding:14px 24px;background:var(--ivory);
+      display:flex;justify-content:space-around;
+      border-top:1px solid var(--border);
+    }
+    .trust-item{text-align:center;font-size:11px;color:var(--gray);font-weight:600;letter-spacing:0.02em}
+    .trust-item strong{display:block;font-size:17px;color:var(--navy);font-weight:800}
+
+    /* SECTIONS */
+    .section-label{font-size:11px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+    .section-title{
+      font-family:"Cormorant Garant",serif;
+      font-size:clamp(2.2rem,4vw,3.2rem);
+      font-weight:700;line-height:1.12;
+      color:var(--navy);margin-bottom:16px;letter-spacing:-0.01em;
+    }
+    .section-sub{font-size:17px;color:var(--gray);max-width:580px;line-height:1.75;margin-bottom:56px}
+    .section-center{text-align:center}
+    .section-center .section-sub{margin-left:auto;margin-right:auto}
+
+    /* SERVICES */
+    #services{background:var(--white);padding:100px 8vw;position:relative}
+    #services::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2),transparent);
+    }
+    .services-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px;
+    }
+    .service-card{
+      background:var(--ivory);border-radius:var(--radius);padding:32px 28px;
+      border:1px solid var(--border);
+      transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      cursor:pointer;text-decoration:none;display:block;
+      position:relative;overflow:hidden;
+    }
+    .service-card::after{
+      content:"";position:absolute;bottom:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2));
+      transform:scaleX(0);transform-origin:left;transition:transform 0.3s ease;
+    }
+    .service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);background:var(--white);border-color:rgba(184,144,10,0.25)}
+    .service-card:hover::after{transform:scaleX(1)}
+    .service-icon{font-size:42px;margin-bottom:18px;display:block}
+    .service-card h3{font-family:"Cormorant Garant",serif;font-size:24px;font-weight:700;color:var(--navy);margin-bottom:10px}
+    .service-card p{font-size:14px;color:var(--gray);line-height:1.65;margin-bottom:20px}
+    .service-card .features{list-style:none}
+    .service-card .features li{
+      font-size:13px;color:var(--navy);padding:5px 0;
+      display:flex;align-items:center;gap:10px;font-weight:600;
+    }
+    .service-card .features li::before{content:"\2713";color:var(--gold);font-weight:800;font-size:14px;flex-shrink:0}
+    .service-cta-link{
+      display:inline-flex;align-items:center;gap:6px;
+      font-size:13px;font-weight:800;color:var(--navy);
+      margin-top:22px;text-decoration:none;letter-spacing:0.02em;
+      transition:gap 0.2s;
+    }
+    .service-card:hover .service-cta-link{gap:10px}
+
+    /* PRODUCT DEEP DIVES */
+    .deep-dive{padding:100px 8vw;position:relative;overflow:hidden}
+    .deep-dive.alt{background:var(--white)}
+    .dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .dd-grid.reverse .dd-visual{order:2}
+    .dd-grid.reverse .dd-content{order:1}
+
+    /* Triple Pane Diagram */
+    .pane-diagram{
+      background:var(--white);border-radius:var(--radius);
+      padding:40px;border:1px solid var(--border);box-shadow:var(--shadow-md);
+      position:relative;
+    }
+    .pane-stack{display:flex;justify-content:center;align-items:stretch;gap:0;height:260px;margin-bottom:28px}
+    .pane{
+      width:8px;background:linear-gradient(180deg,rgba(173,216,230,0.6),rgba(173,216,230,0.3));
+      border-radius:4px;position:relative;
+      box-shadow:inset 0 0 8px rgba(255,255,255,0.5);
+      border:1px solid rgba(173,216,230,0.5);
+    }
+    .gas-fill{
+      width:48px;
+      background:linear-gradient(180deg,rgba(212,175,55,0.08),rgba(212,175,55,0.03));
+      display:flex;align-items:center;justify-content:center;
+      position:relative;
+    }
+    .gas-fill span{
+      writing-mode:vertical-rl;text-orientation:mixed;
+      font-size:10px;font-weight:700;color:var(--gold);letter-spacing:0.1em;text-transform:uppercase;
+      opacity:0.7;
+    }
+    .gas-fill::before,.gas-fill::after{
+      content:"";position:absolute;left:0;right:0;height:1px;
+      background:repeating-linear-gradient(90deg,var(--gold2) 0 4px,transparent 4px 8px);opacity:0.3;
+    }
+    .gas-fill::before{top:20px}
+    .gas-fill::after{bottom:20px}
+    .pane-labels{display:flex;justify-content:center;gap:20px;flex-wrap:wrap}
+    .pane-label{
+      font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:0.08em;
+      display:flex;align-items:center;gap:6px;
+    }
+    .pane-label .dot{width:8px;height:8px;border-radius:50%}
+    .dot-glass{background:rgba(173,216,230,0.6);border:1px solid rgba(173,216,230,0.8)}
+    .dot-gas{background:rgba(212,175,55,0.2);border:1px solid var(--gold2)}
+    .dot-lowe{background:#7C3AED;opacity:0.6}
+
+    .lowe-line{
+      position:absolute;width:2px;height:100%;
+      background:linear-gradient(180deg,transparent,#7C3AED,transparent);opacity:0.4;
+    }
+
+    /* Tier Cards */
+    .tier-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+    .tier-card{
+      background:var(--ivory);border:1px solid var(--border);border-radius:12px;
+      padding:24px 20px;text-align:center;transition:all 0.25s;position:relative;
+    }
+    .tier-card:hover{border-color:var(--gold2);box-shadow:var(--shadow-md)}
+    .tier-card.featured{border-color:var(--gold2);background:var(--gold-pale)}
+    .tier-card.featured::before{
+      content:"BEST VALUE";position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+      background:var(--gold2);color:var(--navy);font-size:9px;font-weight:800;
+      padding:3px 12px;border-radius:10px;letter-spacing:0.1em;white-space:nowrap;
+    }
+    .tier-name{font-family:"Bebas Neue",sans-serif;font-size:18px;letter-spacing:0.12em;color:var(--navy);margin-bottom:8px}
+    .tier-card ul{list-style:none;text-align:left}
+    .tier-card li{font-size:12px;color:var(--gray);padding:3px 0;display:flex;align-items:baseline;gap:6px}
+    .tier-card li::before{content:"\2713";color:var(--gold);font-weight:800;font-size:11px;flex-shrink:0}
+
+    /* Energy Calculator */
+    .calc-box{
+      background:var(--white);border-radius:var(--radius);padding:40px;
+      border:1px solid var(--border);box-shadow:var(--shadow-md);
+    }
+    .calc-group{margin-bottom:28px}
+    .calc-label{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:10px;display:flex;justify-content:space-between}
+    .calc-label .val{color:var(--gold);font-family:"Cormorant Garant",serif;font-size:18px;font-weight:700}
+    input[type=range]{
+      -webkit-appearance:none;appearance:none;width:100%;height:6px;
+      border-radius:3px;background:var(--border);outline:none;
+    }
+    input[type=range]::-webkit-slider-thumb{
+      -webkit-appearance:none;width:22px;height:22px;border-radius:50%;
+      background:var(--navy);cursor:pointer;border:3px solid var(--gold2);
+      box-shadow:var(--shadow-sm);
+    }
+    input[type=range]::-moz-range-thumb{
+      width:22px;height:22px;border-radius:50%;
+      background:var(--navy);cursor:pointer;border:3px solid var(--gold2);
+    }
+    .calc-results{
+      display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:32px;
+    }
+    .calc-result{
+      background:var(--ivory);border-radius:12px;padding:20px;text-align:center;
+      border:1px solid var(--border);
+    }
+    .calc-result .num{
+      font-family:"Cormorant Garant",serif;font-size:36px;font-weight:700;color:var(--navy);line-height:1;
+    }
+    .calc-result .num .gold-text{color:var(--gold)}
+    .calc-result .lbl{font-size:11px;font-weight:700;color:var(--gray);margin-top:6px;text-transform:uppercase;letter-spacing:0.06em}
+
+    .savings-bar-track{
+      width:100%;height:10px;background:var(--border);border-radius:5px;margin-top:12px;overflow:hidden;
+    }
+    .savings-bar-fill{
+      height:100%;border-radius:5px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2));
+      transition:width 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    /* Comparison Cards */
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .compare-card{
+      background:var(--white);border:1px solid var(--border);border-radius:var(--radius);
+      padding:36px 28px;transition:all 0.25s;position:relative;overflow:hidden;
+    }
+    .compare-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+    .compare-card.premium{border-color:var(--gold2)}
+    .compare-card.premium::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2));
+    }
+    .compare-badge{
+      display:inline-block;font-size:10px;font-weight:800;letter-spacing:0.1em;
+      text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px;
+    }
+    .compare-badge.std{background:var(--ivory);color:var(--gray);border:1px solid var(--border)}
+    .compare-badge.prem{background:var(--gold-pale);color:var(--gold);border:1px solid var(--gold2)}
+    .compare-card h4{font-family:"Cormorant Garant",serif;font-size:24px;font-weight:700;color:var(--navy);margin-bottom:6px}
+    .compare-card .sub{font-size:13px;color:var(--gray);margin-bottom:20px}
+    .compare-card ul{list-style:none}
+    .compare-card li{font-size:13px;color:var(--navy);padding:6px 0;display:flex;align-items:center;gap:8px;font-weight:600}
+    .compare-card li::before{content:"\2713";color:var(--gold);font-weight:800;flex-shrink:0}
+    .lifespan-bar{margin-top:20px}
+    .lifespan-label{font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px;display:flex;justify-content:space-between}
+    .lifespan-track{width:100%;height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+    .lifespan-fill{height:100%;border-radius:4px;transition:width 1.2s cubic-bezier(0.22,1,0.36,1)}
+    .life-navy{background:var(--navy)}
+    .life-gold{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+
+    /* Siding Product Cards */
+    .siding-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+    .siding-card{
+      background:var(--white);border:1px solid var(--border);border-radius:var(--radius);
+      padding:28px 24px;transition:all 0.25s;
+    }
+    .siding-card:hover{box-shadow:var(--shadow-md);border-color:var(--gold2);transform:translateY(-4px)}
+    .siding-card h4{font-family:"Cormorant Garant",serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:4px}
+    .siding-card .tagline{font-size:12px;color:var(--gold);font-weight:700;margin-bottom:14px;text-transform:uppercase;letter-spacing:0.06em}
+    .siding-card ul{list-style:none}
+    .siding-card li{font-size:12px;color:var(--gray);padding:3px 0;display:flex;align-items:center;gap:6px}
+    .siding-card li::before{content:"\2713";color:var(--gold);font-weight:800;font-size:11px;flex-shrink:0}
+    .wind-stat{
+      margin-top:16px;padding-top:14px;border-top:1px solid var(--border);
+      display:flex;align-items:center;gap:10px;
+    }
+    .wind-stat .num{font-family:"Cormorant Garant",serif;font-size:28px;font-weight:700;color:var(--navy);line-height:1}
+    .wind-stat .unit{font-size:10px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em}
+
+    /* Process Steps */
+    .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+    .process-steps::before{
+      content:"";position:absolute;top:32px;left:12.5%;right:12.5%;height:2px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2));opacity:0.3;
+    }
+    .step{text-align:center;position:relative;z-index:1}
+    .step-num{
+      width:64px;height:64px;border-radius:50%;
+      background:var(--white);border:2px solid var(--gold2);
+      display:flex;align-items:center;justify-content:center;
+      font-family:"Cormorant Garant",serif;font-size:28px;font-weight:700;color:var(--gold);
+      margin:0 auto 16px;box-shadow:var(--shadow-sm);
+      transition:all 0.3s;
+    }
+    .step:hover .step-num{background:var(--gold-pale);transform:scale(1.08)}
+    .step h4{font-family:"Cormorant Garant",serif;font-size:18px;font-weight:700;color:var(--navy);margin-bottom:6px}
+    .step p{font-size:12px;color:var(--gray);line-height:1.6;max-width:180px;margin:0 auto}
+
+    /* Warning Signs Grid */
+    .signs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:32px}
+    .sign-item{
+      display:flex;align-items:flex-start;gap:10px;
+      background:var(--ivory);border:1px solid var(--border);border-radius:10px;
+      padding:14px 16px;font-size:13px;color:var(--navy);font-weight:600;
+      transition:all 0.2s;
+    }
+    .sign-item:hover{border-color:var(--gold2);background:var(--gold-pale)}
+    .sign-icon{font-size:18px;flex-shrink:0;line-height:1.3}
+
+    /* Bath Features */
+    .bath-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:36px}
+    .bath-feat{
+      background:var(--white);border:1px solid var(--border);border-radius:12px;
+      padding:20px;text-align:center;transition:all 0.25s;
+    }
+    .bath-feat:hover{box-shadow:var(--shadow-md);border-color:var(--gold2)}
+    .bath-feat .icon{font-size:32px;margin-bottom:10px}
+    .bath-feat h4{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:4px}
+    .bath-feat p{font-size:12px;color:var(--gray);line-height:1.5}
+
+    /* Inline CTA Bands */
+    .inline-cta{
+      background:var(--gold-pale);border:1px solid rgba(184,144,10,0.15);
+      border-radius:12px;padding:28px 32px;margin-top:40px;
+      display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+    }
+    .inline-cta p{font-size:15px;font-weight:700;color:var(--navy);max-width:420px}
+    .inline-cta p span{color:var(--gold)}
+
+    /* MEET NATE */
+    #meet-nate{
+      background:var(--cream);padding:100px 8vw;
+      display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;
+    }
+    .nate-img-area{position:relative}
+    .nate-img-frame{
+      border-radius:24px;overflow:hidden;aspect-ratio:4/5;
+      box-shadow:var(--shadow-xl);position:relative;
+    }
+    .nate-img-frame::after{
+      content:"";position:absolute;inset:0;z-index:1;
+      background:linear-gradient(to top,rgba(10,22,40,0.12) 0%,transparent 40%);
+    }
+    .nate-img-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
+    .nate-img-deco{
+      position:absolute;top:-16px;right:-16px;
+      width:120px;height:120px;
+      border-top:3px solid var(--gold2);border-right:3px solid var(--gold2);
+      border-radius:0 16px 0 0;pointer-events:none;
+    }
+    .nate-img-deco-2{
+      position:absolute;bottom:-16px;left:-16px;
+      width:120px;height:120px;
+      border-bottom:3px solid var(--gold2);border-left:3px solid var(--gold2);
+      border-radius:0 0 0 16px;pointer-events:none;
+    }
+    .nate-badge{
+      position:absolute;bottom:24px;right:-20px;z-index:10;
+      background:var(--white);border-radius:14px;
+      padding:16px 20px;box-shadow:var(--shadow-lg);
+      border:1px solid var(--border);text-align:center;min-width:110px;
+    }
+    .nate-badge .big{font-family:"Cormorant Garant",serif;font-size:32px;font-weight:700;color:var(--navy)}
+    .nate-badge .small{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:0.05em;text-transform:uppercase;margin-top:2px}
+    .nate-text p{font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px}
+    .nate-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:36px 0}
+    .stat-box{
+      background:var(--white);border:1px solid var(--border);
+      border-radius:14px;padding:20px 22px;box-shadow:var(--shadow-sm);transition:box-shadow 0.2s;
+    }
+    .stat-box:hover{box-shadow:var(--shadow-md)}
+    .stat-box .num{font-family:"Cormorant Garant",serif;font-size:38px;font-weight:700;color:var(--navy);line-height:1}
+    .stat-box .num .gold-text{color:var(--gold)}
+    .stat-box .lbl{font-size:12px;font-weight:700;color:var(--gray-mid);margin-top:4px;letter-spacing:0.04em;text-transform:uppercase}
+    .nate-contact{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+    .contact-link{
+      display:flex;align-items:center;gap:14px;
+      color:var(--navy);text-decoration:none;
+      font-size:15px;font-weight:700;
+      padding:12px 16px;background:var(--white);
+      border:1px solid var(--border);border-radius:10px;
+      transition:all 0.2s;box-shadow:var(--shadow-sm);
+    }
+    .contact-link:hover{border-color:var(--gold2);background:var(--gold-pale);transform:translateX(4px)}
+    .contact-link .icon{
+      width:38px;height:38px;border-radius:10px;
+      background:var(--navy);display:flex;align-items:center;justify-content:center;
+      font-size:17px;flex-shrink:0;
+    }
+
+    /* REVIEWS */
+    #reviews{padding:100px 8vw;background:var(--white)}
+    .reviews-header{
+      display:flex;align-items:flex-end;justify-content:space-between;
+      flex-wrap:wrap;gap:24px;margin-bottom:48px;
+    }
+    .reviews-score{
+      display:flex;align-items:center;gap:20px;
+      background:var(--gold-pale);border:1px solid rgba(184,144,10,0.2);
+      border-radius:14px;padding:18px 24px;
+    }
+    .reviews-score .big-rating{font-family:"Cormorant Garant",serif;font-size:52px;font-weight:700;color:var(--navy);line-height:1}
+    .reviews-score .stars-row{color:#F59E0B;font-size:20px;letter-spacing:2px}
+    .reviews-score .sub{font-size:12px;font-weight:700;color:var(--gray);margin-top:3px;text-transform:uppercase;letter-spacing:0.08em}
+    .reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+    .review-card{
+      background:var(--ivory);border-radius:var(--radius);padding:28px;
+      border:1px solid var(--border);transition:box-shadow 0.2s;position:relative;
+    }
+    .review-card:hover{box-shadow:var(--shadow-md)}
+    .review-card::before{
+      content:open-quote;
+      position:absolute;top:12px;right:20px;
+      font-family:"Cormorant Garant",serif;font-size:80px;line-height:1;
+      color:var(--border);font-weight:700;
+    }
+    .stars{color:#F59E0B;font-size:16px;margin-bottom:14px;letter-spacing:2px}
+    .review-text{font-size:15px;line-height:1.72;color:#374151;margin-bottom:18px;font-style:italic;position:relative;z-index:1}
+    .reviewer{font-weight:800;font-size:14px;color:var(--navy)}
+    .reviewer span{font-weight:400;color:var(--gray)}
+
+    /* FINAL CTA */
+    #final-cta{
+      background:var(--navy);padding:100px 8vw;
+      text-align:center;position:relative;overflow:hidden;
+    }
+    #final-cta::before{
+      content:"";position:absolute;inset:0;
+      background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+      background-size:60px 60px;
+    }
+    #final-cta .section-title{color:var(--white);position:relative;z-index:2}
+    #final-cta .section-title em{font-style:italic;color:var(--gold2)}
+    #final-cta p{color:rgba(255,255,255,0.62);font-size:18px;margin:20px auto 44px;max-width:560px;position:relative;z-index:2;line-height:1.7}
+    .cta-group{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2}
+    .btn-gold{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--gold2);color:var(--navy);
+      font-family:"Nunito Sans",sans-serif;
+      font-weight:800;font-size:16px;
+      padding:18px 40px;border-radius:10px;
+      text-decoration:none;cursor:pointer;border:none;
+      transition:all 0.25s;
+      box-shadow:0 8px 32px rgba(212,175,55,0.35);
+    }
+    .btn-gold:hover{background:#EAC83A;transform:translateY(-2px);box-shadow:0 16px 48px rgba(212,175,55,0.45)}
+    .btn-outline-white{
+      display:inline-flex;align-items:center;gap:8px;
+      background:transparent;color:var(--white);
+      font-family:"Nunito Sans",sans-serif;
+      font-weight:700;font-size:16px;
+      padding:18px 36px;border-radius:10px;text-decoration:none;
+      border:2px solid rgba(255,255,255,0.25);transition:all 0.25s;
+    }
+    .btn-outline-white:hover{border-color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.06)}
+
+    footer{
+      background:#060F1C;padding:40px 8vw;
+      display:flex;align-items:center;justify-content:space-between;
+      flex-wrap:wrap;gap:20px;border-top:1px solid rgba(184,144,10,0.15);
+    }
+    footer img{height:36px}
+    footer p{font-size:13px;color:rgba(255,255,255,0.35)}
+    footer a{color:rgba(255,255,255,0.5);text-decoration:none;transition:color 0.2s}
+    footer a:hover{color:var(--gold2)}
+
+    .fade-in{opacity:0;transform:translateY(28px);transition:opacity 0.65s ease,transform 0.65s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+    .fade-in:nth-child(2){transition-delay:0.08s}
+    .fade-in:nth-child(3){transition-delay:0.16s}
+    .fade-in:nth-child(4){transition-delay:0.24s}
+    .fade-in:nth-child(5){transition-delay:0.32s}
+    .fade-in:nth-child(6){transition-delay:0.40s}
+
+    @media(max-width:960px){
+      #hero{grid-template-columns:1fr;min-height:auto}
+      .hero-left{padding:60px 6vw 40px}
+      .hero-right{padding:0 6vw 60px}
+      .booking-card{max-width:100%}
+      #meet-nate{grid-template-columns:1fr;gap:50px}
+      .nate-img-area{order:-1}
+      .nate-img-frame{aspect-ratio:3/2}
+      .nate-badge{right:16px;bottom:16px}
+      .nate-img-deco,.nate-img-deco-2{display:none}
+      .reviews-header{flex-direction:column;align-items:flex-start}
+      .dd-grid{grid-template-columns:1fr;gap:40px}
+      .dd-grid.reverse .dd-visual{order:0}
+      .dd-grid.reverse .dd-content{order:0}
+      .compare-grid{grid-template-columns:1fr}
+      .tier-cards{grid-template-columns:1fr}
+      .process-steps{grid-template-columns:1fr 1fr;gap:28px}
+      .process-steps::before{display:none}
+      .nav-links{display:none}
+    }
+    @media(max-width:600px){
+      .hero-headline{font-size:2.6rem}
+      .section-title{font-size:2rem}
+      .services-grid{grid-template-columns:1fr}
+      .reviews-grid{grid-template-columns:1fr}
+      nav{padding:0 4vw}
+      .hero-ctas{flex-direction:column}
+      .hero-ctas .btn-primary,.hero-ctas .btn-ghost{text-align:center;justify-content:center}
+      .siding-grid{grid-template-columns:1fr}
+      .process-steps{grid-template-columns:1fr}
+      .calc-results{grid-template-columns:1fr}
+      .bath-features{grid-template-columns:1fr 1fr}
+      .signs-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<div class="promo-banner">
+  &#127873; <strong>SPECIAL OFFER:</strong> $500 Gift Card with every FREE estimate <span class="sep">&bull;</span> Price locked for <strong>1 full year</strong> <span class="sep">&bull;</span> Book directly with Nate
+</div>
+
+<nav>
+  <div class="nav-logo">
+    <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2021/03/WDUSA_MilwaukeeLogo.png" alt="Window Depot USA Milwaukee" onerror="this.style.display='none'">
+    <span class="nav-badge">SE Wisconsin</span>
+  </div>
+  <div class="nav-links">
+    <a href="#services" class="nav-link">Services</a>
+    <a href="#windows-deep" class="nav-link">Products</a>
+    <a href="#meet-nate" class="nav-link">Meet Nate</a>
+    <a href="#reviews" class="nav-link">Reviews</a>
+  </div>
+  <a href="#booking" class="nav-cta"><span class="pip"></span>Book FREE Estimate</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Window Depot USA Milwaukee</div>
+    <h1 class="hero-headline">Milwaukee's Most<br><em>Trusted Home</em><br>Improvement Expert</h1>
+    <div class="hero-sub">Windows &middot; Doors &middot; Siding &middot; Roofing &middot; Flooring &middot; Bath</div>
+    <p class="hero-desc">Book directly with Nate for a <strong>FREE in-home estimate</strong> &mdash; honest pricing, zero pressure, and your quote is locked in for a full year. Serving all of SE Wisconsin from 7 convenient showroom locations.</p>
+    <div class="hero-trust-row">
+      <span class="trust-pill"><span class="pip"></span>&#11088; 4.9 Google (1,000+ reviews)</span>
+      <span class="trust-pill"><span class="pip"></span>&#127942; Top 500 National &mdash; #3</span>
+      <span class="trust-pill"><span class="pip"></span>&#9989; A+ BBB Rated</span>
+      <span class="trust-pill"><span class="pip"></span>&#128205; 7 SE WI Showrooms</span>
+    </div>
+    <div class="hero-ctas">
+      <a href="#booking" class="btn-primary">&#128197; Book Your FREE Estimate</a>
+      <a href="tel:4143125213" class="btn-ghost">&#128242; (414) 312-5213</a>
+    </div>
+  </div>
+  <div class="hero-right" id="booking">
+    <div class="booking-card">
+      <div class="booking-card-header">
+        <h3>&#128197; Book Your FREE In-Home Estimate</h3>
+        <p>with Nate &mdash; Window Depot USA of Milwaukee</p>
+        <div class="gift-tag">&#127873; $500 Gift Card &nbsp;&middot;&nbsp; Price Locked 1 Full Year</div>
+      </div>
+      <iframe class="calendar-embed" src="https://api.leadconnectorhq.com/widget/booking/efidPOmUpF891R2GMQ7p" title="Book an Appointment with Nate"></iframe>
+      <div class="booking-trust">
+        <div class="trust-item"><strong>4.9&#9733;</strong>Google</div>
+        <div class="trust-item"><strong>A+</strong>BBB Rated</div>
+        <div class="trust-item"><strong>#3</strong>National</div>
+        <div class="trust-item"><strong>Free</strong>Estimate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES OVERVIEW -->
+<section id="services">
+  <div class="section-label">What We Offer</div>
+  <h2 class="section-title">Six Ways to Transform<br>Your Milwaukee Home</h2>
+  <p class="section-sub">From energy-efficient ProVia Triple Pane windows to stunning one-day bathroom makeovers &mdash; Nate is your single trusted expert for every home improvement project.</p>
+  <div class="services-grid">
+    <a href="#windows-deep" class="service-card fade-in">
+      <span class="service-icon">&#129695;</span>
+      <h3>Replacement Windows</h3>
+      <p>ProVia Endure Triple Pane windows &mdash; the highest-performing window available for Wisconsin's brutal winters, at dual-pane prices.</p>
+      <ul class="features">
+        <li>Up to 30&ndash;40% lower energy bills</li>
+        <li>Eliminates drafts &amp; condensation</li>
+        <li>Energy Star Most Efficient certified</li>
+        <li>Transferable Lifetime Warranty</li>
+        <li>Installed in a single day</li>
+      </ul>
+      <span class="service-cta-link">Learn more &rarr;</span>
+    </a>
+    <a href="#doors-deep" class="service-card fade-in">
+      <span class="service-icon">&#128682;</span>
+      <h3>Entry &amp; Patio Doors</h3>
+      <p>ProVia Signet fiberglass and Legacy steel doors &mdash; best-in-class security, beauty, and weather sealing with lifetime warranty.</p>
+      <ul class="features">
+        <li>Fiberglass &amp; 20-gauge steel options</li>
+        <li>Custom colors, glass &amp; hardware</li>
+        <li>Energy Star certified</li>
+        <li>Won't warp, crack, or rot</li>
+        <li>Lifetime warranty &mdash; transfers with home</li>
+      </ul>
+      <span class="service-cta-link">Learn more &rarr;</span>
+    </a>
+    <a href="#siding-deep" class="service-card fade-in">
+      <span class="service-icon">&#127960;</span>
+      <h3>Vinyl &amp; Composite Siding</h3>
+      <p>CraneBoard Solid Core, ASCEND Composite Cladding &mdash; engineered to survive Wisconsin's freeze-thaw cycle with zero maintenance.</p>
+      <ul class="features">
+        <li>Withstands 160&ndash;180 mph winds</li>
+        <li>Insulated solid-core options</li>
+        <li>Dramatic curb appeal upgrade</li>
+        <li>Never needs painting or scraping</li>
+        <li>Life of Home warranty</li>
+      </ul>
+      <span class="service-cta-link">Learn more &rarr;</span>
+    </a>
+    <a href="#roofing-deep" class="service-card fade-in">
+      <span class="service-icon">&#127968;</span>
+      <h3>Roofing</h3>
+      <p>NorthGate Class IV impact-rated shingles and ProVia Portsmouth metal shake/slate &mdash; the last roof you'll ever need.</p>
+      <ul class="features">
+        <li>Portsmouth metal &mdash; lifetime rated</li>
+        <li>Class IV hail &amp; impact resistance</li>
+        <li>Fire resistant Class A</li>
+        <li>Insurance claims assistance</li>
+        <li>Licensed &amp; certified installers</li>
+      </ul>
+      <span class="service-cta-link">Learn more &rarr;</span>
+    </a>
+    <a href="#booking" class="service-card fade-in">
+      <span class="service-icon">&#127969;</span>
+      <h3>Flooring</h3>
+      <p>Hardwood, luxury vinyl plank, laminate, and carpet &mdash; we bring 100s of samples directly to your home for a pressure-free selection.</p>
+      <ul class="features">
+        <li>In-home sample consultation</li>
+        <li>Hardwood, LVP, carpet &amp; more</li>
+        <li>Professional certified installation</li>
+        <li>Financing available</li>
+        <li>No showroom pressure</li>
+      </ul>
+      <span class="service-cta-link">Book FREE estimate &rarr;</span>
+    </a>
+    <a href="#bath-deep" class="service-card fade-in">
+      <span class="service-icon">&#128705;</span>
+      <h3>Bathroom Makeover</h3>
+      <p>Custom acrylic bath remodeling with the luxury look of marble and granite &mdash; installed in as little as one day.</p>
+      <ul class="features">
+        <li>As little as 1-day installation</li>
+        <li>Marble, stone &amp; tile looks</li>
+        <li>Mold-resistant &mdash; no grout lines</li>
+        <li>Walk-in showers &amp; tub conversions</li>
+        <li>Lifetime warranty against damage</li>
+      </ul>
+      <span class="service-cta-link">Learn more &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<!-- WINDOWS DEEP DIVE -->
+<section id="windows-deep" class="deep-dive">
+  <div class="dd-grid">
+    <div class="dd-visual fade-in">
+      <div class="pane-diagram">
+        <h4 style="font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:0.15em;color:var(--gray-mid);text-align:center;margin-bottom:24px">TRIPLE PANE CROSS-SECTION</h4>
+        <div class="pane-stack">
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;margin-right:8px">
+            <span style="font-size:10px;font-weight:700;color:var(--gray);writing-mode:vertical-rl;letter-spacing:0.1em">EXTERIOR</span>
+          </div>
+          <div class="pane" style="position:relative">
+            <div class="lowe-line" style="right:-2px"></div>
+          </div>
+          <div class="gas-fill"><span>KRYPTON</span></div>
+          <div class="pane" style="position:relative">
+            <div class="lowe-line" style="left:-2px"></div>
+            <div class="lowe-line" style="right:-2px"></div>
+          </div>
+          <div class="gas-fill"><span>KRYPTON</span></div>
+          <div class="pane"></div>
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;margin-left:8px">
+            <span style="font-size:10px;font-weight:700;color:var(--gray);writing-mode:vertical-rl;letter-spacing:0.1em">INTERIOR</span>
+          </div>
+        </div>
+        <div class="pane-labels">
+          <span class="pane-label"><span class="dot dot-glass"></span>Glass Pane</span>
+          <span class="pane-label"><span class="dot dot-gas"></span>Krypton Gas</span>
+          <span class="pane-label"><span class="dot dot-lowe"></span>Low-E Coating</span>
+        </div>
+      </div>
+      <div class="tier-cards">
+        <div class="tier-card">
+          <div class="tier-name">Silver Plus</div>
+          <ul>
+            <li>Energy Star certified</li>
+            <li>Argon gas fill</li>
+            <li>1 Low-E coating</li>
+            <li>Lifetime warranty</li>
+          </ul>
+        </div>
+        <div class="tier-card featured">
+          <div class="tier-name">Gold</div>
+          <ul>
+            <li>Energy Star Most Efficient</li>
+            <li>SHGC: 0.23 &bull; VLT: 0.37</li>
+            <li>Krypton gas fill</li>
+            <li>2 Low-E coatings</li>
+          </ul>
+        </div>
+        <div class="tier-card">
+          <div class="tier-name">Platinum</div>
+          <ul>
+            <li>Maximum performance</li>
+            <li>Dual Krypton chambers</li>
+            <li>2 Low-E coatings</li>
+            <li>Ultimate insulation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="dd-content fade-in">
+      <div class="section-label">America's Triple Pane Company</div>
+      <h2 class="section-title">ProVia Endure<br><em>Triple Pane Windows</em></h2>
+      <p style="font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px">Three panes of glass. Two chambers of insulating gas. Multiple Low-E coatings. The result? Up to <strong>52% better U-Factor</strong> than standard dual pane &mdash; and we offer them at dual-pane prices.</p>
+      <p style="font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px">Our Innergy thermal reinforcement is <strong>700x more insulating</strong> than aluminum. Combined with Neopor foam and bulb seals, every window is a fortress against Wisconsin winters.</p>
+      <p style="font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px">Available in 8 styles: Double Hung, Casement, Sliding, Picture, Bay &amp; Bow, Garden, Awning, and Hopper &mdash; all custom-made to your home's exact dimensions.</p>
+      <div class="inline-cta">
+        <p><span>&#127873; $500 Gift Card</span> + your estimate is locked for 12 months. Zero pressure.</p>
+        <a href="#booking" class="btn-primary">&#128197; Book FREE Estimate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENERGY CALCULATOR -->
+<section id="energy-calc" class="deep-dive alt">
+  <div class="section-center">
+    <div class="section-label">Energy Savings Estimator</div>
+    <h2 class="section-title">See What You Could Save<br>with <em>Triple Pane Windows</em></h2>
+    <p class="section-sub">Adjust the sliders to estimate your potential annual savings. Based on real data from the US Department of Energy RESFEN program &mdash; Nate can run a precise analysis for your specific home.</p>
+  </div>
+  <div class="dd-grid">
+    <div class="calc-box fade-in">
+      <div class="calc-group">
+        <div class="calc-label">Number of Windows <span class="val" id="winCountVal">12</span></div>
+        <input type="range" id="winCount" min="4" max="30" value="12">
+      </div>
+      <div class="calc-group">
+        <div class="calc-label">Annual Energy Bill <span class="val" id="billVal">$2,400</span></div>
+        <input type="range" id="annualBill" min="800" max="6000" step="100" value="2400">
+      </div>
+      <div class="calc-group">
+        <div class="calc-label">Estimated Savings Rate <span class="val" id="rateVal">28%</span></div>
+        <input type="range" id="savingsRate" min="12" max="40" value="28">
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--gray-mid);margin-top:4px;font-weight:600">
+          <span>Conservative</span><span>Optimal</span>
+        </div>
+      </div>
+      <div class="savings-bar-track">
+        <div class="savings-bar-fill" id="savingsBar" style="width:28%"></div>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="calc-results" id="calcResults">
+        <div class="calc-result">
+          <div class="num" id="annualSaving">$<span class="gold-text">672</span></div>
+          <div class="lbl">Annual Savings</div>
+        </div>
+        <div class="calc-result">
+          <div class="num" id="fiveYearSaving">$<span class="gold-text">3,360</span></div>
+          <div class="lbl">5-Year Savings</div>
+        </div>
+        <div class="calc-result">
+          <div class="num" id="tenYearSaving">$<span class="gold-text">6,720</span></div>
+          <div class="lbl">10-Year Savings</div>
+        </div>
+        <div class="calc-result">
+          <div class="num" id="perWindow">$<span class="gold-text">56</span></div>
+          <div class="lbl">Saved / Window / Year</div>
+        </div>
+      </div>
+      <div class="inline-cta" style="margin-top:28px">
+        <p>Want exact numbers? Nate runs a <span>free RESFEN analysis</span> for your specific home.</p>
+        <a href="#booking" class="btn-primary">&#128197; Get My Analysis</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOORS DEEP DIVE -->
+<section id="doors-deep" class="deep-dive">
+  <div class="section-center">
+    <div class="section-label">ProVia Entry &amp; Patio Doors</div>
+    <h2 class="section-title">Your Front Door Sets the Tone<br>for <em>Your Entire Home</em></h2>
+    <p class="section-sub">Rated #1 in quality by Remodeling Magazine. Custom-made to your exact specifications with lifetime warranty coverage that transfers with your home.</p>
+  </div>
+  <div class="compare-grid fade-in">
+    <div class="compare-card premium">
+      <span class="compare-badge prem">Most Popular</span>
+      <h4>Fiberglass Entry Doors</h4>
+      <p class="sub">ProVia Signet&reg; Series</p>
+      <ul>
+        <li>Mimics authentic wood grain &mdash; oak, cherry, mahogany, fir</li>
+        <li>Won't shrink, warp, split, crack, or delaminate</li>
+        <li>Lowest maintenance of any door material</li>
+        <li>Polyurethane core + Q-Lon weatherstripping</li>
+        <li>ComforTech Warm Edge Glazing System</li>
+        <li>Custom colors, glass inserts &amp; hardware</li>
+        <li>Lifetime warranty + 10-year paint/stain finish</li>
+      </ul>
+    </div>
+    <div class="compare-card">
+      <span class="compare-badge std">Maximum Security</span>
+      <h4>Steel Entry Doors</h4>
+      <p class="sub">ProVia Legacy&reg; Series</p>
+      <ul>
+        <li>20-gauge steel &mdash; maximum security</li>
+        <li>Resists warping and cracking</li>
+        <li>Energy Star certified performance</li>
+        <li>Wide range of colors and glass options</li>
+        <li>Best for high-security applications</li>
+        <li>Lower cost than fiberglass</li>
+        <li>Lifetime Limited Warranty</li>
+      </ul>
+    </div>
+  </div>
+  <div class="inline-cta fade-in" style="max-width:800px;margin:40px auto 0">
+    <p>Door replacement delivers one of the <span>highest ROI</span> improvements for Milwaukee homes.</p>
+    <a href="#booking" class="btn-primary">&#128197; Book Door Estimate</a>
+  </div>
+</section>
+
+<!-- SIDING DEEP DIVE -->
+<section id="siding-deep" class="deep-dive alt">
+  <div class="section-center">
+    <div class="section-label">Premium Siding Solutions</div>
+    <h2 class="section-title">Engineered for Wisconsin's<br><em>Toughest Weather</em></h2>
+    <p class="section-sub">From hurricane-force wind resistance to insulation that outperforms fiber cement, wood, and brick &mdash; our siding is built to protect and beautify for a lifetime.</p>
+  </div>
+  <div class="siding-grid fade-in">
+    <div class="siding-card">
+      <h4>CraneBoard&reg;</h4>
+      <div class="tagline">Solid Core Siding</div>
+      <ul>
+        <li>Neopor&reg; insulation &mdash; 19% better R-value</li>
+        <li>Smart Track&trade; moisture management</li>
+        <li>Chromatix&trade; color protection</li>
+        <li>Life of Home warranty</li>
+      </ul>
+      <div class="wind-stat">
+        <div class="num">160</div>
+        <div class="unit">MPH<br>Wind Rated</div>
+      </div>
+    </div>
+    <div class="siding-card">
+      <h4>Market Square&reg;</h4>
+      <div class="tagline">Cedar Look Siding</div>
+      <ul>
+        <li>Natural cedar appearance</li>
+        <li>D4, D4.5DL, D5 profiles</li>
+        <li>Never needs painting</li>
+        <li>Double Lifetime Warranty</li>
+      </ul>
+      <div class="wind-stat">
+        <div class="num">180</div>
+        <div class="unit">MPH<br>Wind Rated</div>
+      </div>
+    </div>
+    <div class="siding-card">
+      <h4>Parkview&trade;</h4>
+      <div class="tagline">Classic Vinyl</div>
+      <ul>
+        <li>Traditional wood profiles</li>
+        <li>Authentic woodgrain texture</li>
+        <li>Low maintenance forever</li>
+        <li>Environmentally friendly</li>
+      </ul>
+      <div class="wind-stat">
+        <div class="num">150</div>
+        <div class="unit">MPH<br>Wind Rated</div>
+      </div>
+    </div>
+    <div class="siding-card" style="border-color:var(--gold2)">
+      <h4>ASCEND&reg;</h4>
+      <div class="tagline">Composite Cladding &bull; Premium</div>
+      <ul>
+        <li>Named Most Innovative Building Material</li>
+        <li>20 color options</li>
+        <li>Self-aligning stack lock installation</li>
+        <li>Lifetime warranty</li>
+      </ul>
+      <div class="wind-stat">
+        <div class="num">&#127942;</div>
+        <div class="unit">NAHB<br>Award Winner</div>
+      </div>
+    </div>
+  </div>
+  <div class="inline-cta fade-in" style="max-width:800px;margin:40px auto 0">
+    <p>New siding is the fastest way to boost <span>curb appeal &amp; home value</span> in Milwaukee.</p>
+    <a href="#booking" class="btn-primary">&#128197; Book Siding Estimate</a>
+  </div>
+</section>
+
+<!-- ROOFING DEEP DIVE -->
+<section id="roofing-deep" class="deep-dive">
+  <div class="section-center">
+    <div class="section-label">Residential &amp; Metal Roofing</div>
+    <h2 class="section-title">The Last Roof<br><em>You'll Ever Need</em></h2>
+    <p class="section-sub">From impact-rated asphalt shingles to ProVia's lifetime-rated Portsmouth metal roofing &mdash; we have the right solution for every Milwaukee home and budget.</p>
+  </div>
+  <div class="compare-grid fade-in">
+    <div class="compare-card">
+      <span class="compare-badge std">Proven Performance</span>
+      <h4>NorthGate&reg; Asphalt</h4>
+      <p class="sub">Class IV Impact-Rated Shingles</p>
+      <ul>
+        <li>SBS modified premium asphalt</li>
+        <li>Class IV hail &amp; impact resistance</li>
+        <li>Excellent freeze/thaw cycle durability</li>
+        <li>Wide selection of Max Def colors</li>
+        <li>Outperforms standard shingles</li>
+      </ul>
+      <div class="lifespan-bar">
+        <div class="lifespan-label"><span>Expected Lifespan</span><span>25&ndash;30 years</span></div>
+        <div class="lifespan-track"><div class="lifespan-fill life-navy animate-bar" data-width="55%"></div></div>
+      </div>
+    </div>
+    <div class="compare-card premium">
+      <span class="compare-badge prem">Lifetime Investment</span>
+      <h4>Portsmouth&trade; Metal</h4>
+      <p class="sub">ProVia Shake &amp; Slate Steel</p>
+      <ul>
+        <li>26-gauge steel &mdash; 10% thicker than competitors</li>
+        <li>Weighs 3x less than asphalt</li>
+        <li>GalvaTec&trade; finish &mdash; algae &amp; UV resistant</li>
+        <li>Four-way multi-point locking system</li>
+        <li>Lifetime Limited Warranty</li>
+      </ul>
+      <div class="lifespan-bar">
+        <div class="lifespan-label"><span>Expected Lifespan</span><span>50+ years</span></div>
+        <div class="lifespan-track"><div class="lifespan-fill life-gold animate-bar" data-width="95%"></div></div>
+      </div>
+    </div>
+  </div>
+  <div style="max-width:800px;margin:0 auto">
+    <h3 style="font-family:'Cormorant Garant',serif;font-size:22px;font-weight:700;color:var(--navy);margin:48px 0 20px;text-align:center">&#9888;&#65039; Warning Signs You Need a New Roof</h3>
+    <div class="signs-grid fade-in">
+      <div class="sign-item"><span class="sign-icon">&#128167;</span>Leaks in attic after driving rain</div>
+      <div class="sign-item"><span class="sign-icon">&#127912;</span>Blistering or peeling exterior paint</div>
+      <div class="sign-item"><span class="sign-icon">&#9899;</span>Stains or mold on interior ceilings</div>
+      <div class="sign-item"><span class="sign-icon">&#128260;</span>Missing, cracked, or curled shingles</div>
+      <div class="sign-item"><span class="sign-icon">&#128296;</span>Popped or rusted nails visible</div>
+      <div class="sign-item"><span class="sign-icon">&#128027;</span>Insect or critter infestation signs</div>
+      <div class="sign-item"><span class="sign-icon">&#128168;</span>Sagging or unsound areas on roof</div>
+      <div class="sign-item"><span class="sign-icon">&#127807;</span>Dark patches or biological growth</div>
+    </div>
+  </div>
+  <div class="inline-cta fade-in" style="max-width:800px;margin:40px auto 0">
+    <p>Nate has <span>storm damage restoration experience</span> and can assist with insurance claims.</p>
+    <a href="#booking" class="btn-primary">&#128197; Book Roof Inspection</a>
+  </div>
+</section>
+
+<!-- BATHROOM DEEP DIVE -->
+<section id="bath-deep" class="deep-dive alt">
+  <div class="section-center">
+    <div class="section-label">One-Day Bathroom Makeover</div>
+    <h2 class="section-title">Dream Bathroom.<br><em>Installed in a Day.</em></h2>
+    <p class="section-sub">Custom acrylic solutions that replicate the look of marble, granite, and tile &mdash; manufactured for your home, installed with zero demolition mess, backed by a lifetime warranty.</p>
+  </div>
+  <div class="process-steps fade-in">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Consultation</h4>
+      <p>Nate comes to your home with samples and design options</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>Custom Build</h4>
+      <p>Your order is manufactured to exact specifications in the USA</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>Installation</h4>
+      <p>Professional install in as little as one day &mdash; no demo mess</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h4>Enjoy</h4>
+      <p>Your dream bathroom backed by a lifetime warranty</p>
+    </div>
+  </div>
+  <div class="bath-features fade-in">
+    <div class="bath-feat">
+      <div class="icon">&#128705;</div>
+      <h4>Walk-In Showers</h4>
+      <p>Custom acrylic with luxury marble and stone finishes</p>
+    </div>
+    <div class="bath-feat">
+      <div class="icon">&#128704;</div>
+      <h4>Tub Conversions</h4>
+      <p>Convert your tub to a walk-in shower or upgrade your surround</p>
+    </div>
+    <div class="bath-feat">
+      <div class="icon">&#129532;</div>
+      <h4>Mold Resistant</h4>
+      <p>No grout lines means no mold &mdash; easy cleaning for life</p>
+    </div>
+    <div class="bath-feat">
+      <div class="icon">&#9201;</div>
+      <h4>One Day Install</h4>
+      <p>Most installs completed in a single day with zero mess</p>
+    </div>
+    <div class="bath-feat">
+      <div class="icon">&#127912;</div>
+      <h4>100s of Styles</h4>
+      <p>Marble, granite, tile, and stone looks at a fraction of the cost</p>
+    </div>
+    <div class="bath-feat">
+      <div class="icon">&#128176;</div>
+      <h4>Financing</h4>
+      <p>Affordable monthly payments make your dream bath possible</p>
+    </div>
+  </div>
+  <div class="inline-cta fade-in" style="max-width:800px;margin:40px auto 0">
+    <p>Why wait weeks for a tile remodel? Get the <span>same luxury look in one day</span>.</p>
+    <a href="#booking" class="btn-primary">&#128197; Book Bath Estimate</a>
+  </div>
+</section>
+
+<!-- MEET NATE -->
+<section id="meet-nate">
+  <div class="nate-img-area fade-in">
+    <div class="nate-img-frame">
+      <img src="/nate-profile.png" alt="Nate, Home Improvement Consultant at Window Depot USA Milwaukee">
+    </div>
+    <div class="nate-img-deco"></div>
+    <div class="nate-img-deco-2"></div>
+    <div class="nate-badge">
+      <div class="big">4.9&#9733;</div>
+      <div class="small">1,000+ Reviews</div>
+    </div>
+  </div>
+  <div class="nate-text fade-in">
+    <div class="section-label">Your Local Expert</div>
+    <h2 class="section-title">Meet Nate &mdash;<br>Your Window Depot Rep</h2>
+    <p>I'm not a call center. I'm Nate &mdash; a real home improvement consultant who lives and works right here in SE Wisconsin. When you book directly with me, you get my personal cell, my honest assessment, and a price locked in for 12 full months.</p>
+    <p>My consultations are relaxed, informative, and 100% obligation-free. I bring everything to your home &mdash; samples, brochures, measurement tools. No showroom pressure, no games.</p>
+    <div class="nate-stats">
+      <div class="stat-box"><div class="num">1,000<span class="gold-text">+</span></div><div class="lbl">5-Star Reviews</div></div>
+      <div class="stat-box"><div class="num">4.9<span class="gold-text">&#9733;</span></div><div class="lbl">Google Rating</div></div>
+      <div class="stat-box"><div class="num">7</div><div class="lbl">SE WI Showrooms</div></div>
+      <div class="stat-box"><div class="num"><span class="gold-text">#3</span></div><div class="lbl">National Top 500</div></div>
+    </div>
+    <div class="nate-contact">
+      <a href="tel:4143125213" class="contact-link"><div class="icon">&#128242;</div>(414) 312-5213 &mdash; Text or Call Nate</a>
+      <a href="mailto:nate@windowdepotmilwaukee.com" class="contact-link"><div class="icon">&#9993;&#65039;</div>nate@windowdepotmilwaukee.com</a>
+      <a href="https://windowdepotmilwaukee.com" target="_blank" class="contact-link"><div class="icon">&#127760;</div>windowdepotmilwaukee.com</a>
+    </div>
+    <div style="margin-top:34px">
+      <a href="#booking" class="btn-primary" style="display:inline-flex">&#128197; Book with Nate &mdash; It's FREE</a>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-header">
+    <div>
+      <div class="section-label">What Homeowners Say</div>
+      <h2 class="section-title" style="margin-bottom:0">Trusted by 1,000+<br>Milwaukee Families</h2>
+    </div>
+    <div class="reviews-score">
+      <div class="big-rating">4.9</div>
+      <div>
+        <div class="stars-row">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="sub">1,000+ Reviews</div>
+        <div style="font-size:12px;color:#6B7280;margin-top:4px">Google &middot; A+ BBB</div>
+      </div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card fade-in">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Nate came out, was honest about what we needed, didn't try to upsell us. The windows are incredible &mdash; our heating bill dropped immediately. Couldn't be happier."</p>
+      <div class="reviewer">Jennifer M. <span>&mdash; Brookfield, WI</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"We got 3 quotes and Window Depot was the best value by far. The installation team was professional, clean, and done in one day. Our new door looks absolutely stunning."</p>
+      <div class="reviewer">Mike &amp; Sarah T. <span>&mdash; Wauwatosa, WI</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"The bathroom makeover was done in a single day. Demo out, new surround in &mdash; it looks like a luxury spa. Called Nate directly and he made the whole process completely painless."</p>
+      <div class="reviewer">Rachel K. <span>&mdash; Mequon, WI</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Got the Portsmouth metal roof &mdash; best decision I've ever made for this house. It looks incredible and I'll never worry about my roof again. Nate walked me through everything."</p>
+      <div class="reviewer">Dave L. <span>&mdash; Waukesha, WI</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Triple pane windows throughout the whole house. The difference in noise reduction alone was worth it. Our energy bills are down 28% since installation. Highly recommend Nate."</p>
+      <div class="reviewer">Amanda F. <span>&mdash; New Berlin, WI</span></div>
+    </div>
+    <div class="review-card fade-in">
+      <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="review-text">"Booking directly with Nate was the best call. He came out within 2 days, gave a fair quote, and the crew was fantastic. New siding completely transformed our house."</p>
+      <div class="reviewer">Tom B. <span>&mdash; Menomonee Falls, WI</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+  <h2 class="section-title">Ready to Transform<br><em>Your Milwaukee Home?</em></h2>
+  <p>Book a FREE in-home estimate with Nate. No pressure, no obligation &mdash; your price is locked for a full year. Plus get a $500 Gift Card just for scheduling.</p>
+  <div class="cta-group">
+    <a href="#booking" class="btn-gold">&#128197; Book Your FREE Estimate Now</a>
+    <a href="tel:4143125213" class="btn-outline-white">&#128242; Call Nate: (414) 312-5213</a>
+  </div>
+</section>
+
+<footer>
+  <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2021/03/WDUSA_MilwaukeeLogo.png" alt="Window Depot USA Milwaukee" onerror="this.style.display='none'">
+  <p>&copy; 2026 Window Depot USA of Milwaukee. All rights reserved.<br>Serving Greater Milwaukee &amp; SE Wisconsin.</p>
+  <p><a href="tel:4143125213">(414) 312-5213</a> &nbsp;&middot;&nbsp; <a href="https://windowdepotmilwaukee.com" target="_blank">windowdepotmilwaukee.com</a></p>
+</footer>
+
+<!-- GHL Chat Widget -->
+<script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69a373ef95fbc53be2d9e923"></script>
+
+<script>
+// Scroll-reveal observer
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("visible"); });
+},{threshold:0.08});
+document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
+
+// Animate lifespan bars on scroll
+const barObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.style.width = e.target.dataset.width;
+      barObserver.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+document.querySelectorAll(".animate-bar").forEach(el => {
+  el.style.width = "0%";
+  barObserver.observe(el);
+});
+
+// Energy Calculator
+const winCount = document.getElementById("winCount");
+const annualBill = document.getElementById("annualBill");
+const savingsRate = document.getElementById("savingsRate");
+
+function updateCalc() {
+  const w = parseInt(winCount.value);
+  const b = parseInt(annualBill.value);
+  const r = parseInt(savingsRate.value);
+  const annual = Math.round(b * r / 100);
+  const perWin = Math.round(annual / w);
+
+  document.getElementById("winCountVal").textContent = w;
+  document.getElementById("billVal").textContent = "$" + b.toLocaleString();
+  document.getElementById("rateVal").textContent = r + "%";
+  document.getElementById("annualSaving").innerHTML = "$<span class='gold-text'>" + annual.toLocaleString() + "</span>";
+  document.getElementById("fiveYearSaving").innerHTML = "$<span class='gold-text'>" + (annual * 5).toLocaleString() + "</span>";
+  document.getElementById("tenYearSaving").innerHTML = "$<span class='gold-text'>" + (annual * 10).toLocaleString() + "</span>";
+  document.getElementById("perWindow").innerHTML = "$<span class='gold-text'>" + perWin.toLocaleString() + "</span>";
+  document.getElementById("savingsBar").style.width = r + "%";
+}
+
+winCount.addEventListener("input", updateCalc);
+annualBill.addEventListener("input", updateCalc);
+savingsRate.addEventListener("input", updateCalc);
+</script>
+</body>
+</html>
