@@ -628,13 +628,52 @@
     .fade-in:nth-child(5){transition-delay:0.32s}
     .fade-in:nth-child(6){transition-delay:0.40s}
 
+    /* Hamburger Menu Button */
+    .nav-hamburger{
+      display:none;width:40px;height:40px;
+      background:none;border:none;cursor:pointer;
+      position:relative;z-index:110;padding:8px;
+      flex-shrink:0;
+    }
+    .nav-hamburger span{
+      display:block;width:24px;height:2px;
+      background:var(--navy);border-radius:2px;
+      transition:all 0.3s ease;position:absolute;left:8px;
+    }
+    .nav-hamburger span:nth-child(1){top:11px}
+    .nav-hamburger span:nth-child(2){top:19px}
+    .nav-hamburger span:nth-child(3){top:27px}
+    .nav-hamburger.active span:nth-child(1){top:19px;transform:rotate(45deg)}
+    .nav-hamburger.active span:nth-child(2){opacity:0}
+    .nav-hamburger.active span:nth-child(3){top:19px;transform:rotate(-45deg)}
+
+    /* Mobile Menu Overlay */
+    .mobile-menu{
+      display:none;position:fixed;top:68px;left:0;right:0;
+      background:rgba(255,255,255,0.98);
+      backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+      z-index:99;padding:12px 6vw 24px;
+      border-bottom:2px solid var(--gold2);
+      box-shadow:var(--shadow-lg);
+      transform:translateY(-110%);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .mobile-menu.open{transform:translateY(0)}
+    .mobile-menu a{
+      display:block;padding:14px 0;
+      font-size:15px;font-weight:700;color:var(--navy);
+      text-decoration:none;border-bottom:1px solid var(--border);
+      transition:color 0.2s;
+    }
+    .mobile-menu a:last-child{border-bottom:none}
+    .mobile-menu a:hover{color:var(--gold)}
+
     @media(max-width:960px){
       #hero{grid-template-columns:1fr;min-height:auto}
       .hero-left{padding:60px 6vw 40px}
       .hero-right{padding:0 6vw 60px}
       #hero>.gift-tag{position:static;margin:8px 6vw 18px;width:max-content}
       .booking-card{max-width:100%}
-      #meet-nate{grid-template-columns:1fr;gap:50px}
+      #meet-nate{grid-template-columns:1fr;gap:50px;padding:60px 6vw}
       .nate-img-area{order:-1}
       .nate-img-frame{aspect-ratio:3/2}
       .nate-badge{right:16px;bottom:16px}
@@ -648,6 +687,25 @@
       .process-steps{grid-template-columns:1fr 1fr;gap:28px}
       .process-steps::before{display:none}
       .nav-links{display:none}
+      .nav-hamburger{display:block}
+      .mobile-menu{display:block}
+      .nav-cta{display:none}
+      .promo-banner{font-size:11px;padding:9px 12px;flex-wrap:wrap;display:flex;justify-content:center;align-items:center;gap:4px}
+      .promo-banner .sep,.promo-banner .desktop-only{display:none}
+      .deep-dive{padding:60px 6vw}
+      #services{padding:60px 6vw}
+      #reviews{padding:60px 6vw}
+      #final-cta{padding:60px 6vw}
+      .calendar-embed{height:480px}
+      .pane-diagram{padding:24px}
+      .calc-box{padding:24px}
+      .compare-card{padding:28px 20px}
+      .inline-cta{flex-direction:column;text-align:center;align-items:stretch;gap:14px;padding:22px 20px}
+      .inline-cta .btn-primary{justify-content:center}
+      footer{flex-direction:column;align-items:center;text-align:center;gap:16px;padding:32px 6vw}
+      .exit-banner{padding:16px 48px 16px 16px}
+      .category-photo img{aspect-ratio:16/9}
+      #lc_chat_layout{bottom:80px!important}
     }
     @media(max-width:600px){
       .hero-headline{font-size:2.6rem}
@@ -655,13 +713,40 @@
       .services-grid{grid-template-columns:1fr}
       .reviews-grid{grid-template-columns:1fr}
       nav{padding:0 4vw}
+      .hero-left{padding:40px 5vw 28px}
       .hero-ctas{flex-direction:column}
       .hero-ctas .btn-primary,.hero-ctas .btn-ghost{text-align:center;justify-content:center}
       .siding-grid{grid-template-columns:1fr}
       .process-steps{grid-template-columns:1fr}
       .calc-results{grid-template-columns:1fr}
-      .bath-features{grid-template-columns:1fr 1fr}
+      .bath-features{grid-template-columns:1fr}
       .signs-grid{grid-template-columns:1fr}
+      .deep-dive{padding:48px 5vw}
+      #services{padding:48px 5vw}
+      #reviews{padding:48px 5vw}
+      #final-cta{padding:48px 5vw}
+      #meet-nate{padding:48px 5vw;gap:36px}
+      .calendar-embed{height:420px}
+      .hero-right{padding:0 5vw 40px}
+      .trust-pill{font-size:11px;padding:6px 10px}
+      .promo-banner{font-size:10px;padding:8px 10px}
+      .booking-card-header{padding:18px 20px 16px}
+      .booking-trust{padding:10px 16px}
+      .nate-badge{position:static;margin:16px auto 0;display:inline-block}
+      .nate-img-area{text-align:center}
+      .pane-diagram{padding:18px}
+      .pane-stack{height:200px}
+      .calc-box{padding:18px}
+      .compare-card{padding:22px 16px}
+      .service-card{padding:24px 20px}
+      .review-card{padding:22px}
+      .siding-card{padding:22px 18px}
+      .stat-box{padding:14px 16px}
+      .stat-box .num{font-size:30px}
+      .reviews-score{padding:14px 18px}
+      .reviews-score .big-rating{font-size:40px}
+      .mobile-menu{padding:8px 5vw 20px}
+      .category-photo img{aspect-ratio:4/3}
     }
 
     /* ===== CONVERSION OPTIMIZATION LAYER ===== */
@@ -846,7 +931,7 @@
     <span class="cd-block" id="cdM">59</span><span class="cd-sep">:</span>
     <span class="cd-block" id="cdS">59</span>
   </span>
-  <span class="sep">&bull;</span> Book directly with Nate
+  <span class="sep desktop-only">&bull;</span><span class="desktop-only"> Book directly with Nate</span>
 </div>
 
 <nav>
@@ -861,7 +946,17 @@
     <a href="#reviews" class="nav-link">Reviews</a>
   </div>
   <a href="#booking" class="nav-cta"><span class="pip"></span>Book FREE Estimate</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services">Services</a>
+  <a href="#windows-deep">Products</a>
+  <a href="#meet-nate">Meet Nate</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#booking">Book FREE Estimate</a>
+</div>
 
 <section id="hero">
   <div class="hero-pattern"></div>
@@ -1531,6 +1626,23 @@
 <script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="69a373ef95fbc53be2d9e923"></script>
 
 <script>
+// ===== HAMBURGER MENU =====
+(function(){
+  const btn = document.getElementById("navHamburger");
+  const menu = document.getElementById("mobileMenu");
+  if(!btn || !menu) return;
+  btn.addEventListener("click", function(){
+    btn.classList.toggle("active");
+    menu.classList.toggle("open");
+  });
+  menu.querySelectorAll("a").forEach(function(link){
+    link.addEventListener("click", function(){
+      btn.classList.remove("active");
+      menu.classList.remove("open");
+    });
+  });
+})();
+
 // ===== SCROLL-REVEAL =====
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add("visible"); });
