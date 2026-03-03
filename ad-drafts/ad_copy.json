@@ -1,0 +1,93 @@
+{
+  "facebook": [
+    {
+      "id": "FB-01",
+      "angle": "Energy Savings",
+      "headline": "Cut Energy Bills Up to 40%",
+      "primary_text": "Wisconsin winters hit hard \u2014 and your old windows are letting heat (and money) escape. Window Depot USA of Milwaukee offers triple-pane windows at dual-pane prices. Backed by US Dept. of Energy RESFEN data, not empty promises. Get your FREE in-home estimate + $500 gift card. Price locked for 12 months.",
+      "description": "Triple Pane. Real Savings.",
+      "cta": "Get Free Estimate"
+    },
+    {
+      "id": "FB-02",
+      "angle": "Trust / Social Proof",
+      "headline": "4.9 Stars. 1,000+ Reviews.",
+      "primary_text": "Over a thousand SE Wisconsin homeowners trust Window Depot USA \u2014 and they're not shy about saying so. Rated #3 nationally by Qualified Remodeler. A+ BBB. Your neighbors chose us for a reason. Book your FREE zero-pressure estimate with Nate and see why.",
+      "description": "Milwaukee's Most Trusted.",
+      "cta": "Book Free Estimate"
+    },
+    {
+      "id": "FB-03",
+      "angle": "Seasonal Urgency (Spring)",
+      "headline": "Spring Is Here \u2014 Upgrade Now",
+      "primary_text": "Spring is the perfect time to replace those drafty windows before another Wisconsin summer and winter cycle. Right now, get a FREE in-home estimate + a $500 gift card from Window Depot USA of Milwaukee. Triple-pane windows at dual-pane prices. Your quote is locked for a full year \u2014 zero risk.",
+      "description": "Free Estimate + $500 Gift Card",
+      "cta": "Schedule Now"
+    },
+    {
+      "id": "FB-04",
+      "angle": "Comfort / Home Improvement",
+      "headline": "Feel the Difference Inside",
+      "primary_text": "No more cold spots by the windows. No more condensation. No more cranking the thermostat. Window Depot USA's triple-pane windows keep your Milwaukee home comfortable year-round \u2014 warmer winters, cooler summers, quieter rooms. Custom-made for your exact home. FREE estimate, no pressure.",
+      "description": "Comfort You Can Feel.",
+      "cta": "Get Started"
+    },
+    {
+      "id": "FB-05",
+      "angle": "Curb Appeal / Value",
+      "headline": "Transform Your Home's Look",
+      "primary_text": "New windows, doors, or siding can completely transform your home's curb appeal \u2014 and boost its value. Window Depot USA of Milwaukee offers ProVia products rated #1 in quality. 7 showrooms across SE Wisconsin. Book a FREE consultation with Nate and get a $500 gift card just for meeting.",
+      "description": "ProVia Quality. Local Service.",
+      "cta": "Free Consultation"
+    }
+  ],
+  "instagram": [
+    {
+      "id": "IG-01",
+      "angle": "Energy Savings",
+      "caption": "Your old windows are costing you more than you think. \u2744\ufe0f\n\nTriple-pane windows at dual-pane prices. That's the Window Depot USA difference.\n\nWe don't just promise energy savings \u2014 we prove it with US Dept. of Energy data. Milwaukee homeowners save 12-40% on energy bills.\n\nFREE estimate + $500 gift card \ud83d\udc47\nLink in bio or call Nate: (414) 312-5213",
+      "hashtags": "#WindowDepotUSA #MilwaukeeHome #TriplePaneWindows #EnergySavings #WisconsinHomeowner #HomeImprovement #ReplacementWindows #MilwaukeeWI #SEWisconsin #CurbAppeal"
+    },
+    {
+      "id": "IG-02",
+      "angle": "Before/After Transformation",
+      "caption": "The transformation is real. \ud83c\udfe0\u2728\n\nNew windows don't just save energy \u2014 they change how your entire home feels. More light. Less noise. Zero drafts.\n\n4.9 stars \u2b50 | 1,000+ reviews | #3 national remodeler\n\nYour quote is locked for 12 months. No pressure. No gimmicks.\n\nBook your FREE in-home estimate today \ud83d\udc47",
+      "hashtags": "#HomeTransformation #BeforeAndAfter #WindowReplacement #MilwaukeeHomes #ProVia #HomeUpgrade #WisconsinLiving #EnergyEfficient #HomeMakeover #WindowDepotMilwaukee"
+    },
+    {
+      "id": "IG-03",
+      "angle": "Family / Trust",
+      "caption": "We're not a faceless corporation. We're your neighbors. \ud83e\udd1d\n\nNate and his family have been serving SE Wisconsin homeowners for over a decade. No pushy sales. No gimmicks. Just honest advice and the best windows in the business.\n\nTriple-pane at dual-pane prices. Price locked for a year.\n\nText Nate: (414) 312-5213",
+      "hashtags": "#FamilyBusiness #MilwaukeeBusiness #LocalBusiness #TrustWorthy #HomeImprovement #WindowDepotUSA #SEWisconsin #SupportLocal #HomeSweetHome #WisconsinFamily"
+    },
+    {
+      "id": "IG-04",
+      "angle": "Spring Seasonal",
+      "caption": "Spring cleaning? Start with your windows. \ud83c\udf37\n\nThose old, foggy, drafty windows aren't just an eyesore \u2014 they're driving up your energy bills. Spring is the perfect time to upgrade.\n\n\u2705 Free in-home estimate\n\u2705 $500 gift card\n\u2705 Price locked 12 months\n\u2705 Triple-pane at dual-pane prices\n\nBook now \ud83d\udc47 Link in bio",
+      "hashtags": "#SpringUpgrade #SpringHomeImprovement #MilwaukeeSpring #NewWindows #HomeRenovation #WindowDepotUSA #FreeEstimate #WisconsinHome #EnergyEfficiency #SmartHome"
+    },
+    {
+      "id": "IG-05",
+      "angle": "Product Showcase",
+      "caption": "America's Triple Pane Company. \ud83c\uddfa\ud83c\uddf8\n\nWhy do we push triple-pane so hard? Because the difference is massive:\n\n\ud83d\udd39 Up to 52% better insulation than dual-pane\n\ud83d\udd39 Superior sound reduction\n\ud83d\udd39 Drastically less condensation\n\ud83d\udd39 Custom-made for YOUR home\n\nAnd we offer it at dual-pane prices. No one else can say that.\n\n7 showrooms across SE WI \ud83d\udccd",
+      "hashtags": "#TriplePane #WindowTechnology #EnergyStarWindows #ProViaWindows #AmericasTriplePaneCompany #MilwaukeeWI #HomeExpert #WindowUpgrade #SmartInvestment #QualityMatters"
+    }
+  ],
+  "instagram_stories": [
+    {
+      "id": "IGS-01",
+      "angle": "Quick CTA",
+      "text": "FREE estimate + $500 gift card \ud83c\udf81\n\nTriple-pane windows\nDual-pane prices\n\nSwipe up or call Nate\n(414) 312-5213"
+    },
+    {
+      "id": "IGS-02",
+      "angle": "Social Proof",
+      "text": "4.9 \u2b50 on Google\n1,000+ reviews\n#3 National Remodeler\n\nMilwaukee trusts Window Depot USA\n\nBook your FREE estimate \u2192"
+    },
+    {
+      "id": "IGS-03",
+      "angle": "Seasonal Push",
+      "text": "Spring = window season \ud83c\udf3b\n\nDon't waste another summer\nwith drafty windows\n\nFREE estimate\nPrice locked 12 months\n\nTap to book \u2192"
+    }
+  ]
+}
