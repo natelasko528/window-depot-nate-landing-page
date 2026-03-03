@@ -1,0 +1,23 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "Official landing page for Nate at Window Depot USA of Milwaukee. Built with pure HTML/CSS/JS — no frameworks, no build step needed.",
+  "main": "kb.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natelasko528/window-depot-nate-landing-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natelasko528/window-depot-nate-landing-page/issues"
+  },
+  "homepage": "https://github.com/natelasko528/window-depot-nate-landing-page#readme",
+  "dependencies": {
+    "skillboss-mcp-server": "^1.0.0"
+  }
+}

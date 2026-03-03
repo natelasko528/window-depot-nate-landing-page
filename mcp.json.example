@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "skillboss": {
+      "command": "npx",
+      "args": ["-y", "skillboss-mcp-server"],
+      "env": {
+        "SKILLBOSS_API_KEY": "YOUR_KEY_HERE"
+      }
+    }
+  }
+}
