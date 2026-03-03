@@ -5,10 +5,25 @@ Official landing page for Nate at Window Depot USA of Milwaukee. Built with pure
 
 ## File Structure
 ```
-index.html      — Main landing page (all-in-one: HTML + CSS + JS)
-kb.js           — AI chatbot knowledge base (reference)
-vercel.json     — Vercel deployment config (serves root as output)
+index.html                — Main landing page (all-in-one: HTML + CSS + JS)
+kb.js                     — AI chatbot knowledge base (reference)
+vercel.json               — Vercel deployment config (serves root as output)
+SKILLBOSS_GUIDE.md        — SkillBoss setup, usage & marketing playbook
+mcp.json.example          — MCP server config template for SkillBoss
+package.json              — Node dependencies (includes skillboss-mcp-server)
 ```
+
+## SkillBoss Integration
+
+This project includes [SkillBoss](https://skillboss.co) — a unified AI platform (100+ models) for generating social media posts, ad copy, images, voiceovers, and more through Cursor's MCP protocol.
+
+**Quick setup:**
+1. Get your API key at [skillboss.co/console](https://skillboss.co/console)
+2. Copy `mcp.json.example` to `.cursor/mcp.json` (create `.cursor/` dir if needed)
+3. Replace `YOUR_KEY_HERE` with your key
+4. Restart Cursor
+
+See **[SKILLBOSS_GUIDE.md](SKILLBOSS_GUIDE.md)** for the full marketing playbook with prompt templates, batch workflows, and platform-specific guides.
 
 ## Deploying to Vercel
 1. Connect this GitHub repo to Vercel at vercel.com/new
