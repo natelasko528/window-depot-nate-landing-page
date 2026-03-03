@@ -290,6 +290,12 @@ onnxruntime
 4. Milwaukee/SE Wisconsin specifics are encouraged
 5. Hashtags: 10-15 per Instagram post, none on Facebook, max 3 on LinkedIn
 
+### When Generating Posts or Ads
+- ALWAYS output the final images and post text directly in the chat for Nate to review before committing
+- Never just save files silently — Nate wants to see and approve everything inline
+- Show each post as: image first, then the full caption/copy below it
+- Group by platform (Facebook, Instagram, Stories, etc.)
+
 ### When the User Says "King Mode" or "ULTRATHINK"
 - Go all-out. Maximum depth, maximum quality, maximum thoroughness.
 - This is not a shortcut request — it means spare no effort.
