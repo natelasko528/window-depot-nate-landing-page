@@ -23,8 +23,10 @@ Official landing page and marketing asset hub for Nate Lasko at Window Depot USA
 ├── package.json                       ← Node deps (skillboss-mcp-server)
 ├── mcp.json.example                   ← MCP config template for SkillBoss
 │
+├── nate-profile.png                   ← Nate's headshot (used by index.html — DO NOT MOVE)
+│
 ├── brand-assets/                      ← Brand photos & cutouts
-│   ├── nate-profile.png               ← Nate's official headshot
+│   ├── nate-profile.png               ← Copy of headshot (for ad scripts)
 │   └── nate_*_cutout.png              ← AI-generated cutouts (3 poses)
 │
 ├── ad-drafts/                         ← Facebook & Instagram ad campaign

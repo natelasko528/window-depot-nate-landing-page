@@ -46,8 +46,10 @@ This project contains:
 ├── mcp.json.example                   ← MCP server config template
 ├── .gitignore
 │
+├── nate-profile.png                   ← Nate's headshot (referenced by index.html — DO NOT MOVE)
+│
 ├── brand-assets/                      ← Reusable brand assets
-│   ├── nate-profile.png               ← Nate's REAL headshot (use for production ads)
+│   ├── nate-profile.png               ← Copy of Nate's headshot (for ad scripts)
 │   ├── nate_pointing_right.png        ← AI-generated Nate pose (raw)
 │   ├── nate_pointing_right_cutout.png ← AI-generated Nate (background removed)
 │   ├── nate_arms_crossed.png
