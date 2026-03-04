@@ -1,0 +1,242 @@
+{
+  "post_01": {
+    "post": "post_01",
+    "theme": "Windows - Winter exterior energy efficiency",
+    "prompt": "Photorealistic ad-quality exterior photo of a well-kept two-story suburban home in southeastern Wisconsin during a cold clear winter morning, new triple-pane replacement windows visible across the front elevation, warm interior glow behind glass, subtle frost on lawn edges, realistic siding and trim details, balanced composition with driveway and bare maple trees, natural color grading, sharp but cinematic realism, residential architecture common in Milwaukee suburbs, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Cartoon, illustration, CGI look, fake plastic materials, distorted windows, warped perspective, overprocessed HDR, oversaturated colors, blurry details, cluttered yard, commercial buildings, apartment towers, brand marks, signs, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "High-end real estate photography look; crisp winter daylight; trustworthy and premium without looking staged."
+  },
+  "post_02": {
+    "post": "post_02",
+    "theme": "Windows - Cozy interior comfort scene",
+    "prompt": "Photorealistic interior lifestyle image of a bright Midwestern living room with large new energy-efficient windows, soft morning sun entering, comfortable family sofa and throw blanket, neutral decor, condensation-free glass, subtle view of snowy Wisconsin neighborhood outside, natural shadows, ad-quality editorial framing, realistic textures in wood floor and upholstery, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Messy room, fake render, cartoon style, visible brand labels, product tags, clutter, warped furniture, foggy lens, lens dirt, blown highlights, noisy image, over-smoothing, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Warm and inviting interior realism; emphasize comfort, insulation, and natural daylight."
+  },
+  "post_03": {
+    "post": "post_03",
+    "theme": "Windows - Kitchen daylight and clarity",
+    "prompt": "Photorealistic ad-quality kitchen interior in a single-family Wisconsin home, large above-sink replacement window with crystal-clear glass, bright natural daylight, clean quartz countertop, stainless fixtures, subtle backyard view with leafless trees, modern but attainable middle-class home styling, true-to-life colors, realistic depth of field, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Luxury showroom look only, overly sterile CGI, blurred window frame, distorted straight lines, excessive bokeh, harsh artificial lighting, graphic overlays, symbols, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Natural, aspirational kitchen scene with believable Midwestern home character."
+  },
+  "post_04": {
+    "post": "post_04",
+    "theme": "Windows - Condensation-free close perspective",
+    "prompt": "Photorealistic close-up ad image of a clean white vinyl replacement window frame inside a Wisconsin home, early morning winter exterior visible through glass, perfectly clear pane with zero condensation, subtle interior plant and curtain edge in foreground, premium craftsmanship details on seals and frame corners, soft natural light, macro-level realism, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Fogged glass, dripping condensation, mold, damaged frame, chipped paint, unreal reflections, low-resolution texture, noisy grain, cartoon edges, captions, labels, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Product-detail hero shot; tactile realism and craftsmanship cues."
+  },
+  "post_05": {
+    "post": "post_05",
+    "theme": "Windows - Installation day professionalism",
+    "prompt": "Photorealistic ad-quality residential installation scene outside a suburban Milwaukee-area home, professional contractors in plain unbranded navy workwear carefully setting a new replacement window, clean jobsite, drop cloths, proper ladders and safety setup, homeowner observing with confidence from porch, natural midday light, candid documentary style with polished commercial quality, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Unsafe setup, missing safety gear, branded uniforms, visible company names, construction mess, debris piles, exaggerated smiles, cinematic action blur, distorted hands, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Trust-building service moment; professional, clean, and authentic."
+  },
+  "post_06": {
+    "post": "post_06",
+    "theme": "Doors - Front entry curb appeal upgrade",
+    "prompt": "Photorealistic ad-quality exterior image of a renovated Midwestern home entrance featuring a new fiberglass front door with decorative glass inserts, tasteful porch lighting, fresh trim and clean steps, early evening golden hour in a quiet SE Wisconsin neighborhood, landscaped walkway with dormant shrubs, realistic architectural proportions, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Fantasy mansion, ornate palace architecture, warped doorway, unrealistic reflections, heavy vignette, cartoon outlines, visible address numbers, branded mats, signage, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Curb-appeal-focused hero composition with natural golden lighting."
+  },
+  "post_07": {
+    "post": "post_07",
+    "theme": "Doors - Sliding patio door family connection",
+    "prompt": "Photorealistic ad image of a bright family room in a Wisconsin suburban home with a new sliding patio door opening to a backyard deck, soft afternoon sun, realistic wood textures, neutral modern furniture, subtle candid family presence in background, clean glass with strong reflections and depth, premium but approachable residential styling, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Commercial office interior, empty sterile room, warped door rails, overexposed highlights, CGI sheen, heavy filters, branded decor items, watermark artifacts, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Lifestyle-forward patio access scene; calm, family-friendly, and realistic."
+  },
+  "post_08": {
+    "post": "post_08",
+    "theme": "Doors - Welcoming evening entry atmosphere",
+    "prompt": "Photorealistic square ad shot of a single-family home in Milwaukee metro at dusk, new steel entry door with sidelights glowing warmly from interior light, slight snow melt on walkway, tasteful seasonal wreath without lettering, realistic sky gradient, balanced exposure preserving door detail and ambient neighborhood context, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Halloween horror vibe, dramatic cinematic darkness, oversharpening halos, distorted porch geometry, visible written decorations, branded packages, street signs in focus, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Evening comfort and security mood; believable suburban Midwest aesthetic."
+  },
+  "post_09": {
+    "post": "post_09",
+    "theme": "Doors - Close detail of craftsmanship",
+    "prompt": "Photorealistic close-up of a high-quality residential front door corner, showing durable weatherstripping, precise hinge alignment, smooth painted finish, and insulated threshold detail, soft daylight with shallow depth of field, background hint of Wisconsin porch architecture, product-photography precision with real-world texture, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Macro blur, unrealistic metallic shine, rust, chipped finish, damaged seals, fake plastic look, graphic elements, serial numbers, labels, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Technical quality focus; tactile materials and fit-and-finish credibility."
+  },
+  "post_10": {
+    "post": "post_10",
+    "theme": "Doors - Back patio French doors",
+    "prompt": "Photorealistic ad-quality exterior-backyard view of a suburban home featuring newly installed French patio doors, springtime lawn beginning to green, deck furniture, natural cloudy-bright Midwestern sky, reflections in door glass, realistic siding and trim continuity, calm residential scene for Wisconsin family homes, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Tropical setting, palm trees, beach context, unrealistic mansion scale, warped door symmetry, overly dramatic fog, low-detail textures, frame clipping, stickers, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Backyard lifestyle image with clean composition and reliable craftsmanship feel."
+  },
+  "post_11": {
+    "post": "post_11",
+    "theme": "Siding - Full home transformation exterior",
+    "prompt": "Photorealistic ad-quality daytime exterior of a two-story Wisconsin home with freshly updated horizontal vinyl siding in a neutral tone, clean trim lines, new gutters, tidy landscaping, overcast-bright sky for even color accuracy, natural curbside perspective, believable suburban context with neighboring detached homes, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Cartoon architecture, harsh HDR, oversaturated siding colors, patchy textures, warped roofline, visible business signs, mailbox numbers in focus, heavy motion blur, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Transformation hero with realistic material color and straight architectural lines."
+  },
+  "post_12": {
+    "post": "post_12",
+    "theme": "Siding - Material texture close-up",
+    "prompt": "Photorealistic close-range detail of premium residential siding panels on a Midwestern home, showing clean seams, realistic grain and shadow lines, moisture-resistant finish after light rain, corner trim and window casing partially visible, ad-level clarity and realistic texture fidelity, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Plastic toy look, repeated texture tiling, macro noise, low resolution, chipped or cracked panels, unnatural reflections, manufacturing stamps, labels, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Material-first technical visual; emphasize durability and clean installation."
+  },
+  "post_13": {
+    "post": "post_13",
+    "theme": "Siding - Craftsman style curb appeal",
+    "prompt": "Photorealistic ad image of a craftsman-inspired suburban Wisconsin home with updated composite cladding and accent shake siding in gables, inviting front porch, stone base columns, balanced sunlight, true-to-life color palette, sharp architectural details, realistic landscaping with hardy Midwestern plants, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Fantasy architecture, exaggerated mountain lodge, color banding, washed-out sky, perspective distortion, signage, house numbers emphasized, artificial lens flares, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Design-forward but attainable; premium neighborhood curb appeal."
+  },
+  "post_14": {
+    "post": "post_14",
+    "theme": "Siding - Family home with fresh facade",
+    "prompt": "Photorealistic square-format lifestyle exterior of a recently updated family home in SE Wisconsin, clean new siding, bright but soft late-afternoon lighting, children’s bikes on driveway for lived-in realism, tidy but not overly staged scene, clear architectural geometry and material textures, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Messy clutter, junk cars, unsafe scene, caricature people, over-blurred background, uncanny faces, brand badges, written street signs, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Authentic neighborhood realism with subtle family-life cues."
+  },
+  "post_15": {
+    "post": "post_15",
+    "theme": "Siding - Rain resilience and durability",
+    "prompt": "Photorealistic ad-quality exterior close-medium shot of a suburban home facade during light rain, water beading naturally on new siding surface, crisp trim edges, quality caulking lines, muted cloudy sky typical of Wisconsin spring weather, believable texture and moisture behavior, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Heavy storm disaster scene, flooding, dramatic lightning, damaged materials, noisy grain, unrealistic droplets, visible ads or labels, wet lens streaks, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Durability-focused weather moment; clean, reassuring, and realistic."
+  },
+  "post_16": {
+    "post": "post_16",
+    "theme": "Roofing - Asphalt shingle replacement success",
+    "prompt": "Photorealistic high-resolution exterior of a Midwestern two-story home with newly installed asphalt shingle roof, crisp ridge lines, new flashing details, clear spring daylight, balanced front three-quarter angle showing full roof planes and gutters, neighborhood context consistent with Milwaukee suburbs, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Drone blur, warped roof geometry, missing gutters, construction debris, unrealistic extreme contrast, cartoon shingles, visible contractor branding, flags with writing, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Roof transformation hero; structural confidence and clean finishing."
+  },
+  "post_17": {
+    "post": "post_17",
+    "theme": "Roofing - Standing seam metal roof elegance",
+    "prompt": "Photorealistic ad image of a modernized suburban Wisconsin home featuring a dark standing seam metal roof, clean lines, complementary siding, mature trees, bright overcast sky for texture detail, realistic metal reflections and panel seams, high-end residential look without luxury excess, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Industrial warehouse, commercial building, mirror-like fake metal, overprocessed contrast, poor edge quality, impossible roof angles, signage, decals, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Premium product showcase with architectural realism and tasteful polish."
+  },
+  "post_18": {
+    "post": "post_18",
+    "theme": "Roofing - Professional crew safety scene",
+    "prompt": "Photorealistic documentary-style residential roofing project in progress on a detached home, trained crew in plain unbranded safety gear using harnesses and roof jacks properly, neat material staging, sunny but mild daylight, homeowner talking with site lead at ground level, trustworthy ad-quality realism, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Unsafe behavior, no helmets, no harnesses, chaotic site, dramatic accidents, visible company logos, branded trucks, blurry faces, stylized comic look, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Trust and professionalism; clean operations and safety-first credibility."
+  },
+  "post_19": {
+    "post": "post_19",
+    "theme": "Roofing - Shingle texture and weatherproof detail",
+    "prompt": "Photorealistic close-up of architectural asphalt shingles on a pitched residential roof, clear granule texture, precise alignment, visible ridge vent detail and flashing transition, neutral daylight, hyper-real material fidelity suitable for premium ad creative, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Low-res texture, repeated tiling patterns, cartoon surface, cracked or missing shingles, extreme shadow clipping, artificial labels, serial markings, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Technical product detail image; clarity, precision, and durability cues."
+  },
+  "post_20": {
+    "post": "post_20",
+    "theme": "Roofing - Storm-ready family home",
+    "prompt": "Photorealistic ad-quality exterior of a sturdy suburban Wisconsin home under dramatic but safe pre-storm skies, newly installed roof highlighted with strong edge detail, secure gutters and downspouts, trees moving lightly in wind, cinematic realism without disaster tone, stable and protected homeowner feeling, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Tornado destruction, disaster damage, lightning strikes on house, horror mood, excessive dark grading, fake weather effects, signs, billboards, written decals, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Resilience narrative; confident and protective mood with realistic weather."
+  },
+  "post_21": {
+    "post": "post_21",
+    "theme": "Bathroom - Bright one-day remodel look",
+    "prompt": "Photorealistic ad-quality bathroom remodel in a Midwestern family home, clean acrylic wall system, bright white finishes, frameless glass shower, matte black fixtures, soft natural daylight through frosted window, practical layout with modern but attainable design, spotless yet lived-in realism, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Luxury hotel spa only, marble palace style, unrealistic reflections, cluttered toiletries, wet messy floors, CGI render appearance, branded packaging, labels, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Fresh remodel reveal; practical elegance and clean family-home context."
+  },
+  "post_22": {
+    "post": "post_22",
+    "theme": "Bathroom - Accessible walk-in shower upgrade",
+    "prompt": "Photorealistic square ad image of a safe accessible walk-in shower in a suburban Wisconsin home, low threshold entry, integrated bench, grab bar design blended tastefully into modern decor, non-slip flooring texture visible, warm neutral tones, natural and respectful lifestyle framing, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Clinical hospital look, sterile medical equipment, warped perspective, overexposed whites, exaggerated reflections, decals, product labels, written instructions, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Comfort and accessibility emphasis; dignified, modern, and practical."
+  },
+  "post_23": {
+    "post": "post_23",
+    "theme": "Bathroom - Vanity and storage transformation",
+    "prompt": "Photorealistic remodeled bathroom vanity scene in a US single-family home, upgraded sink, mirror lighting, organized storage niches, soft daylight plus practical ambient lighting, clean tilework and subtle texture variation, contemporary family-friendly style relevant to Milwaukee homeowners, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Overly ornate luxury decor, neon lighting, clutter explosion, distorted mirrors, duplicate objects, visible branded bottles, signage, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Functional beauty angle; polished but attainable residential remodel look."
+  },
+  "post_24": {
+    "post": "post_24",
+    "theme": "Bathroom - Tub-to-shower conversion result",
+    "prompt": "Photorealistic ad-quality before-and-after style result image concept showing only the finished state: a compact Midwest bathroom with a newly converted walk-in shower where old tub area would be, clear glass panel, clean grout lines, bright neutral palette, realistic apartment-free single-family setting, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Split-screen collage, infographic style, obvious computer montage, cramped distorted walls, plumbing damage, dirty grout, fake materials, captions, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Transformation payoff shot with practical space optimization."
+  },
+  "post_25": {
+    "post": "post_25",
+    "theme": "Bathroom - Family-ready clean daily use",
+    "prompt": "Photorealistic lifestyle bathroom scene in a Wisconsin household, freshly remodeled shower and vanity, folded towels, subtle steam-free mirror, morning routine atmosphere, naturally lit, realistic wear-free but not sterile surfaces, ad-quality composition that feels authentic and trustworthy, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Unreal glamour lighting, cluttered counters, excessive props, fake skin if people appear, water stains, warped fixtures, branded labels, written packaging, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Everyday comfort narrative; realistic family home usability."
+  },
+  "post_26": {
+    "post": "post_26",
+    "theme": "Whole-home exterior - Windows doors siding roofing combo",
+    "prompt": "Photorealistic ad-quality hero exterior of a recently upgraded suburban Milwaukee-area home showcasing coordinated improvements: crisp replacement windows, modern front door, refreshed siding, and clean new roof, early spring daylight, realistic landscaping, straight architectural perspective, premium but attainable family-home appearance, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Luxury mansion exaggeration, impossible architecture, inconsistent shadows, cartoonish saturation, busy street traffic, visible branded vehicles, house signs with writing, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Comprehensive remodeling outcome shot; balanced and trustworthy curb appeal."
+  },
+  "post_27": {
+    "post": "post_27",
+    "theme": "Neighborhood trust - Multiple upgraded homes feel",
+    "prompt": "Photorealistic square image of a quiet SE Wisconsin residential block with several well-maintained single-family homes showing modern windows, doors, siding, and roof upgrades, warm afternoon light, clean sidewalks, subtle community atmosphere, natural documentary realism suitable for home improvement advertising, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Urban high-rise district, commercial storefronts, unrealistic uniform houses, stylized painting look, blurred foreground objects, visible road signs with words, vehicle branding, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Community credibility angle; local neighborhood trust and consistency."
+  },
+  "post_28": {
+    "post": "post_28",
+    "theme": "Consultation moment - Homeowner confidence",
+    "prompt": "Photorealistic ad-quality residential consultation scene on a front porch in Milwaukee suburbs, homeowner couple speaking with a friendly unbranded contractor holding a tablet, newly updated windows and door visible behind them, candid natural expressions, soft daylight, clean composition with strong realism and professional trust tone, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Staged handshake cliché, exaggerated smiling, office setting, visible branded uniforms, paperwork with readable text, distorted hands, uncanny faces, CGI look, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Human trust image; consultative and no-pressure visual tone."
+  },
+  "post_29": {
+    "post": "post_29",
+    "theme": "Spring refresh - Exterior lifestyle appeal",
+    "prompt": "Photorealistic square-format spring exterior of a Wisconsin home after renovation, fresh windows, upgraded front door, clean siding accents, intact roofline, blooming early-season plants, natural cloudy-bright sky, balanced real-estate style framing, inviting and attainable Midwest curb appeal, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Tropical plants, desert architecture, fake bloom colors, extreme color filters, cluttered driveway, written yard signs, ad stickers, watermark remnants, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Seasonal momentum creative; optimistic spring tone with realistic geography."
+  },
+  "post_30": {
+    "post": "post_30",
+    "theme": "Hero finale - Twilight premium residential showcase",
+    "prompt": "Photorealistic ad-quality twilight hero image of a beautifully updated suburban Milwaukee home featuring visible improvements across windows, entry door, siding, and roof, warm interior lighting through clear glass, deep blue evening sky, wet driveway subtle reflection after recent rain, cinematic but believable premium residential photography, no text, no logos, no watermarks, no letters, no typography.",
+    "negative_prompt": "Nighttime underexposure, neon sci-fi colors, unrealistic reflections, CGI architecture, fantasy mansion scale, visible signs or labels, image noise, typography artifacts, no text, no logos, no watermarks, no letters, no typography.",
+    "aspect_ratio": "1:1",
+    "style_notes": "Flagship campaign visual; premium finish, emotional warmth, and strong realism."
+  }
+}
