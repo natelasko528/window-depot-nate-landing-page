@@ -12,7 +12,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Dict, List
 
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
 
 
 ROOT = Path("/workspace")
@@ -25,7 +25,8 @@ BRAND_BLUE = (30, 80, 160, 255)         # #1E50A0
 BRAND_LIGHT = (100, 160, 220, 255)      # #64A0DC
 BRAND_WHITE = (255, 255, 255, 255)
 BRAND_GOLD = (212, 175, 55, 255)        # #D4AF37
-SHADOW = (0, 0, 0, 180)
+BRAND_RED = (208, 44, 44, 255)
+SHADOW = (0, 0, 0, 190)
 
 PHONE = "(414) 312-5213"
 WEBSITE = "windowdepotmilwaukee.com"
@@ -38,7 +39,8 @@ BASE_IMAGES: Dict[str, Path] = {
     "siding": SRC_DIR / "30posts-siding-hero.png",
     "roofing": SRC_DIR / "30posts-roofing-hero.png",
     "bathroom": SRC_DIR / "30posts-bathroom-hero.png",
-    "cta": SRC_DIR / "30posts-cta-estimate.png",
+    # Use clean photo base for CTA variants to avoid embedded legacy text.
+    "cta": SRC_DIR / "30posts-windows-hero.png",
 }
 
 
@@ -83,8 +85,8 @@ def fit_to_square(img: Image.Image, size: int = 1080) -> Image.Image:
     return resized.crop((x, y, x + size, y + size))
 
 
-def add_rect(draw: ImageDraw.ImageDraw, box, fill):
-    draw.rounded_rectangle(box, radius=18, fill=fill)
+def add_rect(draw: ImageDraw.ImageDraw, box, fill, radius: int = 18):
+    draw.rounded_rectangle(box, radius=radius, fill=fill)
 
 
 def draw_shadow_text(draw: ImageDraw.ImageDraw, xy, text: str, font, fill):
@@ -93,47 +95,56 @@ def draw_shadow_text(draw: ImageDraw.ImageDraw, xy, text: str, font, fill):
     draw.text((x, y), text, font=font, fill=fill)
 
 
-def apply_soft_gradient(
-    base: Image.Image,
-    box: tuple[int, int, int, int],
-    color: tuple[int, int, int] = (12, 24, 48),
-    alpha_start: int = 140,
-    alpha_end: int = 25,
-) -> None:
-    """Apply a transparent gradient so imagery still shines through."""
-    x0, y0, x1, y1 = box
-    overlay = Image.new("RGBA", base.size, (0, 0, 0, 0))
-    draw = ImageDraw.Draw(overlay, "RGBA")
-    height = max(1, y1 - y0)
-    for i in range(height):
-        t = i / max(1, height - 1)
-        a = int(alpha_start + (alpha_end - alpha_start) * t)
-        draw.line([(x0, y0 + i), (x1, y0 + i)], fill=(color[0], color[1], color[2], a))
-    base.alpha_composite(overlay)
+def split_title(headline: str) -> tuple[str, str]:
+    words = headline.split()
+    if len(words) < 4:
+        return headline, ""
+    half = len(words) // 2
+    return " ".join(words[:half]), " ".join(words[half:])
 
 
-def apply_frosted_panel(
-    base: Image.Image,
-    box: tuple[int, int, int, int],
-    radius: int = 28,
-    blur_radius: int = 8,
-    tint: tuple[int, int, int, int] = (8, 24, 46, 108),
-    border: tuple[int, int, int, int] = (130, 180, 245, 150),
-) -> None:
-    """Glass-morphism style text panel with blur + low opacity tint."""
-    x0, y0, x1, y1 = box
-    region = base.crop((x0, y0, x1, y1)).filter(ImageFilter.GaussianBlur(blur_radius))
-    region = Image.alpha_composite(region, Image.new("RGBA", region.size, tint))
+def compact_phrase(text: str, max_words: int = 7) -> str:
+    words = text.replace("—", " ").replace("-", " ").split()
+    snippet = " ".join(words[:max_words]).rstrip(".,;:!?")
+    return snippet
 
-    mask = Image.new("L", region.size, 0)
-    mdraw = ImageDraw.Draw(mask)
-    mdraw.rounded_rectangle((0, 0, region.size[0] - 1, region.size[1] - 1), radius=radius, fill=255)
-    base.paste(region, (x0, y0), mask)
 
-    border_layer = Image.new("RGBA", base.size, (0, 0, 0, 0))
-    bdraw = ImageDraw.Draw(border_layer, "RGBA")
-    bdraw.rounded_rectangle((x0, y0, x1, y1), radius=radius, outline=border, width=2)
-    base.alpha_composite(border_layer)
+def build_subline(pain: str, solution: str) -> str:
+    # Keep concise to match the provided reference style.
+    return f"{compact_phrase(pain, 5)}. {compact_phrase(solution, 6)}."
+
+
+def prepare_middle_image(base: Image.Image, post_num: int, size: tuple[int, int]) -> Image.Image:
+    """Create per-post image variations while preserving full-photo readability."""
+    tw, th = size
+    base = base.convert("RGBA")
+
+    # Deterministic zoom/offset so each post has a unique visual variation.
+    zoom = 1.04 + (post_num % 5) * 0.03
+    w = int(base.width * zoom)
+    h = int(base.height * zoom)
+    base = base.resize((w, h), Image.LANCZOS)
+
+    x_room = max(0, w - tw)
+    y_room = max(0, h - th)
+    x_off = int((post_num * 37) % (x_room + 1)) if x_room else 0
+    y_off = int((post_num * 19) % (y_room + 1)) if y_room else 0
+    cropped = base.crop((x_off, y_off, x_off + tw, y_off + th))
+
+    # Subtle per-post tone shift.
+    color = ImageEnhance.Color(cropped)
+    contrast = ImageEnhance.Contrast(cropped)
+    brightness = ImageEnhance.Brightness(cropped)
+    c_factor = 1.00 + ((post_num % 4) - 1.5) * 0.03
+    k_factor = 1.00 + ((post_num % 3) - 1) * 0.04
+    b_factor = 1.00 + ((post_num % 5) - 2) * 0.015
+    out = color.enhance(c_factor)
+    out = contrast.enhance(k_factor)
+    out = brightness.enhance(b_factor)
+
+    # Mild sharpening for cleaner ad look.
+    out = out.filter(ImageFilter.UnsharpMask(radius=1.2, percent=130, threshold=2))
+    return out
 
 
 POST_SPECS = [
@@ -175,81 +186,97 @@ def make_post_image(spec: dict) -> Path:
     if not base_path.exists():
         raise FileNotFoundError(f"Missing base image: {base_path}")
 
-    canvas = fit_to_square(Image.open(base_path), 1080)
+    # Reference template geometry:
+    # top banner (0-300), image zone (300-900), footer (900-1080)
+    canvas = Image.new("RGBA", (1080, 1080), BRAND_NAVY)
     draw = ImageDraw.Draw(canvas, "RGBA")
 
-    # KING MODE transparent overlays: keep imagery visible.
-    apply_soft_gradient(canvas, (0, 0, 1080, 260), color=(10, 22, 44), alpha_start=150, alpha_end=35)
-    apply_soft_gradient(canvas, (0, 850, 1080, 1080), color=(10, 22, 44), alpha_start=20, alpha_end=165)
-    apply_frosted_panel(canvas, (40, 280, 1040, 760), tint=(8, 24, 46, 94), blur_radius=9)
-    apply_frosted_panel(canvas, (20, 885, 1060, 1060), tint=(8, 22, 46, 122), blur_radius=7, border=(120, 170, 240, 120))
-    apply_frosted_panel(canvas, (20, 18, 1060, 252), tint=(8, 22, 46, 82), blur_radius=6, border=(120, 170, 240, 105))
+    top_h = 300
+    mid_y0, mid_y1 = 300, 900
+    foot_y0 = 900
 
-    draw = ImageDraw.Draw(canvas, "RGBA")
+    # Middle imagery should shine through with no opaque text blocks.
+    mid_img = prepare_middle_image(Image.open(base_path), spec["post"], (1080, mid_y1 - mid_y0))
+    canvas.paste(mid_img, (0, mid_y0), mid_img)
 
-    h_font = load_font(68, bold=True)
-    h_lines = wrap_text(draw, spec["headline"], h_font, 1000)
-    h_lines = h_lines[:2]
-    h_y = 30
-    for line in h_lines:
-        line_w = draw.textbbox((0, 0), line, font=h_font)[2]
-        draw_shadow_text(draw, ((1080 - line_w) // 2, h_y), line, h_font, BRAND_WHITE)
-        h_y += 75
+    # Top dark branded banner
+    draw.rectangle((0, 0, 1080, top_h), fill=BRAND_NAVY)
+    draw.rectangle((0, top_h - 2, 1080, top_h), fill=(75, 125, 190, 255))
 
-    # Post badge
-    badge_text = f"POST {spec['post']:02d}"
-    badge_font = load_font(26, bold=True)
-    add_rect(draw, (40, 205, 220, 255), (30, 80, 160, 220))
-    draw_shadow_text(draw, (60, 218), badge_text, badge_font, BRAND_WHITE)
+    # Footer band + top border
+    draw.rectangle((0, foot_y0, 1080, 1080), fill=BRAND_NAVY)
+    draw.rectangle((0, foot_y0, 1080, foot_y0 + 2), fill=(75, 125, 190, 255))
 
-    label_font = load_font(34, bold=True)
-    body_font = load_font(40, bold=False)
+    # Headline (two lines) + subline
+    title_a, title_b = split_title(spec["headline"])
+    h1_font = load_font(80, bold=True)
+    h2_font = load_font(80, bold=True)
+    sub_font = load_font(56, bold=True)
+    subline_font = load_font(28, bold=False)
 
-    # Pain section
-    draw_shadow_text(draw, (75, 325), "PAIN POINT", label_font, BRAND_GOLD)
-    pain_lines = wrap_text(draw, spec["pain"], body_font, 930)[:3]
-    py = 370
-    for line in pain_lines:
-        draw_shadow_text(draw, (75, py), line, body_font, BRAND_WHITE)
-        py += 48
+    # Fit title sizes for long headlines
+    max_w = 1020
+    while draw.textbbox((0, 0), title_a, font=h1_font)[2] > max_w and h1_font.size > 50:
+        h1_font = load_font(h1_font.size - 2, bold=True)
+    while title_b and draw.textbbox((0, 0), title_b, font=h2_font)[2] > max_w and h2_font.size > 50:
+        h2_font = load_font(h2_font.size - 2, bold=True)
 
-    # Divider
-    draw.rectangle([(75, py + 10), (1005, py + 14)], fill=(100, 160, 220, 210))
+    y = 26
+    if title_a:
+        w = draw.textbbox((0, 0), title_a, font=h1_font)[2]
+        draw_shadow_text(draw, ((1080 - w) // 2, y), title_a, h1_font, BRAND_WHITE)
+        y += h1_font.size + 10
+    if title_b:
+        w = draw.textbbox((0, 0), title_b, font=h2_font)[2]
+        draw_shadow_text(draw, ((1080 - w) // 2, y), title_b, h2_font, BRAND_WHITE)
+        y += h2_font.size + 10
 
-    # Solution section
-    sy = py + 28
-    draw_shadow_text(draw, (75, sy), "SOLUTION", label_font, BRAND_LIGHT)
-    solution_lines = wrap_text(draw, spec["solution"], body_font, 930)[:3]
-    sy += 45
-    for line in solution_lines:
-        draw_shadow_text(draw, (75, sy), line, body_font, BRAND_WHITE)
-        sy += 48
+    subline = build_subline(spec["pain"], spec["solution"])
+    sub_lines = wrap_text(draw, subline, subline_font, 950)[:2]
+    for line in sub_lines:
+        w = draw.textbbox((0, 0), line, font=subline_font)[2]
+        draw_shadow_text(draw, ((1080 - w) // 2, y + 6), line, subline_font, BRAND_WHITE)
+        y += subline_font.size + 4
 
-    # CTA button
-    cta_font = load_font(40, bold=True)
+    # Optional before/after labels for transformation-heavy posts.
+    if spec["post"] in {20, 22}:
+        lbl_font = load_font(52, bold=True)
+        draw_shadow_text(draw, (40, 834), "BEFORE", lbl_font, BRAND_WHITE)
+        w = draw.textbbox((0, 0), "AFTER", font=lbl_font)[2]
+        draw_shadow_text(draw, (1080 - 40 - w, 834), "AFTER", lbl_font, BRAND_WHITE)
+
+    # Footer left "logo-like" wordmark to mirror reference style.
+    logo_main_font = load_font(78, bold=True)
+    logo_sub_font = load_font(44, bold=True)
+    logo_x = 24
+    logo_y = 936
+
+    # Stroke-style effect for stronger brand lockup.
+    draw.text((logo_x, logo_y), "WNDWDEPOT", font=logo_main_font, fill=BRAND_WHITE, stroke_width=3, stroke_fill=(18, 52, 120, 255))
+    draw.text((logo_x + 118, logo_y + 64), "of MILWAUKEE", font=logo_sub_font, fill=BRAND_RED)
+
+    # CTA button on footer right, two-line support if needed.
     cta_text = spec["cta"]
-    cta_w = draw.textbbox((0, 0), cta_text, font=cta_font)[2] + 80
-    cta_w = min(cta_w, 920)
-    cta_x = (1080 - cta_w) // 2
-    cta_y = 795
-    add_rect(draw, (cta_x, cta_y, cta_x + cta_w, cta_y + 72), (30, 80, 160, 222))
-    tw = draw.textbbox((0, 0), cta_text, font=cta_font)[2]
-    draw_shadow_text(draw, (cta_x + (cta_w - tw) // 2, cta_y + 15), cta_text, cta_font, BRAND_WHITE)
+    cta_font = load_font(46, bold=True)
+    btn_w, btn_h = 500, 138
+    btn_x = 1080 - btn_w - 24
+    btn_y = 930
+    add_rect(draw, (btn_x, btn_y, btn_x + btn_w, btn_y + btn_h), BRAND_BLUE, radius=26)
 
-    # Footer
-    footer_brand_font = load_font(38, bold=True)
-    footer_meta_font = load_font(30, bold=True)
-    footer_tag_font = load_font(26, bold=False)
+    cta_lines = wrap_text(draw, cta_text, cta_font, btn_w - 60)
+    if len(cta_lines) > 2:
+        cta_lines = cta_lines[:2]
+    while any(draw.textbbox((0, 0), ln, font=cta_font)[2] > btn_w - 60 for ln in cta_lines) and cta_font.size > 28:
+        cta_font = load_font(cta_font.size - 2, bold=True)
+        cta_lines = wrap_text(draw, cta_text, cta_font, btn_w - 60)[:2]
 
-    bw = draw.textbbox((0, 0), BRAND_LINE, font=footer_brand_font)[2]
-    draw_shadow_text(draw, ((1080 - bw) // 2, 915), BRAND_LINE, footer_brand_font, BRAND_WHITE)
-
-    info = f"{PHONE}  |  {WEBSITE}"
-    iw = draw.textbbox((0, 0), info, font=footer_meta_font)[2]
-    draw_shadow_text(draw, ((1080 - iw) // 2, 960), info, footer_meta_font, BRAND_LIGHT)
-
-    tw2 = draw.textbbox((0, 0), TAGLINE, font=footer_tag_font)[2]
-    draw_shadow_text(draw, ((1080 - tw2) // 2, 1002), TAGLINE, footer_tag_font, BRAND_GOLD)
+    line_h = cta_font.size + 6
+    total_h = len(cta_lines) * line_h
+    ty = btn_y + (btn_h - total_h) // 2 - 2
+    for ln in cta_lines:
+        tw = draw.textbbox((0, 0), ln, font=cta_font)[2]
+        draw_shadow_text(draw, (btn_x + (btn_w - tw) // 2, ty), ln, cta_font, BRAND_WHITE)
+        ty += line_h
 
     out_path = OUT_DIR / f"post_{spec['post']:02d}_branded.png"
     canvas.convert("RGB").save(out_path, "PNG")
