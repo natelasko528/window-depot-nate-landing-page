@@ -102,6 +102,10 @@ def text_width(draw: ImageDraw.ImageDraw, text: str, font: ImageFont.ImageFont) 
     return box[2] - box[0]
 
 
+def font_px(font: ImageFont.ImageFont, fallback: int = 24) -> int:
+    return int(getattr(font, "size", fallback))
+
+
 def trim_dangling(words: List[str]) -> List[str]:
     bad_endings = {
         "and",
@@ -205,7 +209,7 @@ def draw_centered_lines(
         w = text_width(draw, line, font)
         x = (SIZE - w) // 2
         draw.text((x, y), line, font=font, fill=fill, stroke_width=stroke_width, stroke_fill=stroke_fill)
-        y += font.size + line_gap
+        y += font_px(font) + line_gap
     return y
 
 
@@ -218,9 +222,9 @@ def draw_top_banner(draw: ImageDraw.ImageDraw, spec: Dict[str, str]) -> None:
     while (
         (not headline_lines or len(headline_lines) > 2)
         or (headline_lines and max(text_width(draw, ln, headline_font) for ln in headline_lines) > 1000)
-        or (len(headline_lines) * (headline_font.size + 6) > 150)
-    ) and headline_font.size > 46:
-        headline_font = load_font(headline_font.size - 2, bold=True)
+        or (len(headline_lines) * (font_px(headline_font) + 6) > 150)
+    ) and font_px(headline_font) > 46:
+        headline_font = load_font(font_px(headline_font) - 2, bold=True)
         headline_lines = wrap_text(draw, spec["headline"].upper(), headline_font, 1000, max_lines=2)
 
     y = 24
@@ -233,9 +237,9 @@ def draw_top_banner(draw: ImageDraw.ImageDraw, spec: Dict[str, str]) -> None:
     while (
         (not sub_lines or len(sub_lines) > 2)
         or (sub_lines and max(text_width(draw, ln, solution_font) for ln in sub_lines) > 980)
-        or (len(sub_lines) * (solution_font.size + 5) > max_sub_h)
-    ) and solution_font.size > 30:
-        solution_font = load_font(solution_font.size - 2, bold=True)
+        or (len(sub_lines) * (font_px(solution_font) + 5) > max_sub_h)
+    ) and font_px(solution_font) > 30:
+        solution_font = load_font(font_px(solution_font) - 2, bold=True)
         sub_lines = wrap_text(draw, solution_text, solution_font, 980, max_lines=2)
 
     draw_centered_lines(draw, sub_lines, solution_font, y + 2, GOLD, line_gap=5, stroke_width=2)
@@ -267,12 +271,12 @@ def draw_footer(draw: ImageDraw.ImageDraw, spec: Dict[str, str]) -> None:
     while (
         (not cta_lines or len(cta_lines) > 2)
         or (cta_lines and max(text_width(draw, ln, cta_font) for ln in cta_lines) > btn_w - 48)
-        or (len(cta_lines) * (cta_font.size + 5) > btn_h - 24)
-    ) and cta_font.size > 24:
-        cta_font = load_font(cta_font.size - 2, bold=True)
+        or (len(cta_lines) * (font_px(cta_font) + 5) > btn_h - 24)
+    ) and font_px(cta_font) > 24:
+        cta_font = load_font(font_px(cta_font) - 2, bold=True)
         cta_lines = wrap_text(draw, spec["cta"], cta_font, btn_w - 48, max_lines=2)
 
-    line_h = cta_font.size + 5
+    line_h = font_px(cta_font) + 5
     total_h = len(cta_lines) * line_h
     ty = btn_y + (btn_h - total_h) // 2
     for line in cta_lines:
