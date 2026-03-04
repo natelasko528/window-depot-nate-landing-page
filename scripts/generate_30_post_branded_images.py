@@ -12,7 +12,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Dict, List
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 
 ROOT = Path("/workspace")
@@ -93,6 +93,49 @@ def draw_shadow_text(draw: ImageDraw.ImageDraw, xy, text: str, font, fill):
     draw.text((x, y), text, font=font, fill=fill)
 
 
+def apply_soft_gradient(
+    base: Image.Image,
+    box: tuple[int, int, int, int],
+    color: tuple[int, int, int] = (12, 24, 48),
+    alpha_start: int = 140,
+    alpha_end: int = 25,
+) -> None:
+    """Apply a transparent gradient so imagery still shines through."""
+    x0, y0, x1, y1 = box
+    overlay = Image.new("RGBA", base.size, (0, 0, 0, 0))
+    draw = ImageDraw.Draw(overlay, "RGBA")
+    height = max(1, y1 - y0)
+    for i in range(height):
+        t = i / max(1, height - 1)
+        a = int(alpha_start + (alpha_end - alpha_start) * t)
+        draw.line([(x0, y0 + i), (x1, y0 + i)], fill=(color[0], color[1], color[2], a))
+    base.alpha_composite(overlay)
+
+
+def apply_frosted_panel(
+    base: Image.Image,
+    box: tuple[int, int, int, int],
+    radius: int = 28,
+    blur_radius: int = 8,
+    tint: tuple[int, int, int, int] = (8, 24, 46, 108),
+    border: tuple[int, int, int, int] = (130, 180, 245, 150),
+) -> None:
+    """Glass-morphism style text panel with blur + low opacity tint."""
+    x0, y0, x1, y1 = box
+    region = base.crop((x0, y0, x1, y1)).filter(ImageFilter.GaussianBlur(blur_radius))
+    region = Image.alpha_composite(region, Image.new("RGBA", region.size, tint))
+
+    mask = Image.new("L", region.size, 0)
+    mdraw = ImageDraw.Draw(mask)
+    mdraw.rounded_rectangle((0, 0, region.size[0] - 1, region.size[1] - 1), radius=radius, fill=255)
+    base.paste(region, (x0, y0), mask)
+
+    border_layer = Image.new("RGBA", base.size, (0, 0, 0, 0))
+    bdraw = ImageDraw.Draw(border_layer, "RGBA")
+    bdraw.rounded_rectangle((x0, y0, x1, y1), radius=radius, outline=border, width=2)
+    base.alpha_composite(border_layer)
+
+
 POST_SPECS = [
     {"post": 1, "theme": "windows", "headline": "WINDOW WARNING SIGNS", "pain": "Drafts, foggy glass, and rising bills mean your windows are costing you money.", "solution": "Upgrade to energy-efficient triple-pane windows with a free in-home estimate.", "cta": "Book Your Free Estimate"},
     {"post": 2, "theme": "cta", "headline": "BOOK DIRECTLY WITH NATE", "pain": "Homeowners are tired of call centers and unclear next steps.", "solution": "Get one local point of contact and a no-pressure consultation.", "cta": "Claim $1,000 OFF - Book Now"},
@@ -135,12 +178,14 @@ def make_post_image(spec: dict) -> Path:
     canvas = fit_to_square(Image.open(base_path), 1080)
     draw = ImageDraw.Draw(canvas, "RGBA")
 
-    # Top header strip
-    draw.rectangle([(0, 0), (1080, 255)], fill=(18, 32, 64, 214))
-    # Content card
-    add_rect(draw, (40, 280, 1040, 760), (10, 22, 44, 182))
-    # Footer strip
-    draw.rectangle([(0, 890), (1080, 1080)], fill=(18, 32, 64, 245))
+    # KING MODE transparent overlays: keep imagery visible.
+    apply_soft_gradient(canvas, (0, 0, 1080, 260), color=(10, 22, 44), alpha_start=150, alpha_end=35)
+    apply_soft_gradient(canvas, (0, 850, 1080, 1080), color=(10, 22, 44), alpha_start=20, alpha_end=165)
+    apply_frosted_panel(canvas, (40, 280, 1040, 760), tint=(8, 24, 46, 94), blur_radius=9)
+    apply_frosted_panel(canvas, (20, 885, 1060, 1060), tint=(8, 22, 46, 122), blur_radius=7, border=(120, 170, 240, 120))
+    apply_frosted_panel(canvas, (20, 18, 1060, 252), tint=(8, 22, 46, 82), blur_radius=6, border=(120, 170, 240, 105))
+
+    draw = ImageDraw.Draw(canvas, "RGBA")
 
     h_font = load_font(68, bold=True)
     h_lines = wrap_text(draw, spec["headline"], h_font, 1000)
@@ -154,7 +199,7 @@ def make_post_image(spec: dict) -> Path:
     # Post badge
     badge_text = f"POST {spec['post']:02d}"
     badge_font = load_font(26, bold=True)
-    add_rect(draw, (40, 205, 220, 255), (30, 80, 160, 255))
+    add_rect(draw, (40, 205, 220, 255), (30, 80, 160, 220))
     draw_shadow_text(draw, (60, 218), badge_text, badge_font, BRAND_WHITE)
 
     label_font = load_font(34, bold=True)
@@ -187,7 +232,7 @@ def make_post_image(spec: dict) -> Path:
     cta_w = min(cta_w, 920)
     cta_x = (1080 - cta_w) // 2
     cta_y = 795
-    add_rect(draw, (cta_x, cta_y, cta_x + cta_w, cta_y + 72), BRAND_BLUE)
+    add_rect(draw, (cta_x, cta_y, cta_x + cta_w, cta_y + 72), (30, 80, 160, 222))
     tw = draw.textbbox((0, 0), cta_text, font=cta_font)[2]
     draw_shadow_text(draw, (cta_x + (cta_w - tw) // 2, cta_y + 15), cta_text, cta_font, BRAND_WHITE)
 
