@@ -104,8 +104,12 @@ def split_title(headline: str) -> tuple[str, str]:
 
 
 def compact_phrase(text: str, max_words: int = 7) -> str:
-    words = text.replace("—", " ").replace("-", " ").split()
-    snippet = " ".join(words[:max_words]).rstrip(".,;:!?")
+    words = text.replace("—", " ").split()
+    clipped = words[:max_words]
+    bad_endings = {"and", "or", "to", "with", "for", "of", "a", "an", "the", "no"}
+    while clipped and clipped[-1].lower().strip(".,;:!?") in bad_endings:
+        clipped.pop()
+    snippet = " ".join(clipped).rstrip(".,;:!?")
     return snippet
 
 
