@@ -250,21 +250,28 @@ def draw_footer(draw: ImageDraw.ImageDraw, spec: Dict[str, str]) -> None:
     draw.rectangle((0, y0, SIZE, SIZE), fill=NAVY)
     draw.rectangle((0, y0, SIZE, y0 + 3), fill=LIGHT_BLUE)
 
-    logo_main = load_font(84, bold=True)
-    logo_sub = load_font(48, bold=True)
-    logo_x = 32
-    logo_y = y0 + 26
-
-    # Exact spelling required by spec.
-    draw.text((logo_x, logo_y), "WINDOW DEPOT", font=logo_main, fill=WHITE, stroke_width=3, stroke_fill=SHADOW)
-    draw.text((logo_x + 6, logo_y + 92), "of MILWAUKEE", font=logo_sub, fill=GOLD, stroke_width=2, stroke_fill=SHADOW)
-
     btn_w = 420
     btn_h = 126
     btn_x = SIZE - btn_w - 32
     btn_y = y0 + 42
     draw.rounded_rectangle((btn_x, btn_y, btn_x + btn_w, btn_y + btn_h), radius=24, fill=BLUE)
     draw.rounded_rectangle((btn_x, btn_y, btn_x + btn_w, btn_y + btn_h), radius=24, outline=LIGHT_BLUE, width=3)
+
+    logo_x = 28
+    logo_y = y0 + 30
+    max_logo_w = btn_x - logo_x - 22
+    logo_main = load_font(78, bold=True)
+    while text_width(draw, "WINDOW DEPOT", logo_main) > max_logo_w and font_px(logo_main) > 44:
+        logo_main = load_font(font_px(logo_main) - 2, bold=True)
+
+    logo_sub = load_font(48, bold=True)
+    while text_width(draw, "of MILWAUKEE", logo_sub) > max_logo_w and font_px(logo_sub) > 24:
+        logo_sub = load_font(font_px(logo_sub) - 2, bold=True)
+
+    # Exact spelling required by spec.
+    draw.text((logo_x, logo_y), "WINDOW DEPOT", font=logo_main, fill=WHITE, stroke_width=3, stroke_fill=SHADOW)
+    sub_y = logo_y + font_px(logo_main) + 4
+    draw.text((logo_x + 4, sub_y), "of MILWAUKEE", font=logo_sub, fill=GOLD, stroke_width=2, stroke_fill=SHADOW)
 
     cta_font = load_font(44, bold=True)
     cta_lines = wrap_text(draw, spec["cta"], cta_font, btn_w - 48, max_lines=2)
