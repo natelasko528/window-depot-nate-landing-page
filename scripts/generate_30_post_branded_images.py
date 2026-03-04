@@ -109,9 +109,9 @@ def compact_phrase(text: str, max_words: int = 7) -> str:
     return snippet
 
 
-def build_subline(pain: str, solution: str) -> str:
-    # Keep concise to match the provided reference style.
-    return f"{compact_phrase(pain, 5)}. {compact_phrase(solution, 6)}."
+def build_subline(solution: str) -> str:
+    # Solution-focused subheading, styled to stand out under headline.
+    return f"{compact_phrase(solution, 9)}."
 
 
 def prepare_middle_image(base: Image.Image, post_num: int, size: tuple[int, int]) -> Image.Image:
@@ -211,8 +211,6 @@ def make_post_image(spec: dict) -> Path:
     title_a, title_b = split_title(spec["headline"])
     h1_font = load_font(80, bold=True)
     h2_font = load_font(80, bold=True)
-    sub_font = load_font(56, bold=True)
-    subline_font = load_font(28, bold=False)
 
     # Fit title sizes for long headlines
     max_w = 1020
@@ -231,11 +229,18 @@ def make_post_image(spec: dict) -> Path:
         draw_shadow_text(draw, ((1080 - w) // 2, y), title_b, h2_font, BRAND_WHITE)
         y += h2_font.size + 10
 
-    subline = build_subline(spec["pain"], spec["solution"])
-    sub_lines = wrap_text(draw, subline, subline_font, 950)[:2]
+    # Bigger yellow solution subheading per request.
+    subline = build_subline(spec["solution"])
+    subline_font = load_font(44, bold=True)
+    available_h = max(24, top_h - y - 14)
+    sub_lines = wrap_text(draw, subline, subline_font, 960)[:2]
+    while subline_font.size > 26 and (len(sub_lines) * (subline_font.size + 4) > available_h):
+        subline_font = load_font(subline_font.size - 2, bold=True)
+        sub_lines = wrap_text(draw, subline, subline_font, 960)[:2]
+
     for line in sub_lines:
         w = draw.textbbox((0, 0), line, font=subline_font)[2]
-        draw_shadow_text(draw, ((1080 - w) // 2, y + 6), line, subline_font, BRAND_WHITE)
+        draw_shadow_text(draw, ((1080 - w) // 2, y + 6), line, subline_font, BRAND_GOLD)
         y += subline_font.size + 4
 
     # Optional before/after labels for transformation-heavy posts.
