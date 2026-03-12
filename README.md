@@ -92,7 +92,7 @@ python3 scripts/generate_branded_ads.py   # Add branding + Nate + CTAs
 ---
 
 ## Contact Info
-- **Nate Lasko**: (414) 312-5213 | nate@windowdepotmilwaukee.com
+- **Nate Lasko**: (414) 312-5213 | nlasko.wdusa.milwaukee@gmail.com
 - **Website**: windowdepotmilwaukee.com
 - **Company**: Window Depot USA of Milwaukee
 

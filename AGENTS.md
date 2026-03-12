@@ -9,7 +9,7 @@
 
 **Business**: Window Depot USA of Milwaukee — home improvement company (windows, doors, siding, roofing, flooring, bathrooms) serving SE Wisconsin.
 
-**Owner**: Nate Lasko. Phone: (414) 312-5213. Email: nate@windowdepotmilwaukee.com
+**Owner**: Nate Lasko. Phone: (414) 312-5213. Email: nlasko.wdusa.milwaukee@gmail.com
 
 **Website**: windowdepotmilwaukee.com | **Live landing page**: https://wdusa-nate-landing.vercel.app
 
@@ -106,7 +106,7 @@ Every agent MUST use these values consistently. Never deviate.
 
 ### Nate Lasko (Owner / Sales Rep)
 - **Phone**: (414) 312-5213 — this is the GoHighLevel AI appointment setter number
-- **Email**: nate@windowdepotmilwaukee.com
+- **Email**: nlasko.wdusa.milwaukee@gmail.com
 - **Real photo**: `brand-assets/nate-profile.png`
 - **Personality**: Warm, no-pressure, family man, community-focused, expert
 

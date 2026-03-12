@@ -43,7 +43,7 @@ WHAT MAKES THEM DIFFERENT:
 NAME: Nate Lasko
 TITLE: Home Improvement Consultant / Sales Representative
 DIRECT CELL: (414) 312-5213 (text or call — he prefers direct contact)
-EMAIL: nate@windowdepotmilwaukee.com
+EMAIL: nlasko.wdusa.milwaukee@gmail.com
 LOCATION: SE Wisconsin / Greater Milwaukee area
 
 NATE'S APPROACH:
@@ -725,7 +725,7 @@ A: Windows: Most full-house installations completed in 1–2 days. Bathroom make
 
 NATE LASKO (Direct Rep):
 - Phone/Text: (414) 312-5213
-- Email: nate@windowdepotmilwaukee.com
+- Email: nlasko.wdusa.milwaukee@gmail.com
 - Book: Use the calendar widget on this page
 
 COMPANY MAIN LINE: (414) 795-4804
