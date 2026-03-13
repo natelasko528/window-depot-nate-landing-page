@@ -1,13 +1,21 @@
 # Ad Campaign — Status & Task Tracker
 
-> Last updated: March 3, 2026
-> Branch: `cursor/ad-copy-and-image-drafts-f377`
+> Last updated: March 13, 2026
+> Branch: `cursor/new-image-design-philosophy-2bc8`
 
 ---
 
-## Current Status: DRAFT V2 — AWAITING APPROVAL
+## Current Status: V3 — NEW EDITORIAL DESIGN SYSTEM
 
-The second draft (V2) of the Facebook & Instagram ad campaign is complete. V1 had beautiful base images but lacked branding. V2 adds full Window Depot branding, Nate figure, CTAs, and phone number.
+V3 completely redesigns the image generation approach using "Scroll-Stopping Editorial" philosophy. See `scripts/IMAGE_DESIGN_PHILOSOPHY_V3.md` for full details.
+
+### Key Changes from V2 → V3
+1. **No more AI-generated Nate** — Uses real Nate headshot as circular badge only
+2. **Editorial photography prompts** — Architectural Digest / Dwell Magazine quality
+3. **Three-tier branding**: Paid (minimal pill), Organic (frosted bar + badge), Stories (text-forward)
+4. **No heavy navy overlays** — Frosted glass effect instead
+5. **Camera/lens references** in prompts for photographic realism
+6. **No text on paid ad images** — Platform handles headline/CTA
 
 ---
 
@@ -15,28 +23,23 @@ The second draft (V2) of the Facebook & Instagram ad campaign is complete. V1 ha
 
 | Task | Status | Notes |
 |------|--------|-------|
-| Draft Facebook ad copy (5 variations) | ✅ Done | Energy, Trust, Spring, Comfort, Curb Appeal angles |
-| Draft Instagram feed copy (5 variations) | ✅ Done | With hashtags, CTAs, emojis |
-| Draft Instagram Stories copy (3 variations) | ✅ Done | CTA, Social Proof, Seasonal |
-| Generate base images with Nano Banana 2 | ✅ Done | 13 raw images (5 FB + 5 IG + 3 Stories) |
-| Generate AI Nate cutouts (3 poses) | ✅ Done | Pointing, arms crossed, thumbs up |
-| Background removal on Nate cutouts | ✅ Done | Using rembg |
-| Build branded Facebook ads (5) | ✅ Done | Navy overlay + headline + bullets + phone + CTA + Nate |
-| Build branded Instagram feed ads (5) | ✅ Done | Top/bottom gradient + branding |
-| Build branded Instagram Stories (3) | ✅ Done | Full vertical layout with branding |
-| Ad copy approved by Nate | ✅ Done | "Ad copy looks great" — approved in session |
-| Organize project directory structure | ✅ Done | See AGENTS.md for full structure |
-| Create AGENTS.md for future sessions | ✅ Done | Comprehensive agent context file |
-| Update CAMPAIGN_OVERVIEW.md | ✅ Done | Full copy + image pairings |
+| Draft ad copy (5 FB + 5 IG + 3 Stories) | ✅ Done | Energy, Trust, Spring, Comfort, Curb Appeal |
+| V1: Generate raw base images | ✅ Done | Good stock photos but no branding |
+| V2: Add branded overlays | ✅ Done | Heavy navy blocks + AI Nate = poor quality |
+| Ad copy approved by Nate | ✅ Done | "Ad copy looks great" |
+| V3: New design philosophy doc | ✅ Done | `scripts/IMAGE_DESIGN_PHILOSOPHY_V3.md` |
+| V3: New photo generation script | ✅ Done | `scripts/generate_v3_photos.py` |
+| V3: New branded overlay script | ✅ Done | `scripts/generate_v3_branded.py` |
+| V3: Generate 13 editorial base photos | ✅ Done | 5 FB + 5 IG + 3 Stories |
+| V3: Generate 23 branded variants | ✅ Done | 10 paid + 10 organic + 3 stories |
 
 ## Pending Tasks
 
 | Task | Status | Notes |
 |------|--------|-------|
-| Nate reviews branded images | ⏳ Pending | V2 images shown in chat, awaiting feedback |
-| Replace AI Nate with real photo | ⏳ Pending | AI figure has generic polo logos; need real cutout |
-| Final approval from Nate | ⏳ Pending | May need V3 with corrections |
-| Upload to Facebook Ads Manager | ⏳ Pending | After approval |
+| Nate reviews V3 images | ⏳ Pending | Massive improvement over V2 |
+| Final approval from Nate | ⏳ Pending | V3 should be close to production-ready |
+| Upload to Facebook Ads Manager | ⏳ Pending | Use *_paid.png versions for ads |
 | Set targeting & budget | ⏳ Pending | SE Wisconsin homeowners |
 | A/B test setup | ⏳ Pending | Run multiple angles simultaneously |
 
@@ -45,15 +48,24 @@ The second draft (V2) of the Facebook & Instagram ad campaign is complete. V1 ha
 ## Version History
 
 ### V1 — Raw Images (March 3, 2026)
-- 13 beautiful photorealistic base images generated with Nano Banana 2
+- 13 photorealistic base images generated with Nano Banana 2
 - No branding, no text overlays, no Nate, no CTA
 - Nate feedback: "gorgeous images but they don't have any Window Depot of Milwaukee branding"
 
 ### V2 — Branded (March 3, 2026)
 - Same base images + full branded overlay compositing
-- Added: Navy overlay, headlines, bullet points, phone number, CTA buttons, Nate cutout, brand line
-- Used Pillow for compositing, rembg for background removal
-- Nate feedback: Pending
+- Added: Navy overlay, headlines, bullet points, phone number, CTA buttons, AI Nate cutout
+- **Problems identified**: AI Nate doesn't look like real Nate, wrong logos on polo, heavy overlays, too much text, no visual variety
+- Nate feedback: "horrible" — needs complete redesign
+
+### V3 — Editorial Redesign (March 13, 2026)
+- Completely new "Scroll-Stopping Editorial" philosophy
+- 13 new editorial-quality base photos (NO people, NO text)
+- Three-tier branding: Paid (tiny pill), Organic (frosted bar + real Nate badge), Stories (gradient + bold text)
+- Uses real Nate headshot only — no more AI-generated figures
+- Frosted glass effects instead of heavy navy overlays
+- Camera/lens prompting for photographic realism
+- 23 branded variants generated (10 paid + 10 organic + 3 stories)
 
 ---
 
