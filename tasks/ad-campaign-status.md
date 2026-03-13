@@ -69,6 +69,7 @@ The second draft (V2) of the Facebook & Instagram ad campaign is complete. V1 ha
   - `ad-drafts/30-posts/v3_ghl_staggered_schedule.csv`
   - `ad-drafts/30-posts/V3_GHL_POSTING_PLAN.md`
   - `ad-drafts/30-posts/PROMPT_GHL_EXECUTION_V3.md`
+- Re-ran GHL scheduling reset to guarantee 30 Facebook + 30 Instagram + 30 LinkedIn scheduled entries with platform-tailored copy, and recorded refreshed confirmation artifacts
 - Status: Ready for Nate review and refinement feedback
 
 ---

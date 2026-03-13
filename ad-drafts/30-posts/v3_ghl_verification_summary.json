@@ -10,5 +10,9 @@
     "69338466e84b5e031adc0e6b_Rkjt05VeS56IUr5caLBD_17841428950943404": 30,
     "69338480b97205c2da5810ab_Rkjt05VeS56IUr5caLBD_ppTjrCc6FX_profile": 30
   },
-  "schedule_mismatch_count": 0
+  "schedule_mismatch_count": 0,
+  "reset": {
+    "deleted_old_posts": 90,
+    "delete_failures": 0
+  }
 }
