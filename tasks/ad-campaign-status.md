@@ -55,6 +55,13 @@ The second draft (V2) of the Facebook & Instagram ad campaign is complete. V1 ha
 - Used Pillow for compositing, rembg for background removal
 - Nate feedback: Pending
 
+### V3 — Photo-First Reset (March 13, 2026)
+- New creative direction focused on photo-first composition and reduced template feel
+- Added enhanced prompt architecture in `scripts/generate_30_post_backgrounds_nb2.py`
+- Added new renderer `scripts/render_30_post_brand_v3.py` using real Nate headshot badge (`brand-assets/nate-profile.png`)
+- Generated fresh preview set in `ad-drafts/30-posts/branded-v3/` with contact sheet
+- Status: Ready for Nate review and refinement feedback
+
 ---
 
 ## How to Pick Up This Work
