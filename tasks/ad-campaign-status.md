@@ -60,6 +60,11 @@ The second draft (V2) of the Facebook & Instagram ad campaign is complete. V1 ha
 - Added enhanced prompt architecture in `scripts/generate_30_post_backgrounds_nb2.py`
 - Added new renderer `scripts/render_30_post_brand_v3.py` using real Nate headshot badge (`brand-assets/nate-profile.png`)
 - Generated fresh preview set in `ad-drafts/30-posts/branded-v3/` with contact sheet
+- Added platform-ready copy + schedule artifacts for GoHighLevel:
+  - `ad-drafts/30-posts/v3_platform_post_copy.json`
+  - `ad-drafts/30-posts/v3_ghl_staggered_schedule.csv`
+  - `ad-drafts/30-posts/V3_GHL_POSTING_PLAN.md`
+  - `ad-drafts/30-posts/PROMPT_GHL_EXECUTION_V3.md`
 - Status: Ready for Nate review and refinement feedback
 
 ---
