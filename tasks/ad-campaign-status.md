@@ -28,6 +28,9 @@ The second draft (V2) of the Facebook & Instagram ad campaign is complete. V1 ha
 | Organize project directory structure | ✅ Done | See AGENTS.md for full structure |
 | Create AGENTS.md for future sessions | ✅ Done | Comprehensive agent context file |
 | Update CAMPAIGN_OVERVIEW.md | ✅ Done | Full copy + image pairings |
+| Build V3 platform post copy pack | ✅ Done | Facebook + Instagram + LinkedIn conversion-focused copy for all 30 creatives |
+| Build staggered GHL posting schedule | ✅ Done | 90 scheduled slots (30 posts × 3 platforms), CT timezone |
+| Schedule V3 posts in GoHighLevel | ✅ Done | Queued via Social Planner API for RevolutionAi location |
 
 ## Pending Tasks
 
@@ -39,6 +42,7 @@ The second draft (V2) of the Facebook & Instagram ad campaign is complete. V1 ha
 | Upload to Facebook Ads Manager | ⏳ Pending | After approval |
 | Set targeting & budget | ⏳ Pending | SE Wisconsin homeowners |
 | A/B test setup | ⏳ Pending | Run multiple angles simultaneously |
+| Monitor first 72 hours of scheduled rollout | ⏳ Pending | Review CTR, saves, comments, and outbound clicks by platform |
 
 ---
 
