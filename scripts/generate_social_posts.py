@@ -523,107 +523,185 @@ def build_split(service, content, W, H, pain_key):
 # ══════════════════════════════════════════════════════════════════════════
 
 def build_stack(service, content, W, H):
-    s         = W / 1080
-    photo_h   = int(H * 0.55)
-    text_h    = H - photo_h
-    strip     = int(26 * s)
-    pad       = int(36 * s)
+    """
+    Instagram 1080×1080 — "THE STACK" (redesigned)
+
+    ┌──────────────────────────────────────────────────┐
+    │  HERO PHOTO — full width, top 52%               │
+    ├──────────────────────────────────────────────────┤
+    │ [WD Logo]     4.9★ | A+BBB | #3 National        │  ← full-width header row
+    ├────────────────────────┬─────────────────────────┤
+    │  PAIN POINT HEADLINE   │  ╭─────────────────╮   │
+    │  in gold (2 lines)     │  │   FREE          │   │  ← offer badge fills
+    │  Solution text (1 ln)  │  │   ESTIMATE      │   │    the right void
+    │                        │  │   + $500        │   │
+    │                        │  │   GIFT CARD     │   │
+    │                        │  ╰─────────────────╯   │
+    ├────────────────────────┴─────────────────────────┤
+    │  [━━━━━━━ FULL-WIDTH GOLD CTA BUTTON ━━━━━━━]   │
+    │              (414) 312-5213                      │
+    └──────────────────────────────────────────────────┘
+    """
+    s       = W / 1080
+    photo_h = int(H * 0.52)
+    text_h  = H - photo_h
+    strip   = int(26 * s)
+    pad     = int(32 * s)
+    bar     = int(7 * s)
 
     # ── Top: hero photo ───────────────────────────────────────────────
     bg_path = BG_DIR / f"{service}_square.png"
-    if bg_path.exists():
-        photo = Image.open(bg_path).convert("RGB")
-    else:
-        photo = Image.new("RGB", (W, photo_h), NAVY_DARK)
-    photo = crop_to(photo, W, photo_h)
+    photo   = Image.open(bg_path).convert("RGB") if bg_path.exists() \
+              else Image.new("RGB", (W, photo_h), NAVY_DARK)
+    photo   = crop_to(photo, W, photo_h)
 
-    # Subtle bottom-fade so photo blends into navy section
-    fade = Image.new("RGBA", (W, photo_h), (0,0,0,0))
+    # Bottom-fade blends photo into navy panel
+    fade = Image.new("RGBA", (W, photo_h), (0, 0, 0, 0))
     fd   = ImageDraw.Draw(fade)
     for y in range(photo_h):
         t     = y / photo_h
-        alpha = int(max(0, (t - 0.6) / 0.4 * 200)) if t > 0.6 else 0
-        fd.line([(0,y),(W,y)], fill=(*NAVY_DARK, alpha))
-    photo_rgba = photo.convert("RGBA")
-    photo_rgba = Image.alpha_composite(photo_rgba, fade)
-    photo      = photo_rgba.convert("RGB")
+        alpha = int(max(0, (t - 0.65) / 0.35 * 210)) if t > 0.65 else 0
+        fd.line([(0, y), (W, y)], fill=(*NAVY_DARK, alpha))
+    photo = Image.alpha_composite(photo.convert("RGBA"), fade).convert("RGB")
 
-    # ── Bottom: navy text section ──────────────────────────────────────
+    # ── Bottom: navy panel ────────────────────────────────────────────
     panel = navy_panel(W, text_h)
+    pd    = ImageDraw.Draw(panel)
+    pd.rectangle([(0, 0), (W, 3)], fill=(*GOLD, 255))   # gold top rule
 
-    # Gold horizontal divider at top of panel
-    pd = ImageDraw.Draw(panel)
-    pd.rectangle([(0,0),(W,3)], fill=(*GOLD,255))
-
-    # Assemble canvas
     canvas = Image.new("RGB", (W, H))
-    canvas.paste(photo, (0, 0))
+    canvas.paste(photo,               (0, 0))
     canvas.paste(panel.convert("RGB"), (0, photo_h))
-
     draw = ImageDraw.Draw(canvas)
 
-    # Gold left accent bar
-    draw.rectangle([(0,0),(int(7*s),H)], fill=(*GOLD,255))
+    # Gold left accent bar (full height)
+    draw.rectangle([(0, 0), (bar, H)], fill=(*GOLD, 255))
 
-    # ── Text in bottom section ────────────────────────────────────────
-    cx    = int(14*s) + pad
-    cy    = photo_h + int(18*s)
-    inner = W - cx - pad
+    # ── ROW 1: Logo + trust bar (full width) ─────────────────────────
+    lx = bar + int(14 * s) + pad
+    ly = photo_h + int(14 * s)
 
-    # Logo + star rating on same row
     logo_img = Image.open(LOGO).convert("RGBA")
-    lw       = int(inner * 0.48)
+    lw       = int((W - lx - pad) * 0.46)
     lh_px    = int(lw * logo_img.height / logo_img.width)
     logo_img = logo_img.resize((lw, lh_px), Image.LANCZOS)
-    canvas.paste(logo_img, (cx, cy), mask=logo_img.split()[3])
+    canvas.paste(logo_img, (lx, ly), mask=logo_img.split()[3])
 
-    # Stars on the right of logo row
-    star_fnt = load_font(int(18*s), True)
-    star_x   = cx + lw + int(16*s)
-    star_y   = cy + (lh_px - int(18*s))//2
-    draw.text((star_x, star_y), "4.9 \u2605  |  A+BBB  |  #3 National",
-              font=star_fnt, fill=(*GOLD, 220))
+    trust_fnt = load_font(int(17 * s), True)
+    trust_x   = lx + lw + int(18 * s)
+    trust_y   = ly + (lh_px - int(17 * s)) // 2
+    draw.text((trust_x, trust_y),
+              "4.9 \u2605  |  A+BBB  |  #3 National",
+              font=trust_fnt, fill=(*GOLD, 215))
 
-    cy += lh_px + int(12*s)
+    ly += lh_px + int(10 * s)
 
-    # Pain (2 lines max), solution (1 line), CTA button, phone — fit in remaining space
+    # ── Thin gold rule under logo row ─────────────────────────────────
+    draw.rectangle([(lx, ly), (W - pad, ly + 1)], fill=(*GOLD, 120))
+    ly += int(10 * s)
+
+    # ── TWO-COLUMN BODY ───────────────────────────────────────────────
+    # Left col: pain + solution
+    # Right col: circular offer badge
+    btn_h_reserve = int(44 * s) + int(12 * s) * 2 + int(30 * s) + int(28 * s)  # CTA + phone + gap
+    body_h        = H - strip - ly - btn_h_reserve - int(8 * s)
+
+    left_w  = int((W - lx - pad) * 0.57)
+    right_w = W - lx - left_w - pad
+    right_x = lx + left_w + int(12 * s)
+
+    # ── Left: pain point + solution ───────────────────────────────────
     pain_lines = content["pain_ig"].splitlines()[:2]
     sol_line   = content["solution"].splitlines()[0]
-    avail      = H - strip - cy - int(10*s)
 
-    base_sz = [40, 20, 22, 26]
-    groups  = [(pain_lines, True, None, 1.2),
-               ([sol_line], False, None, 1.3),
-               ([content["cta"]], True, None, 1.0),
-               ([PHONE], True, None, 1.2)]
-    sizes   = fit_text_block(draw, groups, inner, avail, base_sz, s)
-    p_sz, sol_sz, cta_sz, ph_sz = sizes
+    for attempt in range(8):
+        r       = 1.0 - attempt * 0.07
+        p_sz    = max(10, int(38 * s * r))
+        sol_sz  = max(10, int(20 * s * r))
+        p_lh    = int(p_sz * 1.2)
+        sol_lh  = int(sol_sz * 1.3)
+        total   = len(pain_lines) * p_lh + sol_lh + int(8 * s)
+        if total <= body_h:
+            break
 
     pain_fnt = load_font(p_sz, True)
-    pain_lh  = int(p_sz * 1.2)
+    p_lh     = int(p_sz * 1.2)
     for i, line in enumerate(pain_lines):
         col = GOLD if i == 0 else WHITE
-        shadow(draw, (cx, cy + i*pain_lh), line, pain_fnt, col)
-    cy += len(pain_lines)*pain_lh + int(8*s)
+        shadow(draw, (lx, ly + i * p_lh), line, pain_fnt, col)
+    sol_y = ly + len(pain_lines) * p_lh + int(8 * s)
 
     sol_fnt = load_font(sol_sz, False)
-    shadow(draw, (cx, cy), sol_line, sol_fnt, OFF_WHITE)
-    cy += int(sol_sz*1.3) + int(12*s)
+    shadow(draw, (lx, sol_y), sol_line, sol_fnt, OFF_WHITE)
 
-    # CTA button (full width of text column)
-    cta_fnt  = load_font(cta_sz, True)
-    bp, bpy  = int(20*s), int(12*s)
-    btn_w    = min(tw(draw, content["cta"], cta_fnt) + bp*2, inner)
-    btn_h_px = cta_sz + bpy*2
-    draw.rounded_rectangle([(cx,cy),(cx+btn_w,cy+btn_h_px)], radius=int(6*s), fill=(*GOLD,255))
-    draw.text((cx+bp, cy+bpy), content["cta"], font=cta_fnt, fill=NAVY_DARK)
-    cy += btn_h_px + int(8*s)
+    # ── Right: circular offer badge ────────────────────────────────────
+    # Badge fills the full right column height = body_h
+    badge_diam = min(right_w - int(8 * s), body_h - int(4 * s))
+    badge_cx   = right_x + (right_w - badge_diam) // 2
+    badge_cy   = ly + (body_h - badge_diam) // 2
 
-    # Phone
+    # Outer gold ring
+    ring = int(5 * s)
+    draw.ellipse(
+        [(badge_cx, badge_cy),
+         (badge_cx + badge_diam, badge_cy + badge_diam)],
+        fill=(*NAVY_MID, 255), outline=(*GOLD, 255), width=ring
+    )
+
+    # Inner badge text: FREE / ESTIMATE / +$500 / GIFT CARD
+    bc   = badge_cx + badge_diam // 2    # badge center x
+    bcy  = badge_cy + badge_diam // 2    # badge center y
+
+    free_sz   = max(10, int(badge_diam * 0.20))
+    est_sz    = max(10, int(badge_diam * 0.14))
+    val_sz    = max(10, int(badge_diam * 0.22))
+    gift_sz   = max(10, int(badge_diam * 0.11))
+
+    free_fnt  = load_font(free_sz,  True)
+    est_fnt   = load_font(est_sz,   True)
+    val_fnt   = load_font(val_sz,   True)
+    gift_fnt  = load_font(gift_sz,  False)
+
+    lines_badge = [
+        ("FREE",        free_fnt, WHITE,    1.2),
+        ("ESTIMATE",    est_fnt,  OFF_WHITE, 1.2),
+        ("+$500",       val_fnt,  GOLD,      1.3),
+        ("GIFT CARD",   gift_fnt, OFF_WHITE, 1.0),
+    ]
+    total_badge_h = sum(int(sz * lhm) for (_, f, _, lhm), sz
+                        in zip(lines_badge,
+                               [free_sz, est_sz, val_sz, gift_sz]))
+    btext_y = bcy - total_badge_h // 2
+
+    for (text, fnt, col, lhm), sz in zip(lines_badge,
+                                         [free_sz, est_sz, val_sz, gift_sz]):
+        tw_ = draw.textbbox((0, 0), text, font=fnt)[2]
+        draw.text((bc - tw_ // 2, btext_y), text, font=fnt, fill=col)
+        btext_y += int(sz * lhm)
+
+    # ── FULL-WIDTH CTA BUTTON ─────────────────────────────────────────
+    btn_y     = H - strip - int(30 * s) - int(44 * s) - int(12 * s)
+    cta_sz    = max(10, int(24 * s))
+    cta_fnt   = load_font(cta_sz, True)
+    bp, bpy   = int(20 * s), int(12 * s)
+    btn_w_full = W - lx - pad
+    btn_h_px  = cta_sz + bpy * 2
+    draw.rounded_rectangle(
+        [(lx, btn_y), (lx + btn_w_full, btn_y + btn_h_px)],
+        radius=int(7 * s), fill=(*GOLD, 255)
+    )
+    cta_tw = tw(draw, content["cta"], cta_fnt)
+    draw.text((lx + (btn_w_full - cta_tw) // 2, btn_y + bpy),
+              content["cta"], font=cta_fnt, fill=NAVY_DARK)
+
+    # ── Phone — centered under button ─────────────────────────────────
+    ph_sz  = max(10, int(28 * s))
     ph_fnt = load_font(ph_sz, True)
-    shadow(draw, (cx, cy), PHONE, ph_fnt, WHITE)
+    ph_tw_ = tw(draw, PHONE, ph_fnt)
+    ph_y   = btn_y + btn_h_px + int(6 * s)
+    shadow(draw, (lx + (btn_w_full - ph_tw_) // 2, ph_y), PHONE, ph_fnt, WHITE)
 
-    bottom_strip(canvas, W, H, strip, int(pad*0.8))
+    bottom_strip(canvas, W, H, strip, pad)
     return canvas
 
 
