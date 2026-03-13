@@ -43,6 +43,23 @@ PROMPT_KEYS = (
     "text",
 )
 
+NEGATIVE_PROMPT_KEYS = (
+    "negative_prompt",
+    "negative",
+    "negatives",
+)
+
+STYLE_NOTE_KEYS = (
+    "style_notes",
+    "style_note",
+    "style",
+)
+
+ASPECT_RATIO_KEYS = (
+    "aspect_ratio",
+    "ratio",
+)
+
 INDEX_KEYS = (
     "post",
     "post_id",
@@ -60,6 +77,25 @@ INDEX_KEYS = (
 class PostFailure:
     post_number: int
     reason: str
+
+
+@dataclass
+class PromptSpec:
+    prompt: str
+    negative_prompt: str = ""
+    style_notes: str = ""
+    theme: str = ""
+    aspect_ratio: str = "1:1"
+
+
+MASTER_PROMPT_V3 = (
+    "Create a photorealistic, ad-grade background image for a Wisconsin home improvement campaign. "
+    "This is a PHOTO-FIRST asset: no giant graphic treatment, no fake poster styling, no generic stock look. "
+    "Scene must feel like real Southeastern Wisconsin neighborhoods, realistic architecture, weather, landscaping, "
+    "materials, and natural light. Use documentary-real camera realism with believable lens perspective. "
+    "Leave subtle visual breathing room near top and bottom edges for later branding overlays, but keep the image "
+    "fully natural with no visible blocks or artificial blank zones."
+)
 
 
 def parse_args() -> argparse.Namespace:
@@ -116,15 +152,15 @@ def extract_prompt_text(value: Any) -> Optional[str]:
     if isinstance(value, str):
         text = value.strip()
         return text if text else None
-
-    if isinstance(value, dict):
-        for key in PROMPT_KEYS:
-            if key in value and isinstance(value[key], str):
-                text = value[key].strip()
-                if text:
-                    return text
-
     return None
+
+
+def pick_first_string(value: Dict[str, Any], keys: Tuple[str, ...]) -> str:
+    for key in keys:
+        text = extract_prompt_text(value.get(key))
+        if text:
+            return text
+    return ""
 
 
 def extract_explicit_index(value: Dict[str, Any], key_hint: Optional[str]) -> Optional[int]:
@@ -145,50 +181,56 @@ def load_prompt_pack(path: Path) -> Any:
         return json.load(handle)
 
 
-def build_prompt_map(payload: Any) -> Dict[int, str]:
-    scored_prompts: Dict[int, Tuple[int, str]] = {}
+def build_prompt_map(payload: Any) -> Dict[int, PromptSpec]:
+    prompt_map: Dict[int, PromptSpec] = {}
 
-    def set_prompt(post_number: Optional[int], prompt: Optional[str], explicit: bool) -> None:
-        if post_number is None or prompt is None:
-            return
-        if not (1 <= post_number <= TOTAL_POSTS):
-            return
+    if not isinstance(payload, dict):
+        return prompt_map
 
-        new_score = 2 if explicit else 1
-        current = scored_prompts.get(post_number)
-        if current is None or new_score >= current[0]:
-            scored_prompts[post_number] = (new_score, prompt)
+    for key_hint, value in payload.items():
+        if not isinstance(value, dict):
+            continue
 
-    def walk(node: Any, fallback_index: Optional[int] = None, key_hint: Optional[str] = None) -> None:
-        if isinstance(node, str):
-            set_prompt(fallback_index, extract_prompt_text(node), explicit=False)
-            return
+        post_number = extract_explicit_index(value, str(key_hint))
+        if post_number is None:
+            continue
 
-        if isinstance(node, list):
-            for index, item in enumerate(node, start=1):
-                walk(item, fallback_index=index, key_hint=None)
-            return
+        prompt = pick_first_string(value, PROMPT_KEYS)
+        if not prompt:
+            continue
 
-        if not isinstance(node, dict):
-            return
+        negative_prompt = pick_first_string(value, NEGATIVE_PROMPT_KEYS)
+        style_notes = pick_first_string(value, STYLE_NOTE_KEYS)
+        aspect_ratio = pick_first_string(value, ASPECT_RATIO_KEYS) or "1:1"
+        theme = extract_prompt_text(value.get("theme")) or ""
 
-        dict_prompt = extract_prompt_text(node)
-        dict_index = extract_explicit_index(node, key_hint)
-        if dict_prompt is not None:
-            if dict_index is not None:
-                set_prompt(dict_index, dict_prompt, explicit=True)
-            else:
-                set_prompt(fallback_index, dict_prompt, explicit=False)
+        prompt_map[post_number] = PromptSpec(
+            prompt=prompt,
+            negative_prompt=negative_prompt,
+            style_notes=style_notes,
+            theme=theme,
+            aspect_ratio=aspect_ratio,
+        )
 
-        for child_key, child_value in node.items():
-            if isinstance(child_value, (dict, list, str)):
-                child_fallback = None
-                if isinstance(child_value, (dict, str)):
-                    child_fallback = fallback_index
-                walk(child_value, fallback_index=child_fallback, key_hint=str(child_key))
+    return prompt_map
 
-    walk(payload)
-    return {post_number: value[1] for post_number, value in scored_prompts.items()}
+
+def build_generation_prompt(spec: PromptSpec) -> str:
+    chunks = [
+        MASTER_PROMPT_V3,
+        f"Creative brief: {spec.prompt}",
+    ]
+    if spec.theme:
+        chunks.append(f"Theme: {spec.theme}")
+    if spec.style_notes:
+        chunks.append(f"Style notes: {spec.style_notes}")
+    chunks.append(f"Target aspect ratio: {spec.aspect_ratio}")
+    if spec.negative_prompt:
+        chunks.append(f"Avoid: {spec.negative_prompt}")
+    chunks.append(
+        "Hard constraints: no text, no letters, no numbers, no logos, no watermarks, no signs with readable words."
+    )
+    return "\n".join(chunks)
 
 
 def extract_image_bytes(response: Any) -> Optional[bytes]:
@@ -214,15 +256,16 @@ def extract_image_bytes(response: Any) -> Optional[bytes]:
     return None
 
 
-def generate_one_image(client: Any, prompt: str, output_path: Path) -> Tuple[bool, str]:
+def generate_one_image(client: Any, prompt_spec: PromptSpec, output_path: Path) -> Tuple[bool, str]:
     last_error = "Unknown error."
+    final_prompt = build_generation_prompt(prompt_spec)
 
     for attempt in range(1, MAX_ATTEMPTS + 1):
         try:
             print(f"    Attempt {attempt}/{MAX_ATTEMPTS}")
             response = client.models.generate_content(
                 model=MODEL_ID,
-                contents=prompt,
+                contents=final_prompt,
             )
 
             image_bytes = extract_image_bytes(response)
@@ -299,15 +342,15 @@ def main() -> int:
             skipped.append(post_number)
             continue
 
-        prompt = prompt_map.get(post_number)
-        if not prompt:
+        prompt_spec = prompt_map.get(post_number)
+        if not prompt_spec:
             reason = "No prompt found for this post number in prompt pack."
             print(f"  Fail: {reason}")
             failures.append(PostFailure(post_number=post_number, reason=reason))
             continue
 
         print("  Generating image...")
-        ok, error_message = generate_one_image(client=client, prompt=prompt, output_path=output_path)
+        ok, error_message = generate_one_image(client=client, prompt_spec=prompt_spec, output_path=output_path)
         if ok:
             print(f"  Success: wrote {output_path}")
             generated.append(post_number)
