@@ -8,6 +8,7 @@ node_modules/
 __pycache__/
 *.pyc
 .u2net/
+ad-drafts/30-posts/owner-dashboard-data/
 
 # OS
 .DS_Store
