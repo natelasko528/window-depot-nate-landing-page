@@ -102,11 +102,11 @@ The deployment config reserves private owner routes and cron automation while pr
 
 ### Deployment steps
 1. Set required Vercel env vars: `OWNER_DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GHL_API_TOKEN`, `GHL_LOCATION_ID`.
-2. Optionally set `CURSOR_AGENT_WEBHOOK_URL` and `CRON_SHARED_SECRET`.
+2. Optionally set `CURSOR_AGENT_WEBHOOK_URL`, `CURSOR_AGENT_WEBHOOK_TOKEN`, and `CRON_SHARED_SECRET` (or `CRON_SECRET`).
 3. Deploy and verify `/`, `/owner`, `/owner/dashboard`, and both cron API paths.
 4. Confirm scheduled runs in Vercel function logs.
 
-Full runbook: `tasks/owner_dashboard_deploy_runbook.md`.
+Full runbook: `tasks/owner-dashboard-runbook.md`.
 
 ---
 

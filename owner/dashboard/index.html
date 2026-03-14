@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner Dashboard | Window Depot USA Milwaukee</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/owner/owner.css">
+  <script defer src="/owner/owner.js"></script>
+  <script defer src="/owner/dashboard/dashboard.js"></script>
+</head>
+<body class="owner-dashboard-page" data-owner-page="dashboard">
+  <header class="owner-header">
+    <div class="owner-header-title">
+      <p class="owner-eyebrow">Owner Analytics &amp; Control Center</p>
+      <h1>Window Depot USA Milwaukee</h1>
+    </div>
+    <div class="owner-header-actions">
+      <p class="owner-sync">Last sync: <strong id="lastSyncValue">Checking...</strong></p>
+      <button id="refreshNowButton" class="owner-btn owner-btn-ghost" type="button">Refresh now</button>
+      <button id="logoutButton" class="owner-btn owner-btn-primary" type="button">Logout</button>
+    </div>
+  </header>
+
+  <main class="owner-dashboard-shell">
+    <section class="owner-panel">
+      <div class="owner-panel-head">
+        <h2>KPI Snapshot</h2>
+        <p id="apiHealthBadge" class="owner-pill">API: checking</p>
+      </div>
+      <div class="owner-kpi-grid">
+        <article class="owner-kpi-card">
+          <p class="owner-kpi-label">Impressions</p>
+          <p id="kpiImpressions" class="owner-kpi-value">--</p>
+        </article>
+        <article class="owner-kpi-card">
+          <p class="owner-kpi-label">Reach</p>
+          <p id="kpiReach" class="owner-kpi-value">--</p>
+        </article>
+        <article class="owner-kpi-card">
+          <p class="owner-kpi-label">Engagement Rate</p>
+          <p id="kpiEngagementRate" class="owner-kpi-value">--</p>
+        </article>
+        <article class="owner-kpi-card">
+          <p class="owner-kpi-label">Clicks</p>
+          <p id="kpiClicks" class="owner-kpi-value">--</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="owner-panel">
+      <div class="owner-panel-head">
+        <h2>Platform Breakdown</h2>
+      </div>
+      <div id="platformBreakdown" class="owner-platform-grid"></div>
+    </section>
+
+    <section class="owner-panel owner-two-col">
+      <article>
+        <h2>Top Posts</h2>
+        <ul id="topPostsList" class="owner-ranked-list"></ul>
+      </article>
+      <article>
+        <h2>Bottom Posts</h2>
+        <ul id="bottomPostsList" class="owner-ranked-list"></ul>
+      </article>
+    </section>
+
+    <section class="owner-panel">
+      <div class="owner-panel-head owner-wrap">
+        <h2>Post Performance</h2>
+        <div class="owner-filters">
+          <input id="postSearchInput" type="search" placeholder="Search post title or id">
+          <select id="platformFilter">
+            <option value="all">All platforms</option>
+            <option value="facebook">Facebook</option>
+            <option value="instagram">Instagram</option>
+            <option value="linkedin">LinkedIn</option>
+          </select>
+          <select id="sortFilter">
+            <option value="engagementRate:desc">Sort: Engagement (high)</option>
+            <option value="engagementRate:asc">Sort: Engagement (low)</option>
+            <option value="impressions:desc">Sort: Impressions (high)</option>
+            <option value="clicks:desc">Sort: Clicks (high)</option>
+            <option value="publishedAt:desc">Sort: Newest first</option>
+          </select>
+        </div>
+      </div>
+      <p class="owner-table-meta">Showing <span id="postsCount">0</span> posts</p>
+      <div class="owner-table-wrap">
+        <table class="owner-table">
+          <thead>
+            <tr>
+              <th>Post</th>
+              <th>Platform</th>
+              <th>Published</th>
+              <th>Impressions</th>
+              <th>Reach</th>
+              <th>Eng. Rate</th>
+              <th>Clicks</th>
+            </tr>
+          </thead>
+          <tbody id="postsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="owner-panel owner-two-col">
+      <article>
+        <div class="owner-panel-head">
+          <h2>Alerts</h2>
+        </div>
+        <ul id="alertsList" class="owner-alert-list"></ul>
+      </article>
+      <article>
+        <div class="owner-panel-head owner-wrap">
+          <h2>Owner Copilot Chat</h2>
+          <button id="exportPromptButton" class="owner-btn owner-btn-ghost" type="button">Export prompt</button>
+        </div>
+        <div id="chatMessages" class="owner-chat-messages" aria-live="polite"></div>
+        <form id="chatForm" class="owner-chat-form">
+          <textarea id="chatInput" rows="3" placeholder="Ask for recommendations, campaign adjustments, or next actions..."></textarea>
+          <button class="owner-btn owner-btn-primary" type="submit">Send</button>
+        </form>
+        <pre id="exportPromptOutput" class="owner-export-output" hidden></pre>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

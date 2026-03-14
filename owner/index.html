@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner Login | Window Depot USA Milwaukee</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="/owner/owner.css">
+  <script defer src="/owner/owner.js"></script>
+</head>
+<body class="owner-login-page" data-owner-page="login">
+  <main class="owner-login-shell">
+    <section class="owner-login-card" aria-labelledby="ownerLoginTitle">
+      <p class="owner-eyebrow">Private Owner Portal</p>
+      <h1 id="ownerLoginTitle">Window Depot USA Milwaukee</h1>
+      <p class="owner-copy">
+        Sign in to review live campaign performance, post-level insights, alerts, and owner copilot recommendations.
+      </p>
+
+      <form id="ownerLoginForm" class="owner-form" novalidate>
+        <label for="ownerPassword">Owner password</label>
+        <input
+          id="ownerPassword"
+          name="password"
+          type="password"
+          autocomplete="current-password"
+          required
+          minlength="6"
+          placeholder="Enter owner password"
+        >
+        <button id="ownerLoginButton" type="submit" class="owner-btn owner-btn-primary">Sign in</button>
+        <p id="ownerLoginStatus" class="owner-status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+</body>
+</html>
