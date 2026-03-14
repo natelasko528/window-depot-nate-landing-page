@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owner Access — Window Depot USA</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0A1628;--navy2:#1A2F50;--navy3:#243A5E;
+  --blue:#1565C0;--gold:#D4AF37;--gold-dim:#B8900A;
+  --white:#FFFFFF;--gray:#94A3B8;--red:#EF4444;
+  --radius:16px;
+  --shadow:0 20px 60px rgba(0,0,0,0.4);
+}
+html,body{height:100%;font-family:'DM Sans',system-ui,sans-serif}
+body{
+  background:var(--navy);
+  display:flex;align-items:center;justify-content:center;
+  background-image:
+    radial-gradient(ellipse at 20% 80%, rgba(21,101,192,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(212,175,55,0.06) 0%, transparent 60%);
+}
+.login-card{
+  width:100%;max-width:400px;padding:48px 40px;
+  background:var(--navy2);border-radius:var(--radius);
+  box-shadow:var(--shadow);text-align:center;
+  border:1px solid rgba(255,255,255,0.06);
+}
+.shield{
+  width:56px;height:56px;margin:0 auto 24px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-dim));
+  border-radius:14px;display:flex;align-items:center;justify-content:center;
+  font-size:24px;font-weight:700;color:var(--navy);
+}
+h1{color:var(--white);font-size:20px;font-weight:600;margin-bottom:6px}
+.subtitle{color:var(--gray);font-size:14px;margin-bottom:32px}
+.input-group{position:relative;margin-bottom:24px;text-align:left}
+.input-group label{display:block;color:var(--gray);font-size:12px;font-weight:500;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.input-group input{
+  width:100%;padding:14px 16px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:10px;color:var(--white);font-size:15px;
+  font-family:inherit;outline:none;transition:border-color 0.2s;
+}
+.input-group input:focus{border-color:var(--gold)}
+.input-group input::placeholder{color:rgba(255,255,255,0.25)}
+.btn{
+  width:100%;padding:14px;border:none;border-radius:10px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-dim));
+  color:var(--navy);font-size:15px;font-weight:600;
+  font-family:inherit;cursor:pointer;transition:opacity 0.2s,transform 0.1s;
+}
+.btn:hover{opacity:0.9}
+.btn:active{transform:scale(0.98)}
+.btn:disabled{opacity:0.5;cursor:not-allowed}
+.error{
+  margin-top:16px;padding:10px 14px;
+  background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);
+  border-radius:8px;color:var(--red);font-size:13px;
+  display:none;
+}
+.error.visible{display:block}
+.footer-note{color:rgba(255,255,255,0.2);font-size:11px;margin-top:32px}
+</style>
+</head>
+<body>
+
+<div class="login-card">
+  <div class="shield">WD</div>
+  <h1>Owner Dashboard</h1>
+  <p class="subtitle">Private access for Nate Lasko</p>
+
+  <form id="loginForm">
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password" required>
+    </div>
+    <button type="submit" class="btn" id="submitBtn">Sign In</button>
+  </form>
+
+  <div class="error" id="errorMsg"></div>
+  <p class="footer-note">This page is not publicly accessible.</p>
+</div>
+
+<script>
+const form = document.getElementById('loginForm');
+const pwInput = document.getElementById('password');
+const errorEl = document.getElementById('errorMsg');
+const btn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  errorEl.classList.remove('visible');
+  btn.disabled = true;
+  btn.textContent = 'Signing in...';
+
+  try {
+    const resp = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: pwInput.value }),
+    });
+    const data = await resp.json();
+    if (resp.ok) {
+      window.location.href = '/owner/dashboard';
+    } else {
+      errorEl.textContent = data.error || 'Invalid password';
+      errorEl.classList.add('visible');
+      pwInput.value = '';
+      pwInput.focus();
+    }
+  } catch {
+    errorEl.textContent = 'Connection error. Please try again.';
+    errorEl.classList.add('visible');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Sign In';
+  }
+});
+
+(async () => {
+  try {
+    const resp = await fetch('/api/auth/session');
+    if (resp.ok) window.location.href = '/owner/dashboard';
+  } catch {}
+})();
+</script>
+
+</body>
+</html>
