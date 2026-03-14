@@ -28,6 +28,9 @@ The second draft (V2) of the Facebook & Instagram ad campaign is complete. V1 ha
 | Organize project directory structure | ✅ Done | See AGENTS.md for full structure |
 | Create AGENTS.md for future sessions | ✅ Done | Comprehensive agent context file |
 | Update CAMPAIGN_OVERVIEW.md | ✅ Done | Full copy + image pairings |
+| Build V3 platform post copy pack | ✅ Done | Facebook + Instagram + LinkedIn conversion-focused copy for all 30 creatives |
+| Build staggered GHL posting schedule | ✅ Done | 90 scheduled slots (30 posts × 3 platforms), CT timezone |
+| Schedule V3 posts in GoHighLevel | ✅ Done | Queued via Social Planner API for RevolutionAi location |
 
 ## Pending Tasks
 
@@ -39,6 +42,7 @@ The second draft (V2) of the Facebook & Instagram ad campaign is complete. V1 ha
 | Upload to Facebook Ads Manager | ⏳ Pending | After approval |
 | Set targeting & budget | ⏳ Pending | SE Wisconsin homeowners |
 | A/B test setup | ⏳ Pending | Run multiple angles simultaneously |
+| Monitor first 72 hours of scheduled rollout | ⏳ Pending | Review CTR, saves, comments, and outbound clicks by platform |
 
 ---
 
@@ -54,6 +58,19 @@ The second draft (V2) of the Facebook & Instagram ad campaign is complete. V1 ha
 - Added: Navy overlay, headlines, bullet points, phone number, CTA buttons, Nate cutout, brand line
 - Used Pillow for compositing, rembg for background removal
 - Nate feedback: Pending
+
+### V3 — Photo-First Reset (March 13, 2026)
+- New creative direction focused on photo-first composition and reduced template feel
+- Added enhanced prompt architecture in `scripts/generate_30_post_backgrounds_nb2.py`
+- Added new renderer `scripts/render_30_post_brand_v3.py` using real Nate headshot badge (`brand-assets/nate-profile.png`)
+- Generated fresh preview set in `ad-drafts/30-posts/branded-v3/` with contact sheet
+- Added platform-ready copy + schedule artifacts for GoHighLevel:
+  - `ad-drafts/30-posts/v3_platform_post_copy.json`
+  - `ad-drafts/30-posts/v3_ghl_staggered_schedule.csv`
+  - `ad-drafts/30-posts/V3_GHL_POSTING_PLAN.md`
+  - `ad-drafts/30-posts/PROMPT_GHL_EXECUTION_V3.md`
+- Re-ran GHL scheduling reset to guarantee 30 Facebook + 30 Instagram + 30 LinkedIn scheduled entries with platform-tailored copy, and recorded refreshed confirmation artifacts
+- Status: Ready for Nate review and refinement feedback
 
 ---
 
