@@ -91,6 +91,48 @@ python3 scripts/generate_branded_ads.py   # Add branding + Nate + CTAs
 
 ---
 
+## Owner Dashboard + Monitoring (Deployment/Ops)
+
+### Owner routes
+- `/owner` → owner login route
+- `/owner/dashboard` → private dashboard route
+
+### Required environment variables
+- `OWNER_DASHBOARD_PASSWORD` (owner login password)
+- `SESSION_SECRET` (signs/encrypts owner session cookie)
+- `GHL_API_TOKEN` (GoHighLevel API access)
+- `GHL_LOCATION_ID` (GoHighLevel location context)
+- Optional: `CURSOR_AGENT_WEBHOOK_URL` (owner chat handoff webhook), `CRON_SHARED_SECRET` (cron request guard)
+
+### Cron behavior
+- `/api/cron/sync-performance` runs hourly (`0 * * * *`)
+- `/api/cron/evaluate-alerts` runs every 30 minutes (`*/30 * * * *`)
+- Cron schedules are evaluated in UTC by Vercel.
+
+### Local testing commands
+```bash
+# start local Vercel runtime
+vercel dev
+
+# quick route checks
+curl -i http://localhost:3000/owner
+curl -i http://localhost:3000/owner/dashboard
+
+# cron endpoint checks
+curl -i http://localhost:3000/api/cron/sync-performance
+curl -i http://localhost:3000/api/cron/evaluate-alerts
+```
+
+### Security notes
+- Keep owner routes private; do not expose credentials client-side.
+- Use a strong unique `OWNER_DASHBOARD_PASSWORD` and high-entropy `SESSION_SECRET`.
+- Rotate password, session secret, and API token regularly and after access changes.
+- Restrict Vercel project access to authorized operators only.
+
+Runbook: `tasks/owner-dashboard-runbook.md`.
+
+---
+
 ## Contact Info
 - **Nate Lasko**: (414) 312-5213 | nlasko.wdusa.milwaukee@gmail.com
 - **Website**: windowdepotmilwaukee.com
