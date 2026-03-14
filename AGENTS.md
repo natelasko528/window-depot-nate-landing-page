@@ -158,6 +158,8 @@ St. Francis (HQ), Waukesha, Greenfield, Oak Creek, Wauwatosa, Mukwonago, Portage
 | `ad-drafts/CAMPAIGN_OVERVIEW.md` | Full ad campaign documentation with all copy + image pairings | When working on Facebook/Instagram ads |
 | `ad-drafts/ad_copy.json` | Structured ad copy data (machine-readable) | When programmatically accessing ad copy |
 | `tasks/ad-campaign-status.md` | Current campaign progress and next steps | When picking up ad campaign work |
+| `tasks/ghl-api-reference.md` | Verified GHL Social Planner API endpoints, schemas, live data | When working on dashboard or GHL integration |
+| `tasks/prd-owner-dashboard.md` | Owner dashboard PRD with screen mesh layout | When working on the dashboard |
 
 ---
 
@@ -224,6 +226,8 @@ onnxruntime
 | Secret Name       | Purpose                                    |
 |-------------------|--------------------------------------------|
 | `Gemini API Key`  | Google Gemini API for Nano Banana 2 images  |
+| `GHL_API_TOKEN`   | GoHighLevel Private Integration Token (PIT) |
+| `GHL_LOCATION_ID` | GoHighLevel sub-account location ID         |
 
 ### MCP Servers (Optional — for local Cursor use, not Cloud Agents)
 - **SkillBoss**: `skillboss-mcp-server` — requires `SKILLBOSS_API_KEY`
@@ -231,13 +235,20 @@ onnxruntime
 
 ### No Build Step Required
 - The landing page is pure HTML/CSS/JS — no bundler, no framework
-- Deployed on Vercel with `vercel.json` config
+- Deployed on Vercel with `vercel.json` config (includes serverless functions in `api/`)
 - Every push to `main` auto-deploys
 
 ### Testing the Landing Page
 - The landing page uses Vercel Analytics and Facebook Meta Pixel (ID: 232929617735426)
 - GHL booking widget iframe and chat widget are embedded in `index.html`
 - To test locally: just open `index.html` in a browser
+
+### Owner Dashboard
+- Private performance dashboard at `/owner` (login) and `/owner/dashboard`
+- Auth: password-protected via `OWNER_PASSWORD` env var, JWT sessions via `SESSION_SECRET`
+- Data: fetches from GHL Social Planner API; falls back to demo data when GHL not configured
+- Serverless functions in `api/` directory (Vercel auto-deploys)
+- Full API reference: `tasks/ghl-api-reference.md`
 
 ---
 
@@ -249,16 +260,77 @@ onnxruntime
 - Voice AI agent prompt — COMPLETE
 - SkillBoss marketing playbook — COMPLETE
 - Social media image library (18 images, 6 services × 3 platforms) — COMPLETE
-- Facebook/Instagram ad campaign — DRAFT V2 (branded with Nate, CTAs, phone)
+- V4 ad campaign creatives — 13 complete-in-one ads (text baked in by Gemini)
+- Private owner performance dashboard at `/owner` — auth, API, UI built
+- GHL Social Planner API verified and documented (`tasks/ghl-api-reference.md`)
 
 ### In Progress
-- Ad campaign awaiting Nate's approval/corrections (see `tasks/ad-campaign-status.md`)
-- AI-generated Nate figure needs to be replaced with real photo cutout for production
+- Dashboard GHL live data integration (connecting `/accounts`, `/posts/list`, `/statistics`)
+- Ad campaign awaiting Nate's final approval
 
 ### Known Issues / Next Steps
-1. The AI-generated Nate figure's polo shirt has generic logos (not Window Depot branding) — for production, swap in Nate's real photo from `brand-assets/nate-profile.png` or provide a full-body reference photo in the Window Depot polo
-2. Ad copy is approved — images need final approval from Nate
-3. Once approved, ads are ready to upload to Facebook Ads Manager and Instagram
+1. Dashboard currently shows demo data — needs GHL API wiring completed
+2. GHL has 428 posts across FB/IG/LI/Google/YouTube; 334+ published
+3. Statistics endpoint returns 7-day aggregate only — no per-post metrics via API
+4. Vercel env vars needed for live dashboard: `OWNER_PASSWORD`, `SESSION_SECRET`, `GHL_API_TOKEN`, `GHL_LOCATION_ID`
+
+---
+
+## GoHighLevel Social Planner API — Quick Reference
+
+> Full docs: `tasks/ghl-api-reference.md` (verified against official OpenAPI spec + live calls)
+
+### Base URL & Auth
+```
+Base: https://services.leadconnectorhq.com
+Auth: Authorization: Bearer {GHL_API_TOKEN}
+Header: Version: 2021-07-28
+Rate: 100 requests / 10 seconds
+```
+
+### Endpoints
+
+| Method | Path | Purpose |
+|--------|------|---------|
+| GET | `/social-media-posting/{locationId}/accounts` | List connected accounts (returns `id`, `profileId`, `platform`, `name`) |
+| POST | `/social-media-posting/{locationId}/posts/list` | List posts with pagination/filtering |
+| GET | `/social-media-posting/{locationId}/posts/{id}` | Get single post |
+| POST | `/social-media-posting/statistics?locationId={locationId}` | Aggregate analytics (7-day with delta) |
+
+### posts/list — Required Body Fields (all strings)
+```json
+{ "skip": "0", "limit": "100", "fromDate": "2026-01-01T00:00:00.000Z", "toDate": "2026-12-31T23:59:59.000Z", "includeUsers": "false" }
+```
+Optional: `type` (published/scheduled/all), `accounts` (comma-separated IDs), `postType` (post/story/reel)
+
+### statistics — Required Body
+```json
+{ "profileIds": ["profileId_from_accounts_endpoint"] }
+```
+Note: `locationId` goes as a **query parameter**, not in the body. `profileIds` come from the `profileId` field in `/accounts`, NOT the `id` field.
+
+### Post Object Key Fields
+`_id`, `platform` (facebook/instagram/linkedin/google/youtube), `status` (published/scheduled/failed), `summary` (caption), `media[]` ({url,type}), `accountIds[]`, `parentPostId` (groups multi-platform), `scheduleDate`, `publishedAt`
+
+### Statistics Response Key Fields
+`totals` (posts/likes/followers/impressions/comments), `breakdowns.{metric}.platforms.{platform}` ({value,change}), `breakdowns.engagement.{platform}` ({likes,comments,shares,change}), `postPerformance` (daily arrays), `platformTotals` (per-platform daily series), `demographics` (gender/age)
+
+### Nate's Connected Accounts
+| Platform | Name | profileId |
+|----------|------|-----------|
+| facebook | RevolutionAi | `6976d1f211a9c01a61bd6f42` |
+| facebook | Happy Homes of Wisconsin | `697db4bb50434332a0a0c76b` |
+| facebook | Lasko Health Solutions | `697db4eecd609119536316ea` |
+| facebook | Daily Motivation and Inspiration | `6976d1cf287ff09169274459` |
+| instagram | natelasko528 | `6933846d95529a7a63da72ad` |
+| linkedin | Nate Lasko | `696efc1c4904d28f212f3a76` |
+| youtube | Nate Lasko | `696efc35c715df2e5c3b5bd8` |
+
+### Important Notes
+- **posts/list does NOT return engagement metrics** — only post metadata
+- **statistics gives 7-day aggregate only** — no per-post engagement breakdown via API
+- **parentPostId** groups the same content across platforms (1 parent = N platform posts)
+- Posts total: 428 (334+ published, ~90 scheduled, 4 failed)
 
 ---
 
@@ -289,6 +361,18 @@ onnxruntime
 3. Always reference the $500 gift card, 12-month price lock, and free estimate
 4. Milwaukee/SE Wisconsin specifics are encouraged
 5. Hashtags: 10-15 per Instagram post, none on Facebook, max 3 on LinkedIn
+
+### When Working on the Dashboard / GHL Integration
+1. ALWAYS read `tasks/ghl-api-reference.md` first — it has verified endpoint schemas and live examples
+2. Use `GHL_API_TOKEN` (not `GHL_API_KEY`) — this is the env var name for the Private Integration Token
+3. The env var `GHL_LOCATION_ID` contains the location ID (`Rkjt05VeS56IUr5caLBD`)
+4. posts/list body fields (skip, limit, fromDate, toDate, includeUsers) are ALL strings, not numbers
+5. statistics endpoint takes `locationId` as a **query parameter** and `profileIds` in the body
+6. `profileIds` come from the `profileId` field in `/accounts`, NOT the `id` field
+7. Individual post engagement metrics are NOT available via the GHL API — only aggregate stats from `/statistics`
+8. Auth system uses JWT via `api/_lib/auth.js` — no external dependencies
+9. Dashboard files: `owner/index.html` (login), `owner/dashboard.html` (main dashboard)
+10. API functions: `api/auth/`, `api/performance/`, `api/cron/`
 
 ### When the User Says "King Mode" or "ULTRATHINK"
 - Go all-out. Maximum depth, maximum quality, maximum thoroughness.
