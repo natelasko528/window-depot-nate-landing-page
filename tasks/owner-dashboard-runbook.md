@@ -4,7 +4,7 @@ Concise operations guide for the private owner dashboard, cron monitoring, and o
 
 ## 1) First-time setup checklist
 
-- [ ] Confirm `vercel.json` includes owner rewrites and cron entries.
+- [ ] Confirm `vercel.json` includes owner rewrites (no catch-all override issues).
 - [ ] Create Production env vars in Vercel (table below).
 - [ ] Deploy and verify `/` (public), `/owner`, and `/owner/dashboard`.
 - [ ] Smoke test cron endpoints locally and in deployed env.
@@ -38,15 +38,18 @@ Concise operations guide for the private owner dashboard, cron monitoring, and o
 
 ## 4) Verifying cron runs
 
-### Expected schedules
-- `/api/cron/sync-performance`: `0 * * * *` (hourly, UTC)
-- `/api/cron/evaluate-alerts`: `*/30 * * * *` (every 30 min, UTC)
+### Scheduling model
+- Cron endpoints remain available:
+  - `/api/cron/sync-performance`
+  - `/api/cron/evaluate-alerts`
+- Use one of:
+  1. Vercel scheduled jobs (if your plan supports it), or
+  2. External scheduler (GitHub Actions, GoHighLevel workflow, or monitor service).
 
 ### Checks
-1. In Vercel Dashboard, confirm both cron entries exist on the current deployment.
-2. Open Function logs and filter by each cron path.
-3. Confirm execution timestamps match schedule windows.
-4. Trigger manual smoke calls if needed:
+1. Open Function logs and filter by each cron path.
+2. Confirm execution timestamps match your configured scheduler windows.
+3. Trigger manual smoke calls if needed:
    - `curl -i https://<deployment>/api/cron/sync-performance`
    - `curl -i https://<deployment>/api/cron/evaluate-alerts`
 
@@ -61,8 +64,8 @@ Concise operations guide for the private owner dashboard, cron monitoring, and o
 - Fix: keep `/api/:path* -> /api/:path*` as top rewrite.
 
 ### Cron not firing
-- Cause: path mismatch or deployment mismatch.
-- Fix: verify cron `path` exactly equals deployed endpoint and check UTC expectation.
+- Cause: no scheduler configured, plan limitation, path mismatch, or deployment mismatch.
+- Fix: configure external scheduler (or supported Vercel cron), verify endpoint path and UTC expectation.
 
 ### Cron fires but data sync fails
 - Cause: invalid/expired `GHL_API_TOKEN` or wrong `GHL_LOCATION_ID`.

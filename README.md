@@ -93,18 +93,18 @@ python3 scripts/generate_branded_ads.py   # Add branding + Nate + CTAs
 
 ## Owner Dashboard (Private) + Monitoring Automation
 
-The deployment config reserves private owner routes and cron automation while preserving the public landing page fallback.
+The deployment config reserves private owner routes while preserving the public landing page fallback.
 
 - **Private routes**: `/owner`, `/owner/dashboard`
-- **Cron jobs**:
-  - `/api/cron/sync-performance` → `0 * * * *` (hourly)
-  - `/api/cron/evaluate-alerts` → `*/30 * * * *` (every 30 minutes)
+- **Cron endpoints (manual/secure callable):**
+  - `/api/cron/sync-performance`
+  - `/api/cron/evaluate-alerts`
 
 ### Deployment steps
 1. Set required Vercel env vars: `OWNER_DASHBOARD_PASSWORD`, `SESSION_SECRET`, `GHL_API_TOKEN`, `GHL_LOCATION_ID`.
 2. Optionally set `CURSOR_AGENT_WEBHOOK_URL`, `CURSOR_AGENT_WEBHOOK_TOKEN`, and `CRON_SHARED_SECRET` (or `CRON_SECRET`).
 3. Deploy and verify `/`, `/owner`, `/owner/dashboard`, and both cron API paths.
-4. Confirm scheduled runs in Vercel function logs.
+4. If your Vercel plan supports scheduled crons, configure schedules in the Vercel dashboard; otherwise invoke cron endpoints via an external scheduler (GitHub Actions, GHL workflow, or Uptime monitor) with cron secret auth.
 
 Full runbook: `tasks/owner-dashboard-runbook.md`.
 

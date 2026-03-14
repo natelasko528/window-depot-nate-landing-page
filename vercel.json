@@ -14,9 +14,5 @@
       "destination": "/owner/dashboard/index.html"
     },
     { "source": "/(.*)", "destination": "/index.html" }
-  ],
-  "crons": [
-    { "path": "/api/cron/sync-performance", "schedule": "0 * * * *" },
-    { "path": "/api/cron/evaluate-alerts", "schedule": "*/30 * * * *" }
   ]
 }
