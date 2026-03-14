@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connect Meta — Window Depot USA</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#0A1628;--navy2:#1A2F50;--navy3:#243A5E;
+  --gold:#D4AF37;--gold-dim:#B8900A;
+  --blue:#1565C0;--white:#FFF;
+  --green:#22C55E;--red:#EF4444;--orange:#F59E0B;
+  --radius:14px;
+}
+html,body{min-height:100vh;font-family:'DM Sans',system-ui,sans-serif}
+body{
+  background:var(--navy);color:var(--white);padding:0;
+  background-image:radial-gradient(ellipse at 20% 80%,rgba(21,101,192,0.06) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 20%,rgba(212,175,55,0.04) 0%,transparent 50%);
+}
+.header{
+  position:sticky;top:0;z-index:10;
+  background:rgba(10,22,40,0.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  padding:0 32px;height:64px;display:flex;align-items:center;gap:16px;
+}
+.logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--gold),var(--gold-dim));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:var(--navy)}
+.header-title{font-size:16px;font-weight:600}
+.header-right{margin-left:auto;display:flex;gap:10px}
+.btn-sm{padding:8px 16px;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.6);font-family:inherit;font-size:13px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
+.btn-sm:hover{background:rgba(255,255,255,0.1);color:var(--white)}
+
+.main{max-width:720px;margin:0 auto;padding:40px 20px 80px}
+h1{font-size:24px;margin-bottom:8px}
+.subtitle{color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:32px}
+h2{font-size:17px;margin:32px 0 12px;color:var(--gold)}
+.card{background:var(--navy2);border-radius:var(--radius);padding:24px;border:1px solid rgba(255,255,255,0.06);margin-bottom:16px}
+.step{display:flex;gap:16px;margin-bottom:20px}
+.step-num{width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--navy);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body{flex:1}
+.step-body h3{font-size:14px;font-weight:600;margin-bottom:4px}
+.step-body p{color:rgba(255,255,255,0.6);font-size:13px;line-height:1.6}
+code{background:rgba(212,175,55,0.12);padding:2px 6px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold)}
+.code-block{background:rgba(0,0,0,0.3);border-radius:10px;padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,0.7);margin:8px 0;line-height:1.6;border:1px solid rgba(255,255,255,0.06);word-break:break-all}
+.btn-auth{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 28px;border-radius:10px;border:none;
+  background:linear-gradient(135deg,#1877F2,#0D65D9);
+  color:var(--white);font-size:15px;font-weight:600;
+  font-family:inherit;cursor:pointer;text-decoration:none;
+  transition:opacity 0.15s;margin:16px 0;
+}
+.btn-auth:hover{opacity:0.9}
+.btn-auth svg{width:20px;height:20px;fill:white}
+.status-card{border-radius:var(--radius);padding:16px 20px;margin:20px 0;font-size:13px}
+.status-card.connected{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:var(--green)}
+.status-card.pending{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2);color:var(--orange)}
+.status-card.error{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:var(--red)}
+.note{background:rgba(21,101,192,0.08);border:1px solid rgba(21,101,192,0.12);border-radius:10px;padding:14px 20px;color:rgba(255,255,255,0.5);font-size:13px;margin:16px 0;line-height:1.6}
+.permissions-list{list-style:none;margin:8px 0}
+.permissions-list li{padding:4px 0;font-size:13px;color:rgba(255,255,255,0.6)}
+.permissions-list li::before{content:"✓ ";color:var(--green)}
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">WD</div>
+  <div class="header-title">Connect Meta API</div>
+  <div class="header-right">
+    <a href="/owner/dashboard" class="btn-sm">← Dashboard</a>
+  </div>
+</header>
+
+<main class="main">
+  <h1>Connect Facebook & Instagram</h1>
+  <p class="subtitle">Get real per-post engagement data directly from Meta's Graph API.</p>
+
+  <div id="statusArea"></div>
+
+  <h2>Why Connect Meta Directly?</h2>
+  <div class="card">
+    <p style="color:rgba(255,255,255,0.7);font-size:14px;line-height:1.7">
+      GoHighLevel gives us aggregate 7-day stats, but <strong>no per-post engagement</strong>.
+      By connecting the Meta Graph API directly, we get <strong>per-post impressions, reach,
+      likes, comments, shares, saves, and clicks</strong> for every Facebook and Instagram post.
+    </p>
+  </div>
+
+  <h2>Setup Steps</h2>
+
+  <div class="card">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>Create a Meta App</h3>
+        <p>Go to <a href="https://developers.facebook.com/apps/" target="_blank" style="color:var(--gold)">developers.facebook.com/apps</a>
+        → "Create App" → choose <strong>"Other"</strong> use case → <strong>"Business"</strong> type → name it anything (e.g. "WD Dashboard").</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>Add Facebook Login Product</h3>
+        <p>In your app dashboard, click "Add Product" → find <strong>"Facebook Login for Business"</strong> → click "Set Up".
+        Under Settings → Valid OAuth Redirect URIs, add:</p>
+        <div class="code-block" id="redirectUri">Loading...</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>Copy App ID & Secret</h3>
+        <p>In your app's Settings → Basic, copy the <strong>App ID</strong> and <strong>App Secret</strong>.
+        Add them as environment variables in <a href="https://vercel.com" target="_blank" style="color:var(--gold)">Vercel</a>:</p>
+        <div class="code-block">META_APP_ID=your_app_id_here<br>META_APP_SECRET=your_app_secret_here</div>
+        <p>Then redeploy the project.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>Authorize the App</h3>
+        <p>Click the button below to authorize. You'll be redirected to Facebook to grant these permissions:</p>
+        <ul class="permissions-list">
+          <li><code>pages_read_engagement</code> — Read post engagement metrics</li>
+          <li><code>pages_show_list</code> — List your Facebook Pages</li>
+          <li><code>read_insights</code> — Read Page and post analytics</li>
+          <li><code>instagram_basic</code> — Access Instagram account info</li>
+          <li><code>instagram_manage_insights</code> — Read Instagram post insights</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="authSection" style="text-align:center;margin:32px 0">
+    <a href="/api/meta/authorize" class="btn-auth" id="authBtn">
+      <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+      Connect with Facebook
+    </a>
+    <p style="color:rgba(255,255,255,0.3);font-size:12px;margin-top:8px">You'll be redirected to Facebook to approve access.</p>
+  </div>
+
+  <div class="note">
+    <strong>Privacy:</strong> This connection is between your own Meta App and your own Facebook/Instagram accounts.
+    No data is shared with third parties. Tokens are stored only in your Vercel environment variables.
+  </div>
+
+  <h2>After Authorization</h2>
+  <div class="card">
+    <p style="color:rgba(255,255,255,0.7);font-size:14px;line-height:1.7">
+      After you authorize, you'll see your Page Access Tokens.
+      Copy them and add these final env vars in Vercel:
+    </p>
+    <div class="code-block">META_PAGE_TOKEN=your_page_token<br>META_PAGE_ID=your_page_id<br>META_IG_USER_ID=your_instagram_id (if applicable)</div>
+    <p style="color:rgba(255,255,255,0.5);font-size:13px;margin-top:8px">
+      Page tokens obtained this way <strong>never expire</strong>.
+      Your dashboard will then show real per-post engagement data.
+    </p>
+  </div>
+</main>
+
+<script>
+const baseUrl = window.location.origin;
+document.getElementById('redirectUri').textContent = baseUrl + '/api/meta/callback';
+
+(async () => {
+  try {
+    const resp = await fetch('/api/auth/session');
+    if (!resp.ok) { window.location.href = '/owner'; return; }
+  } catch { window.location.href = '/owner'; return; }
+
+  const statusArea = document.getElementById('statusArea');
+  try {
+    const resp = await fetch('/api/meta/insights');
+    const data = await resp.json();
+    if (data.configured) {
+      statusArea.innerHTML = '<div class="status-card connected">✓ Meta API is connected and working. Per-post insights are flowing to your dashboard.</div>';
+    } else {
+      statusArea.innerHTML = '<div class="status-card pending">⚡ Meta API not yet connected. Follow the steps below to enable per-post insights.</div>';
+    }
+  } catch {
+    statusArea.innerHTML = '<div class="status-card pending">⚡ Meta API not yet connected. Follow the steps below.</div>';
+  }
+})();
+</script>
+
+</body>
+</html>

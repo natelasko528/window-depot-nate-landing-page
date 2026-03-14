@@ -223,11 +223,16 @@ onnxruntime
 ```
 
 ### Required Secrets (Cursor Dashboard > Cloud Agents > Secrets)
-| Secret Name       | Purpose                                    |
-|-------------------|--------------------------------------------|
-| `Gemini API Key`  | Google Gemini API for Nano Banana 2 images  |
-| `GHL_API_TOKEN`   | GoHighLevel Private Integration Token (PIT) |
-| `GHL_LOCATION_ID` | GoHighLevel sub-account location ID         |
+| Secret Name        | Purpose                                    |
+|--------------------|--------------------------------------------|
+| `Gemini API Key`   | Google Gemini API for Nano Banana 2 images  |
+| `GHL_API_TOKEN`    | GoHighLevel Private Integration Token (PIT) |
+| `GHL_LOCATION_ID`  | GoHighLevel sub-account location ID         |
+| `META_APP_ID`      | Facebook/Meta App ID (for OAuth)            |
+| `META_APP_SECRET`  | Facebook/Meta App Secret (for OAuth)        |
+| `META_PAGE_TOKEN`  | Facebook Page access token (from OAuth)     |
+| `META_PAGE_ID`     | Facebook Page ID to track                   |
+| `META_IG_USER_ID`  | Instagram Business account ID (optional)    |
 
 ### MCP Servers (Optional — for local Cursor use, not Cloud Agents)
 - **SkillBoss**: `skillboss-mcp-server` — requires `SKILLBOSS_API_KEY`
@@ -246,9 +251,18 @@ onnxruntime
 ### Owner Dashboard
 - Private performance dashboard at `/owner` (login) and `/owner/dashboard`
 - Auth: password-protected via `OWNER_PASSWORD` env var, JWT sessions via `SESSION_SECRET`
-- Data: fetches from GHL Social Planner API; falls back to demo data when GHL not configured
+- Data priority: Meta Graph API (per-post insights) → GHL aggregate stats → demo data
+- Meta OAuth setup: `/owner/meta-setup` — guides user through connecting Facebook/Instagram
 - Serverless functions in `api/` directory (Vercel auto-deploys)
-- Full API reference: `tasks/ghl-api-reference.md`
+- Full GHL API reference: `tasks/ghl-api-reference.md`
+
+### Meta Graph API Integration
+- OAuth flow: `/api/meta/authorize` → Facebook OAuth → `/api/meta/callback`
+- Insights: `/api/meta/insights` — per-post impressions, reach, engagement, likes, comments, shares, saves
+- Facebook posts: `GET /{page-id}/published_posts` with `insights.metric()` field expansion
+- Instagram media: `GET /{ig-user-id}/media` with `insights.metric(reach,engagement,saved)` field expansion
+- Page tokens obtained via OAuth **never expire** — no refresh needed
+- Note: `impressions` metric deprecated for IG media created after July 2024 — use `reach` + `views` instead
 
 ---
 

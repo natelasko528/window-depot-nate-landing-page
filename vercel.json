@@ -3,6 +3,7 @@
   "outputDirectory": ".",
   "rewrites": [
     { "source": "/owner/dashboard", "destination": "/owner/dashboard.html" },
+    { "source": "/owner/meta-setup", "destination": "/owner/meta-setup.html" },
     { "source": "/owner", "destination": "/owner/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],

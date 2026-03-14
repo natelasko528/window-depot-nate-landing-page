@@ -266,13 +266,14 @@ body{
     </div>
   </div>
   <div class="header-right">
+    <a href="/owner/meta-setup" class="btn-sm btn-ghost" style="text-decoration:none">Meta API</a>
     <button class="btn-sm btn-ghost" id="syncBtn" title="Refresh data">&#x21BB; Sync</button>
     <button class="btn-sm btn-ghost" id="logoutBtn">Sign Out</button>
   </div>
 </header>
 
 <div class="demo-banner hidden" id="demoBanner">
-  &#x26A1; <strong>Demo Mode</strong> — Connect your GoHighLevel API to see live post performance. Set GHL_API_KEY and GHL_LOCATION_ID in Vercel env vars.
+  &#x26A1; <strong>Demo Mode</strong> — <a href="/owner/meta-setup" style="color:var(--orange);font-weight:600">Connect Meta API</a> to see real per-post engagement data from Facebook &amp; Instagram.
 </div>
 
 <main class="main">
@@ -418,7 +419,8 @@ async function loadData() {
     } else {
       document.getElementById('demoBanner').classList.add('hidden');
       document.getElementById('syncDot').classList.remove('demo', 'offline');
-      document.getElementById('syncText').textContent = 'Last sync: ' + formatTime(summaryData.lastSync);
+      const src = summaryData.source === 'meta' ? 'Meta API' : 'Live';
+      document.getElementById('syncText').textContent = src + ' · ' + formatTime(summaryData.lastSync);
     }
 
     renderKPIs();
@@ -600,7 +602,7 @@ function renderPostTable() {
     const isExpanded = expandedRow === post.id;
     html += `<tr data-id="${post.id}" onclick="toggleExpand('${post.id}')">
       <td class="num">${rank}</td>
-      <td class="theme-text">${post.theme}</td>
+      <td class="theme-text">${post.theme || (post.caption || '').substring(0, 50) || 'Post'}</td>
       <td>${platformBadge(post.platform)}</td>
       <td class="num">${fmt(m.reach)}</td>
       <td class="num">${fmt(m.engagements)}</td>
@@ -611,7 +613,8 @@ function renderPostTable() {
       <td colspan="7">
         <div class="expanded-content">
           <div class="expanded-caption">
-            <div class="date">Published: ${formatDate(post.publishedAt)} &middot; ${post.platform}</div>
+            <div class="date">Published: ${formatDate(post.publishedAt)} &middot; ${post.platform}${post.permalink ? ' · <a href="' + post.permalink + '" target="_blank" style="color:var(--gold)">View post ↗</a>' : ''}</div>
+            ${post.imageUrl ? '<img src="' + post.imageUrl + '" style="width:100%;max-width:200px;border-radius:8px;margin:8px 0" loading="lazy">' : ''}
             ${post.caption}
           </div>
           <div class="metric-pills">

@@ -1,5 +1,5 @@
 const { getSession } = require('../_lib/auth');
-const { fetchGHLPosts, isGHLConfigured } = require('../_lib/ghl');
+const { isMetaConfigured, fetchAllMetaPosts } = require('../_lib/meta');
 const { generateDemoData } = require('../_lib/demo-data');
 
 module.exports = async (req, res) => {
@@ -13,12 +13,14 @@ module.exports = async (req, res) => {
   try {
     let posts;
     let isDemo = false;
+    let source = 'demo';
 
-    if (isGHLConfigured()) {
+    if (isMetaConfigured()) {
       try {
-        posts = await fetchGHLPosts(process.env.GHL_LOCATION_ID, process.env.GHL_API_KEY);
+        posts = await fetchAllMetaPosts();
+        source = 'meta';
       } catch (err) {
-        console.error('GHL fetch failed, falling back to demo:', err.message);
+        console.error('Meta fetch failed, falling back to demo:', err.message);
         posts = generateDemoData();
         isDemo = true;
       }
@@ -27,7 +29,7 @@ module.exports = async (req, res) => {
       isDemo = true;
     }
 
-    posts.sort((a, b) => b.metrics.engagements - a.metrics.engagements);
+    posts.sort((a, b) => (b.metrics.engagements || 0) - (a.metrics.engagements || 0));
 
     posts.forEach(p => {
       p.metrics.engagementRate = p.metrics.reach > 0
@@ -38,7 +40,7 @@ module.exports = async (req, res) => {
         : 0;
     });
 
-    res.status(200).json({ isDemo, posts });
+    res.status(200).json({ isDemo, source, posts });
   } catch (err) {
     console.error('Posts error:', err);
     res.status(500).json({ error: 'Failed to load posts' });
