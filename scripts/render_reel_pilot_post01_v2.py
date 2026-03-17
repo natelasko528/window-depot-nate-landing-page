@@ -356,8 +356,6 @@ def render_scene_layer(
         layer = animated_background(masters["offer_estimate"], t, blur=4, tint=(8, 16, 30, 74))
         layer.alpha_composite(noise)
         draw = ImageDraw.Draw(layer)
-        draw.rounded_rectangle((80, 108, 388, 166), radius=28, fill=(18, 32, 64, 220))
-        draw.text((104, 124), "Offer stack", font=load_font(26, True), fill=WHITE)
         draw.rounded_rectangle((122, 1240, 958, 1472), radius=42, fill=(10, 20, 40, 228), outline=(120, 178, 255, 150), width=2)
         draw_center_lines(draw, 1294, ["FREE IN-HOME", "ESTIMATE"], load_font(78, True), WHITE, spacing=0)
 
@@ -365,8 +363,6 @@ def render_scene_layer(
         layer = animated_background(masters["offer_gift"], t, blur=4, tint=(8, 16, 30, 74))
         layer.alpha_composite(noise)
         draw = ImageDraw.Draw(layer)
-        draw.rounded_rectangle((80, 108, 388, 166), radius=28, fill=(18, 32, 64, 220))
-        draw.text((104, 124), "Offer stack", font=load_font(26, True), fill=WHITE)
         draw.rounded_rectangle((96, 1230, 984, 1490), radius=42, fill=(10, 20, 40, 228), outline=(222, 190, 88, 175), width=2)
         draw_center_lines(draw, 1296, ["$500 GIFT CARD"], load_font(82, True), WHITE, spacing=0)
         draw_center_lines(draw, 1404, ["WHEN YOU MEET WITH NATE"], load_font(34, True), GOLD, spacing=0, stroke_width=1)
@@ -375,8 +371,6 @@ def render_scene_layer(
         layer = animated_background(masters["offer_lock"], t, blur=3, tint=(8, 16, 30, 68))
         layer.alpha_composite(noise)
         draw = ImageDraw.Draw(layer)
-        draw.rounded_rectangle((80, 108, 388, 166), radius=28, fill=(18, 32, 64, 220))
-        draw.text((104, 124), "Offer stack", font=load_font(26, True), fill=WHITE)
         draw.rounded_rectangle((116, 1232, 964, 1492), radius=42, fill=(10, 20, 40, 228), outline=(120, 178, 255, 150), width=2)
         draw_center_lines(draw, 1290, ["12-MONTH", "PRICE LOCK"], load_font(78, True), WHITE, spacing=2)
 
