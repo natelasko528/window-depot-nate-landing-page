@@ -338,7 +338,6 @@ def render_scene(
     elif scene.name == "problem":
         draw.rounded_rectangle((76, 116, 514, 176), radius=30, fill=(18, 32, 64, 210))
         draw.text((102, 131), BRAND, font=load_font(28, True), fill=WHITE)
-        draw.rounded_rectangle((86, 248, 102, 448), radius=8, fill=(100, 160, 220, 220))
         draw.rounded_rectangle((76, 1148, 1004, 1580), radius=42, fill=(9, 18, 35, 220), outline=(70, 120, 200, 120), width=2)
         draw_center_block(draw, WIDTH // 2, 1218, ["DRAFTS.", "FOGGING.", "HIGHER UTILITY BILLS."], load_font(72, True), WHITE, spacing=12)
         draw_center_block(draw, WIDTH // 2, 1490, ["If you are noticing the warning signs,"], load_font(30, False), (220, 230, 255, 255), spacing=0, stroke_width=1)
@@ -383,7 +382,7 @@ def render_scene(
         canvas.alpha_composite(make_shadow((badge_size + 60, badge_size + 60), radius=badge_size // 2, blur=26, alpha=160), (badge_x - 30, badge_y - 16))
         canvas.alpha_composite(badge, (badge_x, badge_y))
         draw.rounded_rectangle((86, 1146, 994, 1576), radius=48, fill=(10, 20, 40, 222), outline=(88, 146, 228, 160), width=2)
-        draw_multiline(draw, (326, 1202), ["SE WISCONSIN", "HOMEOWNERS", "DIRECT SUPPORT", "FROM NATE"], load_font(52, True), WHITE, spacing=6)
+        draw_multiline(draw, (326, 1202), ["SE Wisconsin", "HOMEOWNERS", "DIRECT SUPPORT", "FROM NATE"], load_font(52, True), WHITE, spacing=6)
 
     elif scene.name == "soft_tone":
         plate = int(916 + 8 * eased)
@@ -392,8 +391,8 @@ def render_scene(
         draw_center_block(draw, WIDTH // 2, 1272, ["NO PRESSURE.", "JUST CLEAR OPTIONS."], load_font(74, True), WHITE, spacing=18)
 
     elif scene.name == "cta_close":
-        hero = int(620 + 14 * pulse(t, 0.22, 0.008))
-        paste_card(canvas, raw_image, (WIDTH - hero) // 2, 120 + int(math.sin(t * 1.4) * 4), hero, hero, border=(255, 255, 255, 84))
+        hero = int(786 + 12 * pulse(t, 0.22, 0.008))
+        paste_card(canvas, raw_image, (WIDTH - hero) // 2, 82 + int(math.sin(t * 1.2) * 3), hero, 760, radius=28, shadow_blur=22, border=(255, 255, 255, 84))
         draw.rounded_rectangle((72, 1040, 1008, 1660), radius=52, fill=(10, 20, 40, 228), outline=(88, 146, 228, 180), width=2)
         badge = nate_badge.resize((148, 148), Image.Resampling.LANCZOS)
         canvas.alpha_composite(make_shadow((208, 208), radius=74, blur=24, alpha=160), (108, 1126))
@@ -616,9 +615,11 @@ def render_frames() -> None:
             sweep,
         )
         intro_alpha = ease_out_cubic(clamp((t - scene.start) / 0.32, 0.0, 1.0))
-        alpha_band = scene_layer.getchannel("A").point(lambda px: int(px * intro_alpha))
+        outro_alpha = ease_out_cubic(clamp((scene.end - t) / 0.18, 0.0, 1.0))
+        scene_alpha = min(intro_alpha, outro_alpha)
+        alpha_band = scene_layer.getchannel("A").point(lambda px: int(px * scene_alpha))
         scene_layer.putalpha(alpha_band)
-        canvas.alpha_composite(scene_layer, (0, int((1.0 - intro_alpha) * 40)))
+        canvas.alpha_composite(scene_layer, (0, int((1.0 - scene_alpha) * 56)))
 
         canvas.convert("RGB").save(FRAMES_DIR / f"frame_{frame_idx:04d}.png", quality=96)
 
