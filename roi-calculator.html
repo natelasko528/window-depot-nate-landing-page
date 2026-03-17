@@ -274,6 +274,164 @@
       color:var(--gold);
     }
 
+    /* Card spacing */
+    .calc-card + .calc-card{
+      margin-top:24px;
+    }
+
+    /* Financing term selector */
+    .term-options{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:8px;
+    }
+    .term-btn{
+      font-family:"Nunito Sans",sans-serif;
+      font-size:14px;
+      font-weight:600;
+      padding:10px 18px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.15);
+      background:rgba(255,255,255,0.04);
+      color:var(--gray-mid);
+      cursor:pointer;
+      transition:all 0.25s;
+    }
+    .term-btn:hover{
+      border-color:var(--gold);
+      color:var(--gold);
+    }
+    .term-btn.active{
+      background:rgba(212,175,55,0.15);
+      border-color:var(--gold2);
+      color:var(--gold2);
+    }
+
+    /* Financing result */
+    .finance-result{
+      text-align:center;
+      padding:24px 0 8px;
+    }
+    .finance-result .monthly-amount{
+      font-family:"Cormorant Garant",serif;
+      font-size:48px;
+      font-weight:700;
+      color:var(--gold2);
+      display:inline-block;
+      transition:transform 0.3s;
+    }
+    .finance-result .monthly-amount.highlight{
+      transform:scale(1.08);
+    }
+    .finance-result .per-month{
+      font-family:"Bebas Neue",sans-serif;
+      font-size:16px;
+      letter-spacing:0.1em;
+      color:var(--gray-mid);
+      margin-top:4px;
+    }
+    .finance-detail{
+      font-size:13px;
+      color:var(--gray);
+      margin-top:8px;
+      line-height:1.6;
+    }
+
+    /* Monthly bill comparison */
+    .bill-compare{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-top:16px;
+    }
+    .bill-box{
+      padding:20px 16px;
+      border-radius:12px;
+      text-align:center;
+    }
+    .bill-box.current{
+      background:rgba(239,68,68,0.1);
+      border:1px solid rgba(239,68,68,0.2);
+    }
+    .bill-box.new{
+      background:rgba(212,175,55,0.1);
+      border:1px solid rgba(212,175,55,0.2);
+    }
+    .bill-box .bill-label{
+      font-family:"Bebas Neue",sans-serif;
+      font-size:12px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+    .bill-box.current .bill-label{
+      color:#ef4444;
+    }
+    .bill-box.new .bill-label{
+      color:var(--gold2);
+    }
+    .bill-box .bill-amount{
+      font-family:"Cormorant Garant",serif;
+      font-size:32px;
+      font-weight:700;
+      color:var(--white);
+      transition:transform 0.3s;
+    }
+    .bill-box .bill-amount.highlight{
+      transform:scale(1.05);
+    }
+    .bill-box .bill-sub{
+      font-size:11px;
+      color:var(--gray-mid);
+      margin-top:4px;
+    }
+    .savings-arrow{
+      text-align:center;
+      margin:16px 0 8px;
+      font-family:"Bebas Neue",sans-serif;
+      font-size:14px;
+      letter-spacing:0.1em;
+      color:var(--gold2);
+    }
+    .savings-arrow .saved{
+      font-family:"Cormorant Garant",serif;
+      font-size:28px;
+      font-weight:700;
+      color:var(--gold2);
+      display:block;
+      margin-top:4px;
+    }
+
+    /* Net monthly cost */
+    .net-cost{
+      text-align:center;
+      padding:20px;
+      margin-top:16px;
+      background:rgba(212,175,55,0.08);
+      border:1px solid rgba(212,175,55,0.15);
+      border-radius:12px;
+    }
+    .net-cost .net-label{
+      font-family:"Bebas Neue",sans-serif;
+      font-size:14px;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:8px;
+    }
+    .net-cost .net-amount{
+      font-family:"Cormorant Garant",serif;
+      font-size:36px;
+      font-weight:700;
+      color:var(--gold2);
+    }
+    .net-cost .net-sub{
+      font-size:12px;
+      color:var(--gray-mid);
+      margin-top:4px;
+    }
+
     /* Responsive */
     @media(max-width:600px){
       body{padding:16px 12px}
@@ -282,6 +440,11 @@
       .currency-input,.auto-display{font-size:24px;padding:10px 12px}
       .helper-input{font-size:20px}
       .roi-value{font-size:40px}
+      .finance-result .monthly-amount{font-size:40px}
+      .bill-box .bill-amount{font-size:26px}
+      .term-btn{padding:8px 14px;font-size:13px}
+      .bill-compare{gap:10px}
+      .net-cost .net-amount{font-size:30px}
     }
     @media(min-width:768px){
       .page-heading{font-size:32px}
@@ -355,7 +518,75 @@
     <button class="reset-btn" id="resetBtn">Clear All</button>
   </div>
 
+  <!-- Financing Calculator -->
+  <div class="calc-card" id="financeCard">
+    <p class="section-label">Monthly Payment Calculator</p>
+
+    <div class="calc-row">
+      <label for="interestRate"><span class="row-num">%</span> Interest Rate (APR)</label>
+      <input type="text" id="interestRate" class="currency-input"
+             inputmode="decimal" placeholder="e.g. 9.99" value="9.99">
+      <div class="helper">Annual percentage rate for financing</div>
+    </div>
+
+    <div class="calc-row">
+      <label>Select Financing Term</label>
+      <div class="term-options">
+        <button class="term-btn" data-months="36">36 mo<br><small>3 years</small></button>
+        <button class="term-btn" data-months="48">48 mo<br><small>4 years</small></button>
+        <button class="term-btn" data-months="60">60 mo<br><small>5 years</small></button>
+        <button class="term-btn active" data-months="84">84 mo<br><small>7 years</small></button>
+        <button class="term-btn" data-months="120">120 mo<br><small>10 years</small></button>
+        <button class="term-btn" data-months="144">144 mo<br><small>12 years</small></button>
+        <button class="term-btn" data-months="180">180 mo<br><small>15 years</small></button>
+      </div>
+    </div>
+
+    <hr class="gold-divider">
+
+    <div class="finance-result">
+      <label style="font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:8px">Estimated Monthly Payment</label>
+      <div class="monthly-amount" id="monthlyPayment">$0</div>
+      <div class="per-month">per month</div>
+      <div class="finance-detail" id="financeDetail">
+        Select a term and enter your investment above
+      </div>
+    </div>
+  </div>
+
+  <!-- Monthly Bill Comparison -->
+  <div class="calc-card" id="billCard">
+    <p class="section-label">Your Monthly Bill — Before & After</p>
+
+    <div class="bill-compare">
+      <div class="bill-box current">
+        <div class="bill-label">Current Monthly Bill</div>
+        <div class="bill-amount" id="currentBill">$0</div>
+        <div class="bill-sub">What you pay now</div>
+      </div>
+      <div class="bill-box new">
+        <div class="bill-label">New Monthly Bill</div>
+        <div class="bill-amount" id="newBill">$0</div>
+        <div class="bill-sub">After 34% savings</div>
+      </div>
+    </div>
+
+    <div class="savings-arrow">
+      Monthly Energy Savings
+      <span class="saved" id="monthlySavings">$0</span>
+    </div>
+
+    <hr class="gold-divider">
+
+    <div class="net-cost">
+      <div class="net-label">True Monthly Cost of New Windows</div>
+      <div class="net-amount" id="netMonthlyCost">$0</div>
+      <div class="net-sub">Window payment minus energy savings — what it actually costs you per month</div>
+    </div>
+  </div>
+
   <script>
+    // === DOM Elements ===
     const monthlyBillEl = document.getElementById('monthlyBill');
     const energyCostEl = document.getElementById('energyCost');
     const investmentEl = document.getElementById('investment');
@@ -364,37 +595,100 @@
     const roiResultEl = document.getElementById('roiResult');
     const resetBtn = document.getElementById('resetBtn');
 
+    // Financing
+    const interestRateEl = document.getElementById('interestRate');
+    const termBtns = document.querySelectorAll('.term-btn');
+    const monthlyPaymentEl = document.getElementById('monthlyPayment');
+    const financeDetailEl = document.getElementById('financeDetail');
+
+    // Bill comparison
+    const currentBillEl = document.getElementById('currentBill');
+    const newBillEl = document.getElementById('newBill');
+    const monthlySavingsEl = document.getElementById('monthlySavings');
+    const netMonthlyCostEl = document.getElementById('netMonthlyCost');
+
+    var selectedMonths = 84;
+
     function fmt(num) {
-      const rounded = Math.round(num);
+      var rounded = Math.round(num);
       return (rounded < 0 ? '-$' : '$') + Math.abs(rounded).toLocaleString();
     }
 
-    function parse(str) {
-      return parseFloat(str.replace(/[^0-9.]/g, '')) || 0;
+    function fmtCents(num) {
+      var abs = Math.abs(num);
+      var str = abs.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+      return (num < 0 ? '-$' : '$') + str;
     }
 
-    function calculate() {
-      const energyCost = parse(energyCostEl.value);
-      const savings = energyCost * 0.34;
-      const investment = parse(investmentEl.value);
-      const costValue = investment * 0.80;
-      const roi = savings + costValue - investment;
+    function parse(str) {
+      return parseFloat(String(str).replace(/[^0-9.]/g, '')) || 0;
+    }
+
+    function parseRate(str) {
+      return parseFloat(String(str).replace(/[^0-9.]/g, '')) || 0;
+    }
+
+    // Monthly payment using standard amortization formula
+    function calcMonthlyPayment(principal, annualRate, months) {
+      if (principal <= 0 || months <= 0) return 0;
+      if (annualRate <= 0) return principal / months;
+      var r = annualRate / 100 / 12;
+      return principal * (r * Math.pow(1 + r, months)) / (Math.pow(1 + r, months) - 1);
+    }
+
+    function highlightEl(el) {
+      el.classList.add('highlight');
+      setTimeout(function() { el.classList.remove('highlight'); }, 300);
+    }
+
+    function calculateAll() {
+      // === ROI Section ===
+      var energyCost = parse(energyCostEl.value);
+      var savings = energyCost * 0.34;
+      var investment = parse(investmentEl.value);
+      var costValue = investment * 0.80;
+      var roi = savings + costValue - investment;
 
       energySavingsEl.textContent = fmt(savings);
       costValueEl.textContent = fmt(costValue);
       roiResultEl.textContent = fmt(roi);
-
       roiResultEl.classList.toggle('negative', roi < 0);
 
-      // Highlight animation
-      energySavingsEl.classList.add('highlight');
-      costValueEl.classList.add('highlight');
-      roiResultEl.classList.add('highlight');
-      setTimeout(function() {
-        energySavingsEl.classList.remove('highlight');
-        costValueEl.classList.remove('highlight');
-        roiResultEl.classList.remove('highlight');
-      }, 300);
+      highlightEl(energySavingsEl);
+      highlightEl(costValueEl);
+      highlightEl(roiResultEl);
+
+      // === Financing Section ===
+      var rate = parseRate(interestRateEl.value);
+      var payment = calcMonthlyPayment(investment, rate, selectedMonths);
+      monthlyPaymentEl.textContent = fmtCents(payment);
+      highlightEl(monthlyPaymentEl);
+
+      if (investment > 0) {
+        var totalPaid = payment * selectedMonths;
+        var totalInterest = totalPaid - investment;
+        financeDetailEl.innerHTML =
+          fmt(investment) + ' financed at ' + rate.toFixed(2) + '% for ' + selectedMonths + ' months<br>' +
+          'Total paid: ' + fmt(Math.round(totalPaid)) + ' &middot; Total interest: ' + fmt(Math.round(totalInterest));
+      } else {
+        financeDetailEl.textContent = 'Enter your Window Depot Investment above';
+      }
+
+      // === Bill Comparison Section ===
+      var monthlyBill = parse(monthlyBillEl.value);
+      var monthlySavings = monthlyBill * 0.34;
+      var newBill = monthlyBill - monthlySavings;
+
+      currentBillEl.textContent = monthlyBill > 0 ? fmtCents(monthlyBill) : '$0';
+      newBillEl.textContent = monthlyBill > 0 ? fmtCents(newBill) : '$0';
+      monthlySavingsEl.textContent = monthlyBill > 0 ? fmtCents(monthlySavings) : '$0';
+
+      highlightEl(currentBillEl);
+      highlightEl(newBillEl);
+
+      // Net monthly cost = window payment - energy savings
+      var netCost = payment - monthlySavings;
+      netMonthlyCostEl.textContent = fmtCents(netCost);
     }
 
     function formatInput(input) {
@@ -405,15 +699,30 @@
     function clearFormat(input) {
       var val = parse(input.value);
       if (val > 0) input.value = val;
+      else input.value = '';
     }
 
-    energyCostEl.addEventListener('input', calculate);
-    investmentEl.addEventListener('input', calculate);
+    // ROI inputs
+    energyCostEl.addEventListener('input', calculateAll);
+    investmentEl.addEventListener('input', calculateAll);
 
     energyCostEl.addEventListener('blur', function() { formatInput(energyCostEl); });
     investmentEl.addEventListener('blur', function() { formatInput(investmentEl); });
     energyCostEl.addEventListener('focus', function() { clearFormat(energyCostEl); });
     investmentEl.addEventListener('focus', function() { clearFormat(investmentEl); });
+
+    // Interest rate input
+    interestRateEl.addEventListener('input', calculateAll);
+
+    // Term buttons
+    termBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        termBtns.forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        selectedMonths = parseInt(btn.getAttribute('data-months'));
+        calculateAll();
+      });
+    });
 
     // Monthly bill helper
     monthlyBillEl.addEventListener('input', function() {
@@ -424,7 +733,7 @@
       } else {
         energyCostEl.value = '';
       }
-      calculate();
+      calculateAll();
     });
     monthlyBillEl.addEventListener('blur', function() { formatInput(monthlyBillEl); });
     monthlyBillEl.addEventListener('focus', function() { clearFormat(monthlyBillEl); });
@@ -434,10 +743,21 @@
       monthlyBillEl.value = '';
       energyCostEl.value = '';
       investmentEl.value = '';
+      interestRateEl.value = '9.99';
       energySavingsEl.textContent = '$0';
       costValueEl.textContent = '$0';
       roiResultEl.textContent = '$0';
       roiResultEl.classList.remove('negative');
+      monthlyPaymentEl.textContent = '$0';
+      financeDetailEl.textContent = 'Enter your Window Depot Investment above';
+      currentBillEl.textContent = '$0';
+      newBillEl.textContent = '$0';
+      monthlySavingsEl.textContent = '$0';
+      netMonthlyCostEl.textContent = '$0.00';
+      // Reset term to 84
+      termBtns.forEach(function(b) { b.classList.remove('active'); });
+      document.querySelector('.term-btn[data-months="84"]').classList.add('active');
+      selectedMonths = 84;
     });
   </script>
 
