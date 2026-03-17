@@ -308,34 +308,33 @@ def render_scene_layer(
     p = clamp((t - scene.start) / max(0.001, scene.end - scene.start), 0.0, 1.0)
 
     if scene.name == "hook":
-        layer = animated_background(masters["hook"], t, blur=8, tint=(8, 16, 30, 76))
+        layer = animated_background(fit_cover(source, 1280, 2280), t, blur=2, tint=(10, 18, 30, 36))
         layer.alpha_composite(noise)
-        paste_card(layer, source, 72, 104, 936, 936, radius=26, border=(170, 214, 255, 90))
         draw = ImageDraw.Draw(layer)
-        draw.rounded_rectangle((84, 1178, 996, 1524), radius=38, fill=(9, 18, 35, 218), outline=(90, 150, 230, 150), width=2)
-        draw_center_lines(draw, 1232, ["MILWAUKEE,", "THIS ONE MATTERS."], load_font(76, True), WHITE, spacing=2)
-        draw_center_lines(draw, 1426, ["TRIPLE-PANE COMFORT"], load_font(30, True), GOLD, spacing=0, stroke_width=1)
+        draw.rounded_rectangle((70, 1246, 1010, 1536), radius=38, fill=(9, 18, 35, 208), outline=(90, 150, 230, 150), width=2)
+        draw_center_lines(draw, 1292, ["MILWAUKEE,", "THIS ONE MATTERS."], load_font(78, True), WHITE, spacing=2)
+        draw_center_lines(draw, 1486, ["TRIPLE-PANE COMFORT"], load_font(30, True), GOLD, spacing=0, stroke_width=1)
 
     elif scene.name == "problem_a":
-        layer = animated_background(masters["problem_a"], t, blur=10, tint=(10, 24, 46, 98))
+        layer = animated_background(masters["problem_a"], t, blur=3, tint=(10, 24, 46, 74))
         layer.alpha_composite(noise)
         draw = ImageDraw.Draw(layer)
         draw.rounded_rectangle((80, 106, 514, 164), radius=30, fill=(18, 32, 64, 220))
         draw.text((104, 122), BRAND, font=load_font(28, True), fill=WHITE)
-        draw.rounded_rectangle((84, 1166, 996, 1514), radius=38, fill=(9, 18, 35, 220), outline=(90, 150, 230, 120), width=2)
-        draw_center_lines(draw, 1236, ["DRAFTY", "WINDOWS"], load_font(86, True), WHITE, spacing=4)
-        draw_center_lines(draw, 1434, ["Driving up utility bills?"], load_font(30, False), (220, 232, 250, 255), spacing=0, stroke_width=1)
+        draw.rounded_rectangle((84, 1188, 996, 1516), radius=38, fill=(9, 18, 35, 210), outline=(90, 150, 230, 120), width=2)
+        draw_center_lines(draw, 1244, ["DRAFTY", "WINDOWS"], load_font(86, True), WHITE, spacing=4)
+        draw_center_lines(draw, 1438, ["Driving up utility bills?"], load_font(30, False), (220, 232, 250, 255), spacing=0, stroke_width=1)
 
     elif scene.name == "problem_b":
-        layer = animated_background(masters["problem_b"], t, blur=6, tint=(16, 30, 55, 120))
+        layer = animated_background(masters["problem_b"], t, blur=2, tint=(16, 30, 55, 84))
         layer.alpha_composite(noise)
         draw = ImageDraw.Draw(layer)
-        draw.rounded_rectangle((136, 1168, 944, 1516), radius=38, fill=(9, 18, 35, 220), outline=(90, 150, 230, 120), width=2)
-        draw_center_lines(draw, 1242, ["FOGGING.", "HIGHER BILLS."], load_font(74, True), WHITE, spacing=8)
-        draw_center_lines(draw, 1438, ["A sign it may be time to upgrade."], load_font(28, False), (220, 232, 250, 255), spacing=0, stroke_width=1)
+        draw.rounded_rectangle((136, 1188, 944, 1518), radius=38, fill=(9, 18, 35, 210), outline=(90, 150, 230, 120), width=2)
+        draw_center_lines(draw, 1248, ["FOGGING.", "HIGHER BILLS."], load_font(74, True), WHITE, spacing=8)
+        draw_center_lines(draw, 1444, ["A sign it may be time to upgrade."], load_font(28, False), (220, 232, 250, 255), spacing=0, stroke_width=1)
 
     elif scene.name == "solution":
-        layer = animated_background(masters["solution"], t, blur=2, tint=(18, 24, 32, 36))
+        layer = animated_background(masters["solution"], t, blur=0.6, tint=(18, 24, 32, 20))
         add_warm_window_glow(layer, 0.75 + 0.25 * math.sin(t * 6.0))
         layer.alpha_composite(noise)
         sweep = Image.new("RGBA", (480, HEIGHT), (0, 0, 0, 0))
@@ -350,7 +349,7 @@ def render_scene_layer(
         draw_center_lines(draw, 1226, ["TRIPLE-PANE", "AT DUAL-PANE PRICES"], load_font(70, True), WHITE, spacing=10)
 
     elif scene.name == "offer_estimate":
-        layer = animated_background(masters["offer_estimate"], t, blur=18, tint=(8, 16, 30, 120))
+        layer = animated_background(masters["offer_estimate"], t, blur=4, tint=(8, 16, 30, 74))
         layer.alpha_composite(noise)
         draw = ImageDraw.Draw(layer)
         draw.rounded_rectangle((80, 108, 388, 166), radius=28, fill=(18, 32, 64, 220))
@@ -359,7 +358,7 @@ def render_scene_layer(
         draw_center_lines(draw, 1294, ["FREE IN-HOME", "ESTIMATE"], load_font(78, True), WHITE, spacing=0)
 
     elif scene.name == "offer_gift":
-        layer = animated_background(masters["offer_gift"], t, blur=18, tint=(8, 16, 30, 120))
+        layer = animated_background(masters["offer_gift"], t, blur=4, tint=(8, 16, 30, 74))
         layer.alpha_composite(noise)
         draw = ImageDraw.Draw(layer)
         draw.rounded_rectangle((80, 108, 388, 166), radius=28, fill=(18, 32, 64, 220))
@@ -369,7 +368,7 @@ def render_scene_layer(
         draw_center_lines(draw, 1404, ["WHEN YOU MEET WITH NATE"], load_font(34, True), GOLD, spacing=0, stroke_width=1)
 
     elif scene.name == "offer_lock":
-        layer = animated_background(masters["offer_lock"], t, blur=14, tint=(8, 16, 30, 118))
+        layer = animated_background(masters["offer_lock"], t, blur=3, tint=(8, 16, 30, 68))
         layer.alpha_composite(noise)
         draw = ImageDraw.Draw(layer)
         draw.rounded_rectangle((80, 108, 388, 166), radius=28, fill=(18, 32, 64, 220))
@@ -378,7 +377,7 @@ def render_scene_layer(
         draw_center_lines(draw, 1290, ["12-MONTH", "PRICE LOCK"], load_font(78, True), WHITE, spacing=2)
 
     elif scene.name == "trust":
-        layer = animated_background(masters["trust"], t, blur=8, tint=(10, 20, 38, 98))
+        layer = animated_background(masters["trust"], t, blur=3, tint=(10, 20, 38, 64))
         layer.alpha_composite(noise)
         draw = ImageDraw.Draw(layer)
         badge = nate_badge.resize((176, 176), Image.Resampling.LANCZOS)
@@ -390,7 +389,7 @@ def render_scene_layer(
         draw.text((356, 1332), "Warm. Clear. No pressure.", font=load_font(28, False), fill=(220, 232, 250, 255), stroke_width=1, stroke_fill=SHADOW)
 
     elif scene.name == "cta":
-        layer = animated_background(masters["cta"], t, blur=3, tint=(10, 18, 28, 20))
+        layer = animated_background(masters["cta"], t, blur=0.8, tint=(10, 18, 28, 12))
         add_warm_window_glow(layer, 0.70)
         layer.alpha_composite(noise)
         draw = ImageDraw.Draw(layer)
@@ -550,33 +549,33 @@ def generate_music(scene_markers: Sequence[float]) -> tuple[array, array]:
         if beat_pos < 0.16:
             env = math.exp(-beat_pos * 16.0)
             freq = lerp(78.0, 44.0, beat_pos / 0.16)
-            kick = math.sin(math.tau * freq * t) * env * 0.18
+            kick = math.sin(math.tau * freq * t) * env * 0.28
 
-        bass = math.sin(math.tau * root * t) * (0.10 * math.exp(-beat_pos * 4.2))
+        bass = math.sin(math.tau * root * t) * (0.13 * math.exp(-beat_pos * 4.2))
         pad = 0.0
         for note in chord:
             pad += math.sin(math.tau * note_freq(note) * t)
-        pad *= 0.018
-        pulse = math.sin(math.tau * (root * 2.0) * t) * 0.03 * (0.6 + 0.4 * math.sin(math.tau * 0.12 * t))
+        pad *= 0.026
+        pulse = math.sin(math.tau * (root * 2.0) * t) * 0.045 * (0.6 + 0.4 * math.sin(math.tau * 0.12 * t))
 
         eighth = (t % (beat / 2)) / (beat / 2)
-        pluck = math.sin(math.tau * pluck_note * t) * math.exp(-eighth * 10.0) * 0.045
+        pluck = math.sin(math.tau * pluck_note * t) * math.exp(-eighth * 10.0) * 0.07
 
         hat = 0.0
         if 0.46 < beat_pos < 0.58:
             hat_phase = (beat_pos - 0.46) / 0.12
-            hat = math.sin(math.tau * 7000 * t) * math.exp(-hat_phase * 18.0) * 0.015
+            hat = math.sin(math.tau * 7000 * t) * math.exp(-hat_phase * 18.0) * 0.03
 
         hit = 0.0
         for marker_idx in scene_hits:
             dt = (i - marker_idx) / SR
             if 0.0 <= dt <= 0.18:
-                hit += math.sin(math.tau * lerp(480.0, 120.0, dt / 0.18) * dt) * math.exp(-dt * 16.0) * 0.11
+                hit += math.sin(math.tau * lerp(480.0, 120.0, dt / 0.18) * dt) * math.exp(-dt * 16.0) * 0.17
 
-        swell = math.sin(math.tau * fifth * t) * 0.012 * ease_in_out_sine(bar_pos)
+        swell = math.sin(math.tau * fifth * t) * 0.024 * ease_in_out_sine(bar_pos)
         value = kick + bass + pad + pulse + pluck + hat + hit + swell
-        left[i] = value * 0.92
-        right[i] = value * 0.86 + math.sin(math.tau * 0.14 * t) * 0.004
+        left[i] = value * 1.18
+        right[i] = value * 1.10 + math.sin(math.tau * 0.14 * t) * 0.006
 
     write_wav_stereo(MUSIC_WAV, left, right, SR)
     return left, right
@@ -589,12 +588,12 @@ def mix_audio(voice: array, intervals: Sequence[tuple[float, float]], music_l: a
 
     for i in range(total_samples):
         t = i / SR
-        music_gain = 0.62
+        music_gain = 0.92 if t < 14.0 else 1.08
         for start, end in intervals:
             if start - 0.04 <= t <= end + 0.10:
-                music_gain = 0.28
+                music_gain = 0.42 if t < 14.0 else 0.56
                 break
-        v = voice[i] * 0.90
+        v = voice[i] * 0.82
         out_l[i] = v + music_l[i] * music_gain
         out_r[i] = v + music_r[i] * music_gain
 
