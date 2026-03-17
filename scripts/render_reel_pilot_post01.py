@@ -343,10 +343,10 @@ def render_scene(
         draw_center_block(draw, WIDTH // 2, 1490, ["If you are noticing the warning signs,"], load_font(30, False), (220, 230, 255, 255), spacing=0, stroke_width=1)
 
     elif scene.name == "value":
-        plate = int(952 + 10 * eased)
-        paste_card(canvas, source, (WIDTH - plate) // 2, 112 + float_y, plate, plate, radius=24, shadow_blur=22, border=(255, 255, 255, 90))
-        draw.rounded_rectangle((86, 1158, 994, 1510), radius=42, fill=(9, 18, 35, 220), outline=(88, 146, 228, 150), width=2)
-        draw_center_block(draw, WIDTH // 2, 1232, ["TRIPLE-PANE PROVIA ENDURE", "AT DUAL-PANE PRICES"], load_font(58, True), WHITE, spacing=14)
+        draw.rounded_rectangle((76, 116, 514, 176), radius=30, fill=(18, 32, 64, 210))
+        draw.text((102, 131), "Value", font=load_font(28, True), fill=WHITE)
+        draw.rounded_rectangle((86, 1168, 994, 1510), radius=42, fill=(9, 18, 35, 220), outline=(88, 146, 228, 150), width=2)
+        draw_center_block(draw, WIDTH // 2, 1240, ["TRIPLE-PANE PROVIA ENDURE", "AT DUAL-PANE PRICES"], load_font(58, True), WHITE, spacing=14)
         canvas.alpha_composite(sweep, (int(lerp(-340, 820, eased)), 120))
 
     elif scene.name == "offer_estimate":
@@ -385,8 +385,8 @@ def render_scene(
         draw_multiline(draw, (326, 1202), ["SE Wisconsin", "HOMEOWNERS", "DIRECT SUPPORT", "FROM NATE"], load_font(52, True), WHITE, spacing=6)
 
     elif scene.name == "soft_tone":
-        plate = int(916 + 8 * eased)
-        paste_card(canvas, source, (WIDTH - plate) // 2, 126 + float_y, plate, plate, radius=26, shadow_blur=22, border=(255, 255, 255, 80))
+        draw.rounded_rectangle((76, 116, 420, 176), radius=30, fill=(18, 32, 64, 210))
+        draw.text((102, 131), "Window Depot USA", font=load_font(28, True), fill=WHITE)
         draw.rounded_rectangle((130, 1198, 950, 1510), radius=48, fill=(10, 20, 40, 220), outline=(212, 175, 55, 140), width=2)
         draw_center_block(draw, WIDTH // 2, 1272, ["NO PRESSURE.", "JUST CLEAR OPTIONS."], load_font(74, True), WHITE, spacing=18)
 
