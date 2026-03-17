@@ -265,12 +265,12 @@ def add_warm_window_glow(canvas: Image.Image, amount: float) -> None:
 
 
 def animated_background(master: Image.Image, t: float, blur: float = 0.0, tint: tuple[int, int, int, int] | None = None) -> Image.Image:
-    scale = 1.0 + 0.05 * ease_in_out_sine((math.sin(t * 0.35) + 1) / 2)
+    scale = 1.0 + 0.08 * ease_in_out_sine((math.sin(t * 0.35) + 1) / 2)
     resized = master.resize((int(master.width * scale), int(master.height * scale)), Image.Resampling.LANCZOS)
     max_x = max(0, resized.width - WIDTH)
     max_y = max(0, resized.height - HEIGHT)
-    x = int(max_x * (0.5 + 0.35 * math.sin(t * 0.22)))
-    y = int(max_y * (0.45 + 0.30 * math.cos(t * 0.18)))
+    x = int(max_x * (0.5 + 0.42 * math.sin(t * 0.28)))
+    y = int(max_y * (0.46 + 0.34 * math.cos(t * 0.23)))
     frame = resized.crop((x, y, x + WIDTH, y + HEIGHT))
     if blur:
         frame = frame.filter(ImageFilter.GaussianBlur(blur))
@@ -308,9 +308,13 @@ def render_scene_layer(
     p = clamp((t - scene.start) / max(0.001, scene.end - scene.start), 0.0, 1.0)
 
     if scene.name == "hook":
-        layer = animated_background(fit_cover(source, 1280, 2280), t, blur=2, tint=(10, 18, 30, 36))
+        layer = animated_background(masters["hook"], t, blur=1.4, tint=(10, 18, 30, 28))
         layer.alpha_composite(noise)
         draw = ImageDraw.Draw(layer)
+        card_scale = 1.0 + 0.05 * (1.0 - p)
+        card_w = int(796 * card_scale)
+        card_h = int(796 * card_scale)
+        paste_card(layer, source, (WIDTH - card_w) // 2, 160, card_w, card_h, radius=24, border=(170, 214, 255, 88))
         draw.rounded_rectangle((70, 1246, 1010, 1536), radius=38, fill=(9, 18, 35, 208), outline=(90, 150, 230, 150), width=2)
         draw_center_lines(draw, 1292, ["MILWAUKEE,", "THIS ONE MATTERS."], load_font(78, True), WHITE, spacing=2)
         draw_center_lines(draw, 1486, ["TRIPLE-PANE COMFORT"], load_font(30, True), GOLD, spacing=0, stroke_width=1)
@@ -416,12 +420,15 @@ def render_scene_layer(
     return layer
 
 
-def scene_opacity(scene: Scene, t: float) -> tuple[float, int]:
+def scene_opacity(scene: Scene, t: float) -> tuple[float, int, int]:
     intro = ease_out_cubic(clamp((t - scene.start) / 0.28, 0.0, 1.0))
     outro = ease_out_cubic(clamp((scene.end - t) / 0.22, 0.0, 1.0))
     alpha = min(intro, outro)
+    idx = next((i for i, item in enumerate(SCENES) if item.name == scene.name), 0)
+    x_dir = -1 if idx % 2 else 1
+    x_offset = int((1.0 - alpha) * 62 * x_dir)
     y_offset = int((1.0 - alpha) * 54)
-    return alpha, y_offset
+    return alpha, x_offset, y_offset
 
 
 def write_wav_mono(path: Path, samples: array, sample_rate: int) -> None:
@@ -693,11 +700,11 @@ def render_frames() -> None:
         t = frame_idx / FPS
         scene = current_scene(t)
         layer = render_scene_layer(scene, t, source, nate_badge, masters, noise)
-        alpha, offset_y = scene_opacity(scene, t)
+        alpha, offset_x, offset_y = scene_opacity(scene, t)
         alpha_channel = layer.getchannel("A").point(lambda px: int(px * alpha))
         layer.putalpha(alpha_channel)
         frame = Image.new("RGBA", (WIDTH, HEIGHT), (7, 14, 28, 255))
-        frame.alpha_composite(layer, (0, offset_y))
+        frame.alpha_composite(layer, (offset_x, offset_y))
         frame.convert("RGB").save(FRAMES_DIR / f"frame_{frame_idx:04d}.png", quality=96)
 
 
