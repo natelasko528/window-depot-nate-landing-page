@@ -326,13 +326,13 @@ def render_scene(
     intro_slide = int((1.0 - eased) * 28)
 
     if scene.name == "hook":
-        plate = int(996 + 24 * eased * pulse(t, 0.28, 0.01))
+        plate = int(972 + 20 * eased * pulse(t, 0.28, 0.01))
         x = (WIDTH - plate) // 2
-        y = 132 + intro_slide + float_y
+        y = 102 + intro_slide + float_y
         paste_card(canvas, source, x, y, plate, plate, radius=26, shadow_blur=22, border=(180, 215, 255, 90))
-        draw.rounded_rectangle((76, 1104, 1004, 1480), radius=42, fill=(9, 18, 35, 214), outline=(88, 146, 228, 160), width=2)
-        draw_center_block(draw, WIDTH // 2, 1188, ["MILWAUKEE,", "THIS ONE MATTERS."], load_font(82, True), WHITE, spacing=4)
-        draw_center_block(draw, WIDTH // 2, 1370, ["TRIPLE-PANE COMFORT"], load_font(34, True), GOLD, spacing=0, stroke_width=1)
+        draw.rounded_rectangle((76, 1168, 1004, 1518), radius=42, fill=(9, 18, 35, 214), outline=(88, 146, 228, 160), width=2)
+        draw_center_block(draw, WIDTH // 2, 1236, ["MILWAUKEE,", "THIS ONE MATTERS."], load_font(82, True), WHITE, spacing=4)
+        draw_center_block(draw, WIDTH // 2, 1418, ["TRIPLE-PANE COMFORT"], load_font(34, True), GOLD, spacing=0, stroke_width=1)
         canvas.alpha_composite(sweep, (int(lerp(-280, 720, ease_in_out_sine(clamp((t - scene.start) / 0.45, 0.0, 1.0)))), 80))
 
     elif scene.name == "problem":
@@ -344,10 +344,10 @@ def render_scene(
         draw_center_block(draw, WIDTH // 2, 1490, ["If you are noticing the warning signs,"], load_font(30, False), (220, 230, 255, 255), spacing=0, stroke_width=1)
 
     elif scene.name == "value":
-        plate = int(970 + 14 * eased)
-        paste_card(canvas, source, (WIDTH - plate) // 2, 138 + float_y, plate, plate, radius=24, shadow_blur=22, border=(255, 255, 255, 90))
-        draw.rounded_rectangle((86, 1086, 994, 1498), radius=42, fill=(9, 18, 35, 220), outline=(88, 146, 228, 150), width=2)
-        draw_center_block(draw, WIDTH // 2, 1170, ["TRIPLE-PANE PROVIA ENDURE", "AT DUAL-PANE PRICES"], load_font(58, True), WHITE, spacing=14)
+        plate = int(952 + 10 * eased)
+        paste_card(canvas, source, (WIDTH - plate) // 2, 112 + float_y, plate, plate, radius=24, shadow_blur=22, border=(255, 255, 255, 90))
+        draw.rounded_rectangle((86, 1158, 994, 1510), radius=42, fill=(9, 18, 35, 220), outline=(88, 146, 228, 150), width=2)
+        draw_center_block(draw, WIDTH // 2, 1232, ["TRIPLE-PANE PROVIA ENDURE", "AT DUAL-PANE PRICES"], load_font(58, True), WHITE, spacing=14)
         canvas.alpha_composite(sweep, (int(lerp(-340, 820, eased)), 120))
 
     elif scene.name == "offer_estimate":
@@ -386,10 +386,10 @@ def render_scene(
         draw_multiline(draw, (326, 1202), ["SE WISCONSIN", "HOMEOWNERS", "DIRECT SUPPORT", "FROM NATE"], load_font(52, True), WHITE, spacing=6)
 
     elif scene.name == "soft_tone":
-        plate = int(930 + 10 * eased)
-        paste_card(canvas, source, (WIDTH - plate) // 2, 156 + float_y, plate, plate, radius=26, shadow_blur=22, border=(255, 255, 255, 80))
-        draw.rounded_rectangle((130, 1202, 950, 1518), radius=48, fill=(10, 20, 40, 220), outline=(212, 175, 55, 140), width=2)
-        draw_center_block(draw, WIDTH // 2, 1280, ["NO PRESSURE.", "JUST CLEAR OPTIONS."], load_font(74, True), WHITE, spacing=18)
+        plate = int(916 + 8 * eased)
+        paste_card(canvas, source, (WIDTH - plate) // 2, 126 + float_y, plate, plate, radius=26, shadow_blur=22, border=(255, 255, 255, 80))
+        draw.rounded_rectangle((130, 1198, 950, 1510), radius=48, fill=(10, 20, 40, 220), outline=(212, 175, 55, 140), width=2)
+        draw_center_block(draw, WIDTH // 2, 1272, ["NO PRESSURE.", "JUST CLEAR OPTIONS."], load_font(74, True), WHITE, spacing=18)
 
     elif scene.name == "cta_close":
         hero = int(620 + 14 * pulse(t, 0.22, 0.008))
@@ -615,10 +615,10 @@ def render_frames() -> None:
             nate_badge,
             sweep,
         )
-        intro_alpha = ease_out_cubic(clamp((t - scene.start) / 0.20, 0.0, 1.0))
+        intro_alpha = ease_out_cubic(clamp((t - scene.start) / 0.32, 0.0, 1.0))
         alpha_band = scene_layer.getchannel("A").point(lambda px: int(px * intro_alpha))
         scene_layer.putalpha(alpha_band)
-        canvas.alpha_composite(scene_layer, (0, int((1.0 - intro_alpha) * 18)))
+        canvas.alpha_composite(scene_layer, (0, int((1.0 - intro_alpha) * 40)))
 
         canvas.convert("RGB").save(FRAMES_DIR / f"frame_{frame_idx:04d}.png", quality=96)
 
