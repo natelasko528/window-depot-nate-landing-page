@@ -326,53 +326,56 @@ def render_scene(
     intro_slide = int((1.0 - eased) * 28)
 
     if scene.name == "hook":
-        plate = int(860 + 26 * eased * pulse(t, 0.28, 0.01))
+        plate = int(996 + 24 * eased * pulse(t, 0.28, 0.01))
         x = (WIDTH - plate) // 2
-        y = 152 + intro_slide + float_y
-        paste_card(canvas, source, x, y, plate, plate, border=(180, 215, 255, 110))
+        y = 132 + intro_slide + float_y
+        paste_card(canvas, source, x, y, plate, plate, radius=26, shadow_blur=22, border=(180, 215, 255, 90))
         draw.rounded_rectangle((76, 1104, 1004, 1480), radius=42, fill=(9, 18, 35, 214), outline=(88, 146, 228, 160), width=2)
         draw_center_block(draw, WIDTH // 2, 1188, ["MILWAUKEE,", "THIS ONE MATTERS."], load_font(82, True), WHITE, spacing=4)
         draw_center_block(draw, WIDTH // 2, 1370, ["TRIPLE-PANE COMFORT"], load_font(34, True), GOLD, spacing=0, stroke_width=1)
         canvas.alpha_composite(sweep, (int(lerp(-280, 720, ease_in_out_sine(clamp((t - scene.start) / 0.45, 0.0, 1.0)))), 80))
 
     elif scene.name == "problem":
-        paste_card(canvas, raw_image, 84, 160 + float_y, 912, 980, border=(255, 255, 255, 92))
+        draw.rounded_rectangle((76, 116, 514, 176), radius=30, fill=(18, 32, 64, 210))
+        draw.text((102, 131), BRAND, font=load_font(28, True), fill=WHITE)
+        draw.rounded_rectangle((86, 248, 102, 448), radius=8, fill=(100, 160, 220, 220))
         draw.rounded_rectangle((76, 1148, 1004, 1580), radius=42, fill=(9, 18, 35, 220), outline=(70, 120, 200, 120), width=2)
         draw_center_block(draw, WIDTH // 2, 1218, ["DRAFTS.", "FOGGING.", "HIGHER UTILITY BILLS."], load_font(72, True), WHITE, spacing=12)
         draw_center_block(draw, WIDTH // 2, 1490, ["If you are noticing the warning signs,"], load_font(30, False), (220, 230, 255, 255), spacing=0, stroke_width=1)
 
     elif scene.name == "value":
-        plate = int(790 + 12 * eased)
-        paste_card(canvas, source, (WIDTH - plate) // 2, 148 + float_y, plate, plate, border=(255, 255, 255, 100))
+        plate = int(970 + 14 * eased)
+        paste_card(canvas, source, (WIDTH - plate) // 2, 138 + float_y, plate, plate, radius=24, shadow_blur=22, border=(255, 255, 255, 90))
         draw.rounded_rectangle((86, 1086, 994, 1498), radius=42, fill=(9, 18, 35, 220), outline=(88, 146, 228, 150), width=2)
         draw_center_block(draw, WIDTH // 2, 1170, ["TRIPLE-PANE PROVIA ENDURE", "AT DUAL-PANE PRICES"], load_font(58, True), WHITE, spacing=14)
         canvas.alpha_composite(sweep, (int(lerp(-340, 820, eased)), 120))
 
     elif scene.name == "offer_estimate":
-        paste_card(canvas, window_crop, 98, 148 + float_y, 884, 1030, border=(255, 255, 255, 84))
+        draw.rounded_rectangle((76, 116, 418, 176), radius=30, fill=(18, 32, 64, 210))
+        draw.text((102, 131), "Offer stack", font=load_font(28, True), fill=WHITE)
         draw.rounded_rectangle((116, 1188, 964, 1508), radius=48, fill=(11, 22, 42, 226), outline=(88, 146, 228, 155), width=2)
         draw_center_block(draw, WIDTH // 2, 1260, ["FREE IN-HOME", "ESTIMATE"], load_font(84, True), WHITE, spacing=2)
 
     elif scene.name == "offer_gift":
-        paste_card(canvas, entry_crop, 92, 148 + float_y, 896, 1030, border=(255, 255, 255, 84))
+        draw.rounded_rectangle((76, 116, 418, 176), radius=30, fill=(18, 32, 64, 210))
+        draw.text((102, 131), "Offer stack", font=load_font(28, True), fill=WHITE)
         draw.rounded_rectangle((96, 1184, 984, 1538), radius=48, fill=(13, 24, 46, 224), outline=(212, 175, 55, 180), width=2)
         draw_center_block(draw, WIDTH // 2, 1258, ["$500 GIFT CARD"], load_font(88, True), WHITE, spacing=0)
         draw_center_block(draw, WIDTH // 2, 1398, ["WHEN YOU BOOK WITH NATE"], load_font(42, True), GOLD, spacing=0, stroke_width=1)
 
     elif scene.name == "offer_lock":
-        paste_card(canvas, raw_image, 100, 152 + float_y, 880, 1030, border=(255, 255, 255, 84))
+        draw.rounded_rectangle((76, 116, 418, 176), radius=30, fill=(18, 32, 64, 210))
+        draw.text((102, 131), "Offer stack", font=load_font(28, True), fill=WHITE)
         draw.rounded_rectangle((110, 1184, 970, 1546), radius=48, fill=(11, 22, 42, 224), outline=(88, 146, 228, 155), width=2)
         draw_center_block(draw, WIDTH // 2, 1252, ["PRICE LOCKED", "FOR 12 MONTHS"], load_font(74, True), WHITE, spacing=10)
 
     elif scene.name == "local_relevance":
-        paste_card(canvas, raw_image, 82, 128 + float_y, 916, 1070, border=(255, 255, 255, 92))
         draw.rounded_rectangle((118, 88, 672, 154), radius=32, fill=(18, 32, 64, 218))
         draw.text((146, 105), BRAND, font=load_font(32, True), fill=WHITE)
         draw.rounded_rectangle((90, 1200, 990, 1580), radius=48, fill=(10, 20, 40, 222), outline=(88, 146, 228, 160), width=2)
         draw_center_block(draw, WIDTH // 2, 1268, ["BUILT FOR REAL", "WISCONSIN WINTERS", "AND SUMMERS"], load_font(62, True), WHITE, spacing=8)
 
     elif scene.name == "nate_support":
-        paste_card(canvas, raw_image, 138, 136 + float_y, 804, 920, border=(255, 255, 255, 88))
         badge_x = 120
         badge_y = 1168
         badge_size = 170
@@ -383,7 +386,8 @@ def render_scene(
         draw_multiline(draw, (326, 1202), ["SE WISCONSIN", "HOMEOWNERS", "DIRECT SUPPORT", "FROM NATE"], load_font(52, True), WHITE, spacing=6)
 
     elif scene.name == "soft_tone":
-        paste_card(canvas, source, 168, 156 + float_y, 744, 744, border=(255, 255, 255, 80))
+        plate = int(930 + 10 * eased)
+        paste_card(canvas, source, (WIDTH - plate) // 2, 156 + float_y, plate, plate, radius=26, shadow_blur=22, border=(255, 255, 255, 80))
         draw.rounded_rectangle((130, 1202, 950, 1518), radius=48, fill=(10, 20, 40, 220), outline=(212, 175, 55, 140), width=2)
         draw_center_block(draw, WIDTH // 2, 1280, ["NO PRESSURE.", "JUST CLEAR OPTIONS."], load_font(74, True), WHITE, spacing=18)
 
