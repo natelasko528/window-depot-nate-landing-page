@@ -389,7 +389,7 @@ def render_scene(
 
     elif scene.name == "cta_close":
         hero = int(620 + 14 * pulse(t, 0.22, 0.008))
-        paste_card(canvas, source, (WIDTH - hero) // 2, 120 + int(math.sin(t * 1.4) * 4), hero, hero, border=(255, 255, 255, 84))
+        paste_card(canvas, raw_image, (WIDTH - hero) // 2, 120 + int(math.sin(t * 1.4) * 4), hero, hero, border=(255, 255, 255, 84))
         draw.rounded_rectangle((72, 1040, 1008, 1660), radius=52, fill=(10, 20, 40, 228), outline=(88, 146, 228, 180), width=2)
         badge = nate_badge.resize((148, 148), Image.Resampling.LANCZOS)
         canvas.alpha_composite(make_shadow((208, 208), radius=74, blur=24, alpha=160), (108, 1126))
@@ -596,9 +596,25 @@ def render_frames() -> None:
             grad_draw.line([(0, y), (WIDTH, y)], fill=(8, 16, 32, alpha))
         canvas.alpha_composite(top_grad)
 
-        draw = ImageDraw.Draw(canvas)
         scene = current_scene(t)
-        render_scene(canvas, draw, t, scene, source, raw_image, house_crop, window_crop, entry_crop, nate_badge, sweep)
+        scene_layer = Image.new("RGBA", (WIDTH, HEIGHT), (0, 0, 0, 0))
+        render_scene(
+            scene_layer,
+            ImageDraw.Draw(scene_layer),
+            t,
+            scene,
+            source,
+            raw_image,
+            house_crop,
+            window_crop,
+            entry_crop,
+            nate_badge,
+            sweep,
+        )
+        intro_alpha = ease_out_cubic(clamp((t - scene.start) / 0.20, 0.0, 1.0))
+        alpha_band = scene_layer.getchannel("A").point(lambda px: int(px * intro_alpha))
+        scene_layer.putalpha(alpha_band)
+        canvas.alpha_composite(scene_layer, (0, int((1.0 - intro_alpha) * 18)))
 
         canvas.convert("RGB").save(FRAMES_DIR / f"frame_{frame_idx:04d}.png", quality=96)
 
