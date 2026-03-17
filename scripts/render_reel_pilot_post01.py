@@ -24,6 +24,7 @@ from PIL import Image, ImageChops, ImageDraw, ImageEnhance, ImageFilter, ImageFo
 
 ROOT = Path("/workspace")
 SOURCE_IMAGE = ROOT / "ad-drafts" / "30-posts" / "branded-v3" / "post_01_branded_v3.png"
+RAW_IMAGE = ROOT / "ad-drafts" / "30-posts" / "raw" / "post_01_raw.png"
 NATE_PHOTO = ROOT / "brand-assets" / "nate-profile.png"
 ARTIFACTS = Path("/opt/cursor/artifacts")
 WORK_DIR = ROOT / "tmp" / "post_01_reel_pilot"
@@ -79,10 +80,10 @@ SCENES: Sequence[Scene] = (
 
 CONTACT_SHEET_SAMPLES = (
     ("HOOK", 0.20),
-    ("PROBLEM", 2.80),
+    ("PROBLEM", 1.40),
     ("OFFER", 6.00),
     ("TRUST", 10.90),
-    ("CTA", 15.50),
+    ("CTA", 16.00),
 )
 
 
@@ -311,10 +312,10 @@ def render_scene(
     t: float,
     scene: Scene,
     source: Image.Image,
-    headline_crop: Image.Image,
+    raw_image: Image.Image,
     house_crop: Image.Image,
-    nate_crop: Image.Image,
-    cta_crop: Image.Image,
+    window_crop: Image.Image,
+    entry_crop: Image.Image,
     nate_badge: Image.Image,
     sweep: Image.Image,
 ) -> None:
@@ -335,7 +336,7 @@ def render_scene(
         canvas.alpha_composite(sweep, (int(lerp(-280, 720, ease_in_out_sine(clamp((t - scene.start) / 0.45, 0.0, 1.0)))), 80))
 
     elif scene.name == "problem":
-        paste_card(canvas, house_crop, 84, 160 + float_y, 912, 980, border=(255, 255, 255, 92))
+        paste_card(canvas, raw_image, 84, 160 + float_y, 912, 980, border=(255, 255, 255, 92))
         draw.rounded_rectangle((76, 1148, 1004, 1580), radius=42, fill=(9, 18, 35, 220), outline=(70, 120, 200, 120), width=2)
         draw_center_block(draw, WIDTH // 2, 1218, ["DRAFTS.", "FOGGING.", "HIGHER UTILITY BILLS."], load_font(72, True), WHITE, spacing=12)
         draw_center_block(draw, WIDTH // 2, 1490, ["If you are noticing the warning signs,"], load_font(30, False), (220, 230, 255, 255), spacing=0, stroke_width=1)
@@ -348,30 +349,30 @@ def render_scene(
         canvas.alpha_composite(sweep, (int(lerp(-340, 820, eased)), 120))
 
     elif scene.name == "offer_estimate":
-        paste_card(canvas, house_crop, 98, 148 + float_y, 884, 1030, border=(255, 255, 255, 84))
+        paste_card(canvas, window_crop, 98, 148 + float_y, 884, 1030, border=(255, 255, 255, 84))
         draw.rounded_rectangle((116, 1188, 964, 1508), radius=48, fill=(11, 22, 42, 226), outline=(88, 146, 228, 155), width=2)
         draw_center_block(draw, WIDTH // 2, 1260, ["FREE IN-HOME", "ESTIMATE"], load_font(84, True), WHITE, spacing=2)
 
     elif scene.name == "offer_gift":
-        paste_card(canvas, house_crop, 92, 148 + float_y, 896, 1030, border=(255, 255, 255, 84))
+        paste_card(canvas, entry_crop, 92, 148 + float_y, 896, 1030, border=(255, 255, 255, 84))
         draw.rounded_rectangle((96, 1184, 984, 1538), radius=48, fill=(13, 24, 46, 224), outline=(212, 175, 55, 180), width=2)
         draw_center_block(draw, WIDTH // 2, 1258, ["$500 GIFT CARD"], load_font(88, True), WHITE, spacing=0)
         draw_center_block(draw, WIDTH // 2, 1398, ["WHEN YOU BOOK WITH NATE"], load_font(42, True), GOLD, spacing=0, stroke_width=1)
 
     elif scene.name == "offer_lock":
-        paste_card(canvas, house_crop, 100, 152 + float_y, 880, 1030, border=(255, 255, 255, 84))
+        paste_card(canvas, raw_image, 100, 152 + float_y, 880, 1030, border=(255, 255, 255, 84))
         draw.rounded_rectangle((110, 1184, 970, 1546), radius=48, fill=(11, 22, 42, 224), outline=(88, 146, 228, 155), width=2)
         draw_center_block(draw, WIDTH // 2, 1252, ["PRICE LOCKED", "FOR 12 MONTHS"], load_font(74, True), WHITE, spacing=10)
 
     elif scene.name == "local_relevance":
-        paste_card(canvas, house_crop, 82, 128 + float_y, 916, 1070, border=(255, 255, 255, 92))
+        paste_card(canvas, raw_image, 82, 128 + float_y, 916, 1070, border=(255, 255, 255, 92))
         draw.rounded_rectangle((118, 88, 672, 154), radius=32, fill=(18, 32, 64, 218))
         draw.text((146, 105), BRAND, font=load_font(32, True), fill=WHITE)
         draw.rounded_rectangle((90, 1200, 990, 1580), radius=48, fill=(10, 20, 40, 222), outline=(88, 146, 228, 160), width=2)
         draw_center_block(draw, WIDTH // 2, 1268, ["BUILT FOR REAL", "WISCONSIN WINTERS", "AND SUMMERS"], load_font(62, True), WHITE, spacing=8)
 
     elif scene.name == "nate_support":
-        paste_card(canvas, source, 172, 136 + float_y, 736, 736, border=(255, 255, 255, 88))
+        paste_card(canvas, raw_image, 138, 136 + float_y, 804, 920, border=(255, 255, 255, 88))
         badge_x = 120
         badge_y = 1168
         badge_size = 170
@@ -382,7 +383,7 @@ def render_scene(
         draw_multiline(draw, (326, 1202), ["SE WISCONSIN", "HOMEOWNERS", "DIRECT SUPPORT", "FROM NATE"], load_font(52, True), WHITE, spacing=6)
 
     elif scene.name == "soft_tone":
-        paste_card(canvas, house_crop, 122, 156 + float_y, 836, 980, border=(255, 255, 255, 80))
+        paste_card(canvas, source, 168, 156 + float_y, 744, 744, border=(255, 255, 255, 80))
         draw.rounded_rectangle((130, 1202, 950, 1518), radius=48, fill=(10, 20, 40, 220), outline=(212, 175, 55, 140), width=2)
         draw_center_block(draw, WIDTH // 2, 1280, ["NO PRESSURE.", "JUST CLEAR OPTIONS."], load_font(74, True), WHITE, spacing=18)
 
@@ -568,15 +569,15 @@ def verify_overlay_layout() -> dict:
 def render_frames() -> None:
     FRAMES_DIR.mkdir(parents=True, exist_ok=True)
     source = Image.open(SOURCE_IMAGE).convert("RGBA")
-    bg_master = fit_cover(source, 1320, 2346)
+    raw_image = Image.open(RAW_IMAGE).convert("RGBA")
+    bg_master = fit_cover(raw_image, 1320, 2346)
     vignette = build_vignette((WIDTH, HEIGHT))
     noise = build_noise_overlay((WIDTH, HEIGHT))
     nate_badge = build_nate_badge()
     sweep = build_sweep((480, HEIGHT))
-    headline_crop = crop_rel(source, 0.0, 0.0, 0.88, 0.44)
-    house_crop = crop_rel(source, 0.14, 0.16, 0.82, 0.86)
-    nate_crop = crop_rel(source, 0.0, 0.68, 0.60, 1.0)
-    cta_crop = crop_rel(source, 0.64, 0.80, 1.0, 1.0)
+    house_crop = crop_rel(raw_image, 0.08, 0.08, 0.92, 1.0)
+    window_crop = crop_rel(raw_image, 0.10, 0.10, 0.54, 0.78)
+    entry_crop = crop_rel(raw_image, 0.26, 0.12, 0.82, 0.98)
 
     for frame_idx in range(TOTAL_FRAMES):
         t = frame_idx / FPS
@@ -597,7 +598,7 @@ def render_frames() -> None:
 
         draw = ImageDraw.Draw(canvas)
         scene = current_scene(t)
-        render_scene(canvas, draw, t, scene, source, headline_crop, house_crop, nate_crop, cta_crop, nate_badge, sweep)
+        render_scene(canvas, draw, t, scene, source, raw_image, house_crop, window_crop, entry_crop, nate_badge, sweep)
 
         canvas.convert("RGB").save(FRAMES_DIR / f"frame_{frame_idx:04d}.png", quality=96)
 
@@ -664,6 +665,8 @@ def write_qa_report(video_info: dict) -> None:
 def main() -> None:
     if not SOURCE_IMAGE.exists():
         raise FileNotFoundError(SOURCE_IMAGE)
+    if not RAW_IMAGE.exists():
+        raise FileNotFoundError(RAW_IMAGE)
     if not NATE_PHOTO.exists():
         raise FileNotFoundError(NATE_PHOTO)
 
