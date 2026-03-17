@@ -2,6 +2,7 @@
   "buildCommand": "",
   "outputDirectory": ".",
   "rewrites": [
+    { "source": "/roi-calculator", "destination": "/roi-calculator.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
