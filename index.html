@@ -1184,6 +1184,281 @@
       #fear-reframe{padding:48px 5vw}
       #nate-process{padding:48px 5vw}
     }
+
+    /* ===== BEFORE/AFTER PROJECT GALLERY ===== */
+    #before-after{background:var(--white);padding:100px 8vw;position:relative}
+    #before-after::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:4px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2),transparent);
+    }
+    .ba-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
+    .ba-card{
+      background:var(--ivory);border:1px solid var(--border);border-radius:var(--radius);
+      overflow:hidden;transition:all 0.3s;
+    }
+    .ba-card:hover{box-shadow:var(--shadow-xl);transform:translateY(-6px)}
+    .ba-slider-wrap{
+      position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;
+      cursor:col-resize;user-select:none;-webkit-user-select:none;
+    }
+    .ba-slider-wrap img{
+      position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;
+    }
+    .ba-after-wrap{
+      position:absolute;top:0;left:0;width:50%;height:100%;overflow:hidden;
+    }
+    .ba-after-wrap img{width:200%;max-width:none}
+    .ba-divider{
+      position:absolute;top:0;bottom:0;left:50%;width:4px;
+      background:var(--gold2);transform:translateX(-50%);z-index:5;
+      pointer-events:none;
+    }
+    .ba-divider::after{
+      content:"⟨ ⟩";position:absolute;top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      width:40px;height:40px;border-radius:50%;
+      background:var(--gold2);color:var(--navy);
+      display:flex;align-items:center;justify-content:center;
+      font-size:14px;font-weight:800;
+      box-shadow:var(--shadow-md);
+    }
+    .ba-label-before,.ba-label-after{
+      position:absolute;top:12px;z-index:4;
+      font-size:10px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
+      padding:4px 12px;border-radius:20px;
+    }
+    .ba-label-before{left:12px;background:rgba(10,22,40,0.7);color:#fff}
+    .ba-label-after{right:12px;background:var(--gold2);color:var(--navy)}
+    .ba-card-body{padding:20px 24px}
+    .ba-card-body h4{font-family:"Cormorant Garant",serif;font-size:20px;font-weight:700;color:var(--navy);margin-bottom:4px}
+    .ba-card-body .ba-loc{font-size:12px;color:var(--gray);margin-bottom:10px}
+    .ba-card-body .ba-stat{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--gold-pale);border:1px solid rgba(184,144,10,0.15);
+      border-radius:8px;padding:8px 14px;font-size:13px;font-weight:700;color:var(--navy);
+    }
+    .ba-card-body .ba-stat span{color:var(--gold);font-family:"Cormorant Garant",serif;font-size:22px;font-weight:700}
+
+    /* ===== COMPETITOR COMPARISON TABLE ===== */
+    #competitor-compare{background:var(--navy);padding:100px 8vw;position:relative;overflow:hidden}
+    #competitor-compare::before{
+      content:"";position:absolute;inset:0;
+      background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);
+      background-size:52px 52px;
+    }
+    #competitor-compare .section-label{color:var(--gold2)}
+    #competitor-compare .section-title{color:var(--white)}
+    #competitor-compare .section-title em{color:var(--gold2)}
+    #competitor-compare .section-sub{color:rgba(255,255,255,0.55)}
+    .comp-table-wrap{
+      position:relative;z-index:2;overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+    .comp-table{
+      width:100%;min-width:700px;border-collapse:separate;border-spacing:0;
+      background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+      border-radius:var(--radius);overflow:hidden;
+    }
+    .comp-table thead th{
+      background:rgba(255,255,255,0.06);
+      font-size:12px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
+      color:rgba(255,255,255,0.5);padding:16px 20px;text-align:left;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .comp-table thead th:first-child{color:rgba(255,255,255,0.7)}
+    .comp-table thead th.wd-col{
+      color:var(--gold2);background:rgba(212,175,55,0.08);
+      border-left:2px solid var(--gold2);border-right:2px solid var(--gold2);
+      border-top:2px solid var(--gold2);
+    }
+    .comp-table tbody td{
+      font-size:14px;font-weight:600;color:rgba(255,255,255,0.7);
+      padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.05);
+      vertical-align:middle;
+    }
+    .comp-table tbody td:first-child{
+      font-weight:700;color:rgba(255,255,255,0.5);font-size:13px;
+      letter-spacing:0.02em;
+    }
+    .comp-table tbody td.wd-col{
+      color:var(--gold2);font-weight:800;
+      background:rgba(212,175,55,0.04);
+      border-left:2px solid var(--gold2);border-right:2px solid var(--gold2);
+    }
+    .comp-table tbody tr:last-child td.wd-col{border-bottom:2px solid var(--gold2)}
+    .comp-table tbody tr:hover td{background:rgba(255,255,255,0.03)}
+    .comp-table .check{color:#22C55E;font-size:16px}
+    .comp-table .cross{color:#EF4444;font-size:16px}
+    .comp-table .meh{color:#F59E0B;font-size:14px}
+    .comp-winner{
+      display:inline-flex;align-items:center;gap:6px;
+      background:rgba(212,175,55,0.12);border:1px solid rgba(212,175,55,0.3);
+      border-radius:20px;padding:4px 12px;font-size:11px;font-weight:800;
+      color:var(--gold2);letter-spacing:0.06em;
+    }
+
+    /* ===== FINANCING CALCULATOR ===== */
+    #financing-calc{background:var(--cream);padding:100px 8vw;position:relative}
+    .fin-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .fin-calc-box{
+      background:var(--white);border-radius:var(--radius);padding:40px;
+      border:1px solid var(--border);box-shadow:var(--shadow-md);
+    }
+    .fin-results{display:flex;flex-direction:column;gap:20px}
+    .fin-result-card{
+      background:var(--white);border:1px solid var(--border);border-radius:14px;
+      padding:28px;display:flex;align-items:center;gap:20px;
+      transition:all 0.3s;
+    }
+    .fin-result-card:hover{box-shadow:var(--shadow-md);border-color:var(--gold2)}
+    .fin-result-card.featured{
+      border-color:var(--gold2);background:var(--gold-pale);
+      box-shadow:var(--shadow-md);
+    }
+    .fin-result-icon{font-size:36px;flex-shrink:0}
+    .fin-result-info .fin-result-num{
+      font-family:"Cormorant Garant",serif;font-size:38px;font-weight:700;
+      color:var(--navy);line-height:1;
+    }
+    .fin-result-info .fin-result-num .gold-text{color:var(--gold)}
+    .fin-result-info .fin-result-label{font-size:13px;font-weight:700;color:var(--gray);margin-top:4px}
+    .fin-payoff{
+      text-align:center;padding:24px;background:var(--ivory);border-radius:14px;
+      border:1px solid var(--border);
+    }
+    .fin-payoff .payoff-headline{
+      font-family:"Cormorant Garant",serif;font-size:24px;font-weight:700;
+      color:var(--navy);line-height:1.2;margin-bottom:4px;
+    }
+    .fin-payoff .payoff-headline em{color:var(--gold)}
+    .fin-payoff .payoff-sub{font-size:13px;color:var(--gray)}
+
+    /* ===== WARRANTY COMPARISON ===== */
+    #warranty-compare{background:var(--white);padding:100px 8vw}
+    .warranty-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+    .warranty-card{
+      background:var(--ivory);border:1px solid var(--border);border-radius:var(--radius);
+      padding:32px 28px;transition:all 0.3s;position:relative;overflow:hidden;
+    }
+    .warranty-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+    .warranty-card.wd-card{border-color:var(--gold2);background:var(--gold-pale)}
+    .warranty-card.wd-card::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--gold),var(--gold2));
+    }
+    .warranty-card h4{
+      font-family:"Cormorant Garant",serif;font-size:22px;font-weight:700;
+      color:var(--navy);margin-bottom:4px;
+    }
+    .warranty-card .wc-sub{font-size:12px;color:var(--gray);margin-bottom:20px}
+    .warranty-bar{margin-bottom:14px}
+    .warranty-bar-label{
+      display:flex;justify-content:space-between;align-items:center;
+      font-size:12px;font-weight:700;margin-bottom:6px;
+    }
+    .warranty-bar-label .wbl-name{color:var(--navy)}
+    .warranty-bar-label .wbl-years{color:var(--gold);font-family:"Cormorant Garant",serif;font-size:16px}
+    .warranty-bar-track{width:100%;height:10px;background:var(--border);border-radius:5px;overflow:hidden}
+    .warranty-bar-fill{
+      height:100%;border-radius:5px;transition:width 1.2s cubic-bezier(0.22,1,0.36,1);
+    }
+    .wbf-gold{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+    .wbf-navy{background:var(--navy)}
+    .wbf-gray{background:var(--gray-mid)}
+    .warranty-card .wc-highlight{
+      margin-top:16px;padding:12px 16px;background:var(--white);
+      border:1px solid var(--border);border-radius:10px;
+      font-size:13px;font-weight:700;color:var(--navy);text-align:center;
+    }
+    .warranty-card.wd-card .wc-highlight{
+      background:var(--white);border-color:var(--gold2);
+    }
+
+    /* ===== DESIGN INSPIRATION GALLERY ===== */
+    #design-gallery{background:var(--ivory);padding:100px 8vw}
+    .dg-filters{
+      display:flex;justify-content:center;gap:10px;margin-bottom:40px;flex-wrap:wrap;
+    }
+    .dg-filter{
+      padding:10px 22px;border-radius:100px;border:1.5px solid var(--border);
+      background:var(--white);font-size:13px;font-weight:700;color:var(--gray);
+      cursor:pointer;transition:all 0.2s;font-family:"Nunito Sans",sans-serif;
+    }
+    .dg-filter:hover{border-color:var(--navy);color:var(--navy)}
+    .dg-filter.active{background:var(--navy);color:var(--white);border-color:var(--navy)}
+    .dg-grid{
+      display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;
+    }
+    .dg-item{
+      border-radius:var(--radius);overflow:hidden;position:relative;
+      aspect-ratio:4/3;cursor:pointer;
+      border:1px solid var(--border);box-shadow:var(--shadow-sm);
+      transition:all 0.3s;
+    }
+    .dg-item:hover{box-shadow:var(--shadow-xl);transform:translateY(-6px)}
+    .dg-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s}
+    .dg-item:hover img{transform:scale(1.06)}
+    .dg-item-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(10,22,40,0.85) 0%,rgba(10,22,40,0) 50%);
+      display:flex;flex-direction:column;justify-content:flex-end;padding:20px;
+      opacity:0;transition:opacity 0.3s;
+    }
+    .dg-item:hover .dg-item-overlay{opacity:1}
+    .dg-item-overlay h4{font-family:"Cormorant Garant",serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:2px}
+    .dg-item-overlay p{font-size:11px;color:rgba(255,255,255,0.6);font-weight:600}
+    .dg-trend-tag{
+      position:absolute;top:12px;right:12px;z-index:3;
+      background:var(--gold2);color:var(--navy);font-size:10px;font-weight:800;
+      padding:4px 10px;border-radius:20px;letter-spacing:0.06em;
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .dg-lightbox{
+      display:none;position:fixed;inset:0;z-index:10000;
+      background:rgba(10,22,40,0.92);backdrop-filter:blur(12px);
+      align-items:center;justify-content:center;padding:40px;
+    }
+    .dg-lightbox.open{display:flex}
+    .dg-lightbox img{max-width:90vw;max-height:80vh;border-radius:12px;box-shadow:var(--shadow-xl)}
+    .dg-lightbox-close{
+      position:absolute;top:24px;right:24px;
+      background:none;border:none;color:#fff;font-size:32px;cursor:pointer;
+      width:48px;height:48px;display:flex;align-items:center;justify-content:center;
+      border-radius:50%;background:rgba(255,255,255,0.1);transition:background 0.2s;
+    }
+    .dg-lightbox-close:hover{background:rgba(255,255,255,0.2)}
+    .dg-lightbox-caption{
+      position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+      text-align:center;color:#fff;
+    }
+    .dg-lightbox-caption h4{font-family:"Cormorant Garant",serif;font-size:24px;font-weight:700}
+    .dg-lightbox-caption p{font-size:13px;color:rgba(255,255,255,0.6);margin-top:4px}
+
+    /* ===== RESPONSIVE: NEW SECTIONS ===== */
+    @media(max-width:960px){
+      .ba-grid{grid-template-columns:1fr}
+      .comp-table-wrap{margin:0 -6vw;padding:0 6vw}
+      .fin-grid{grid-template-columns:1fr}
+      .warranty-grid{grid-template-columns:1fr}
+      .dg-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+      #before-after{padding:60px 6vw}
+      #competitor-compare{padding:60px 6vw}
+      #financing-calc{padding:60px 6vw}
+      #warranty-compare{padding:60px 6vw}
+      #design-gallery{padding:60px 6vw}
+    }
+    @media(max-width:600px){
+      .ba-grid{grid-template-columns:1fr}
+      .dg-grid{grid-template-columns:1fr}
+      .fin-calc-box{padding:24px}
+      .fin-result-card{flex-direction:column;text-align:center}
+      #before-after{padding:48px 5vw}
+      #competitor-compare{padding:48px 5vw}
+      #financing-calc{padding:48px 5vw}
+      #warranty-compare{padding:48px 5vw}
+      #design-gallery{padding:48px 5vw}
+    }
   </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -1231,6 +1506,7 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
   <div class="nav-links">
     <a href="#services" class="nav-link">Services</a>
     <a href="#windows-deep" class="nav-link">Products</a>
+    <a href="#competitor-compare" class="nav-link">Compare</a>
     <a href="#meet-nate" class="nav-link">Meet Nate</a>
     <a href="#reviews" class="nav-link">Reviews</a>
   </div>
@@ -1241,7 +1517,9 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <a href="#services">Services</a>
+  <a href="#design-gallery">Style Gallery</a>
   <a href="#windows-deep">Products</a>
+  <a href="#competitor-compare">Compare</a>
   <a href="#meet-nate">Meet Nate</a>
   <a href="#reviews">Reviews</a>
   <a href="#booking">Book FREE Estimate</a>
@@ -1389,6 +1667,73 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
     </a>
   </div>
 </section>
+
+<!-- ===== DESIGN INSPIRATION GALLERY ===== -->
+<section id="design-gallery">
+  <div class="section-center">
+    <div class="section-label">Style Inspiration</div>
+    <h2 class="section-title">See What's Possible for<br><em>Your Milwaukee Home</em></h2>
+    <p class="section-sub">Browse real projects and trending styles. From sleek minimalist frames to bold dark finishes &mdash; find the look that fits your vision.</p>
+  </div>
+  <div class="dg-filters">
+    <button class="dg-filter active" data-filter="all">All Styles</button>
+    <button class="dg-filter" data-filter="windows">Windows</button>
+    <button class="dg-filter" data-filter="doors">Doors</button>
+    <button class="dg-filter" data-filter="siding">Siding</button>
+    <button class="dg-filter" data-filter="roofing">Roofing</button>
+  </div>
+  <div class="dg-grid">
+    <div class="dg-item fade-in" data-category="windows" data-title="Modern Picture Windows" data-desc="Clean lines with maximum natural light">
+      <span class="dg-trend-tag">2026 Trend</span>
+      <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2019/06/picture-window3.jpg" alt="Modern picture window installation" loading="lazy">
+      <div class="dg-item-overlay"><h4>Modern Picture Windows</h4><p>Clean lines with maximum natural light</p></div>
+    </div>
+    <div class="dg-item fade-in" data-category="doors" data-title="ProVia Signet Entry Door" data-desc="Fiberglass with authentic wood grain finish">
+      <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2019/06/Provia-entry-hero7.jpg" alt="ProVia Signet fiberglass entry door" loading="lazy">
+      <div class="dg-item-overlay"><h4>ProVia Signet Entry Door</h4><p>Fiberglass with authentic wood grain finish</p></div>
+    </div>
+    <div class="dg-item fade-in" data-category="siding" data-title="CraneBoard Solid Core" data-desc="Insulated siding with dramatic curb appeal">
+      <span class="dg-trend-tag">Popular</span>
+      <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2022/04/CraneBoard-siding-img5.png" alt="CraneBoard solid core siding project" loading="lazy">
+      <div class="dg-item-overlay"><h4>CraneBoard Solid Core</h4><p>Insulated siding with dramatic curb appeal</p></div>
+    </div>
+    <div class="dg-item fade-in" data-category="roofing" data-title="Portsmouth Metal Shake" data-desc="Lifetime-rated steel with natural shake look">
+      <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2021/12/Provia_shake-House-1.jpg" alt="ProVia Portsmouth metal shake roofing" loading="lazy">
+      <div class="dg-item-overlay"><h4>Portsmouth Metal Shake</h4><p>Lifetime-rated steel with natural shake look</p></div>
+    </div>
+    <div class="dg-item fade-in" data-category="windows" data-title="Double Hung Triple Pane" data-desc="Classic style with modern energy performance">
+      <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2019/06/picture-window4.jpg" alt="Double hung triple pane windows" loading="lazy">
+      <div class="dg-item-overlay"><h4>Double Hung Triple Pane</h4><p>Classic style with modern energy performance</p></div>
+    </div>
+    <div class="dg-item fade-in" data-category="doors" data-title="ProVia Signet Craftsman" data-desc="Custom glass and hardware options">
+      <span class="dg-trend-tag">Best Seller</span>
+      <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2022/07/Provia_Signet03jpg.jpg" alt="ProVia Signet craftsman entry door" loading="lazy">
+      <div class="dg-item-overlay"><h4>ProVia Signet Craftsman</h4><p>Custom glass and hardware options</p></div>
+    </div>
+    <div class="dg-item fade-in" data-category="siding" data-title="ASCEND Composite Cladding" data-desc="Award-winning composite with 20 color options">
+      <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2022/04/Craneboard-siding-img1.jpg" alt="ASCEND composite cladding installation" loading="lazy">
+      <div class="dg-item-overlay"><h4>ASCEND Composite Cladding</h4><p>Award-winning composite with 20 color options</p></div>
+    </div>
+    <div class="dg-item fade-in" data-category="roofing" data-title="Portsmouth Metal Slate" data-desc="Premium steel slate for timeless elegance">
+      <span class="dg-trend-tag">Premium</span>
+      <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2021/12/Provia_slate-House-2.jpg" alt="ProVia Portsmouth metal slate roofing" loading="lazy">
+      <div class="dg-item-overlay"><h4>Portsmouth Metal Slate</h4><p>Premium steel slate for timeless elegance</p></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px">
+    <a href="#booking" class="btn-primary">&#128197; Discuss Your Style with Nate &mdash; FREE</a>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="dg-lightbox" id="dgLightbox">
+  <button class="dg-lightbox-close" id="dgLightboxClose">&times;</button>
+  <img src="" alt="" id="dgLightboxImg">
+  <div class="dg-lightbox-caption">
+    <h4 id="dgLightboxTitle"></h4>
+    <p id="dgLightboxDesc"></p>
+  </div>
+</div>
 
 <!-- ===== PHASE 1: THE WEIGHT AUDIT — COST OF INACTION ===== -->
 <section id="weight-audit">
@@ -1614,6 +1959,263 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
         <a href="#booking" class="btn-primary">&#128197; Get My Analysis</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ===== COMPETITOR COMPARISON TABLE ===== -->
+<section id="competitor-compare">
+  <div class="section-center" style="position:relative;z-index:2">
+    <div class="section-label">How We Stack Up</div>
+    <h2 class="section-title">Window Depot vs.<br><em>The Competition</em></h2>
+    <p class="section-sub">See why Milwaukee homeowners choose Window Depot over premium brands. Same quality, better value &mdash; with triple pane standard.</p>
+  </div>
+  <div class="comp-table-wrap fade-in">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th class="wd-col">&#127942; Window Depot</th>
+          <th>Renewal by Andersen</th>
+          <th>Champion</th>
+          <th>Window World</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Glass Standard</td>
+          <td class="wd-col"><span class="check">&#10003;</span> Triple Pane</td>
+          <td>Dual Pane</td>
+          <td>Dual Pane</td>
+          <td>Dual Pane</td>
+        </tr>
+        <tr>
+          <td>Price Range</td>
+          <td class="wd-col"><span class="comp-winner">Best Value</span></td>
+          <td>$1,000&ndash;$2,500/ea</td>
+          <td>$450&ndash;$850/ea</td>
+          <td>Mid-Range</td>
+        </tr>
+        <tr>
+          <td>Gas Fill</td>
+          <td class="wd-col"><span class="check">&#10003;</span> Krypton</td>
+          <td>Argon</td>
+          <td>Argon</td>
+          <td>Argon</td>
+        </tr>
+        <tr>
+          <td>Low-E Coatings</td>
+          <td class="wd-col"><span class="check">&#10003;</span> 2 Coatings</td>
+          <td>1&ndash;2 Coatings</td>
+          <td>1 Coating</td>
+          <td>1 Coating</td>
+        </tr>
+        <tr>
+          <td>U-Factor Performance</td>
+          <td class="wd-col"><span class="check">&#10003;</span> 52% Better</td>
+          <td>Good</td>
+          <td>Standard</td>
+          <td>Standard</td>
+        </tr>
+        <tr>
+          <td>Google Rating</td>
+          <td class="wd-col"><span class="check">&#10003;</span> 4.9&#9733; (1,000+)</td>
+          <td>4.7&#9733;</td>
+          <td>4.9&#9733;</td>
+          <td>4.3&#9733;</td>
+        </tr>
+        <tr>
+          <td>Lifetime Warranty</td>
+          <td class="wd-col"><span class="check">&#10003;</span> Transferable</td>
+          <td><span class="check">&#10003;</span> Limited</td>
+          <td><span class="check">&#10003;</span> Limited</td>
+          <td><span class="check">&#10003;</span> Limited</td>
+        </tr>
+        <tr>
+          <td>Personal Consultant</td>
+          <td class="wd-col"><span class="check">&#10003;</span> Book with Nate</td>
+          <td><span class="cross">&#10007;</span> Call Center</td>
+          <td><span class="cross">&#10007;</span> Assigned Rep</td>
+          <td><span class="cross">&#10007;</span> Assigned Rep</td>
+        </tr>
+        <tr>
+          <td>Price Lock</td>
+          <td class="wd-col"><span class="check">&#10003;</span> 12 Months</td>
+          <td><span class="cross">&#10007;</span> Same-Day Only</td>
+          <td><span class="meh">~</span> 30 Days</td>
+          <td><span class="meh">~</span> 30 Days</td>
+        </tr>
+        <tr>
+          <td>Services Beyond Windows</td>
+          <td class="wd-col"><span class="check">&#10003;</span> 6 Services</td>
+          <td><span class="cross">&#10007;</span> Windows &amp; Doors</td>
+          <td><span class="meh">~</span> Limited</td>
+          <td><span class="cross">&#10007;</span> Windows Only</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="text-align:center;margin-top:40px;position:relative;z-index:2">
+    <a href="#booking" class="btn-gold">&#128197; See Why 1,000+ Families Chose Us &mdash; Book FREE Estimate</a>
+  </div>
+</section>
+
+<!-- ===== FINANCING CALCULATOR ===== -->
+<section id="financing-calc">
+  <div class="section-center">
+    <div class="section-label">Affordable Monthly Payments</div>
+    <h2 class="section-title">Your Dream Upgrade for Less<br><em>Than You Think</em></h2>
+    <p class="section-sub">Don't let sticker shock hold you back. See how affordable new windows, doors, or siding can be with flexible financing options.</p>
+  </div>
+  <div class="fin-grid">
+    <div class="fin-calc-box fade-in">
+      <div class="calc-group">
+        <div class="calc-label">Project Type <span class="val" id="finTypeVal">Windows</span></div>
+        <div class="range-wrap">
+          <div class="range-fill" id="finFillType"></div>
+          <input type="range" id="finType" min="0" max="3" value="0" step="1">
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--gray-mid);margin-top:4px;font-weight:600">
+          <span>Windows</span><span>Doors</span><span>Siding</span><span>Full Home</span>
+        </div>
+      </div>
+      <div class="calc-group">
+        <div class="calc-label">Number of Windows/Units <span class="val" id="finUnitsVal">12</span></div>
+        <div class="range-wrap">
+          <div class="range-fill" id="finFillUnits"></div>
+          <input type="range" id="finUnits" min="1" max="30" value="12">
+        </div>
+      </div>
+      <div class="calc-group">
+        <div class="calc-label">Financing Term <span class="val" id="finTermVal">60 months (5yr)</span></div>
+        <div class="range-wrap">
+          <div class="range-fill" id="finFillTerm"></div>
+          <input type="range" id="finTerm" min="12" max="180" value="60" step="12">
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--gray-mid);margin-top:4px;font-weight:600">
+          <span>1 year</span><span>15 years</span>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:28px">
+        <a href="#booking" class="btn-primary">&#128197; Get Your Exact Quote from Nate</a>
+      </div>
+    </div>
+    <div class="fin-results fade-in">
+      <div class="fin-result-card featured">
+        <div class="fin-result-icon">&#128176;</div>
+        <div class="fin-result-info">
+          <div class="fin-result-num" id="finMonthly">$<span class="gold-text">120</span>/mo</div>
+          <div class="fin-result-label">Estimated Monthly Payment</div>
+        </div>
+      </div>
+      <div class="fin-result-card">
+        <div class="fin-result-icon">&#9749;</div>
+        <div class="fin-result-info">
+          <div class="fin-result-num" id="finDaily">$<span class="gold-text">3.95</span>/day</div>
+          <div class="fin-result-label">Less than a coffee per day</div>
+        </div>
+      </div>
+      <div class="fin-result-card">
+        <div class="fin-result-icon">&#128200;</div>
+        <div class="fin-result-info">
+          <div class="fin-result-num" id="finSavingsOffset">$<span class="gold-text">56</span>/mo</div>
+          <div class="fin-result-label">Est. Energy Savings Offset</div>
+        </div>
+      </div>
+      <div class="fin-payoff">
+        <div class="payoff-headline">Your windows could <em>pay for themselves</em></div>
+        <div class="payoff-sub" id="finPayoffText">in approximately 8.5 years through energy savings alone</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WARRANTY COMPARISON ===== -->
+<section id="warranty-compare">
+  <div class="section-center">
+    <div class="section-label">Protection You Can Trust</div>
+    <h2 class="section-title">Our Warranty vs.<br><em>The Industry</em></h2>
+    <p class="section-sub">Window Depot's ProVia-backed warranty coverage doesn't just match the competition &mdash; it surpasses them. And it transfers when you sell your home.</p>
+  </div>
+  <div class="warranty-grid fade-in">
+    <div class="warranty-card wd-card">
+      <h4>&#127942; Window Depot Milwaukee</h4>
+      <div class="wc-sub">ProVia + SunShield Lifetime Coverage</div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Glass &amp; Seal</span><span class="wbl-years">Lifetime</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-gold animate-bar" data-width="100%"></div></div>
+      </div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Vinyl Frame</span><span class="wbl-years">Lifetime</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-gold animate-bar" data-width="100%"></div></div>
+      </div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Hardware</span><span class="wbl-years">Lifetime</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-gold animate-bar" data-width="100%"></div></div>
+      </div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Labor</span><span class="wbl-years">Lifetime</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-gold animate-bar" data-width="100%"></div></div>
+      </div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Transferable</span><span class="wbl-years">&#10003; Yes</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-gold animate-bar" data-width="100%"></div></div>
+      </div>
+      <div class="wc-highlight">&#127775; Full Lifetime Transferable Coverage</div>
+    </div>
+    <div class="warranty-card">
+      <h4>Renewal by Andersen</h4>
+      <div class="wc-sub">Limited Warranty Coverage</div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Glass &amp; Seal</span><span class="wbl-years">20 Years</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-navy animate-bar" data-width="40%"></div></div>
+      </div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Frame (Non-Glass)</span><span class="wbl-years">10 Years</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-navy animate-bar" data-width="20%"></div></div>
+      </div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Hardware</span><span class="wbl-years">10 Years</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-navy animate-bar" data-width="20%"></div></div>
+      </div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Labor</span><span class="wbl-years">2 Years</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-navy animate-bar" data-width="4%"></div></div>
+      </div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Transferable</span><span class="wbl-years">Limited</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-navy animate-bar" data-width="30%"></div></div>
+      </div>
+      <div class="wc-highlight">Limited coverage at premium pricing</div>
+    </div>
+    <div class="warranty-card">
+      <h4>Industry Average</h4>
+      <div class="wc-sub">Typical Window Company Warranty</div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Glass &amp; Seal</span><span class="wbl-years">10&ndash;20 Yrs</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-gray animate-bar" data-width="30%"></div></div>
+      </div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Frame</span><span class="wbl-years">10&ndash;15 Yrs</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-gray animate-bar" data-width="25%"></div></div>
+      </div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Hardware</span><span class="wbl-years">5&ndash;10 Yrs</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-gray animate-bar" data-width="15%"></div></div>
+      </div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Labor</span><span class="wbl-years">1&ndash;2 Yrs</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-gray animate-bar" data-width="3%"></div></div>
+      </div>
+      <div class="warranty-bar">
+        <div class="warranty-bar-label"><span class="wbl-name">Transferable</span><span class="wbl-years">Rarely</span></div>
+        <div class="warranty-bar-track"><div class="warranty-bar-fill wbf-gray animate-bar" data-width="10%"></div></div>
+      </div>
+      <div class="wc-highlight">Most warranties expire before issues appear</div>
+    </div>
+  </div>
+  <div class="inline-cta fade-in" style="max-width:800px;margin:40px auto 0">
+    <p>Our warranty <span>transfers with your home</span> &mdash; it even adds resale value.</p>
+    <a href="#booking" class="btn-primary">&#128197; Learn More from Nate</a>
   </div>
 </section>
 
@@ -1942,6 +2544,68 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
   <div style="text-align:center;margin-top:48px">
     <p style="font-size:15px;color:var(--gray);margin-bottom:20px">Ready to write your own transformation story?</p>
     <a href="#booking" class="btn-primary">📅 Book Your FREE Estimate with Nate</a>
+  </div>
+</section>
+
+<!-- ===== BEFORE/AFTER PROJECT GALLERY ===== -->
+<section id="before-after">
+  <div class="section-center">
+    <div class="section-label">Real Milwaukee Transformations</div>
+    <h2 class="section-title">See the Difference<br><em>Before &amp; After</em></h2>
+    <p class="section-sub">Drag the slider to reveal the transformation. These are real Window Depot Milwaukee projects &mdash; real homes, real results.</p>
+  </div>
+  <div class="ba-grid">
+    <div class="ba-card fade-in">
+      <div class="ba-slider-wrap" data-ba-slider>
+        <span class="ba-label-before">Before</span>
+        <span class="ba-label-after">After</span>
+        <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2019/06/photo_01.jpg" alt="Before: Outdated windows in Waukesha home" class="ba-before-img">
+        <div class="ba-after-wrap">
+          <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2019/06/picture-window3.jpg" alt="After: New ProVia triple pane windows installed">
+        </div>
+        <div class="ba-divider"></div>
+      </div>
+      <div class="ba-card-body">
+        <h4>Window Replacement &mdash; Colonial Home</h4>
+        <div class="ba-loc">Waukesha, WI &middot; 16 Windows</div>
+        <div class="ba-stat">Energy savings: <span>34%</span></div>
+      </div>
+    </div>
+    <div class="ba-card fade-in">
+      <div class="ba-slider-wrap" data-ba-slider>
+        <span class="ba-label-before">Before</span>
+        <span class="ba-label-after">After</span>
+        <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2022/04/Craneboard-siding-img1.jpg" alt="Before: Aging siding on New Berlin home" class="ba-before-img">
+        <div class="ba-after-wrap">
+          <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2022/04/CraneBoard-siding-img5.png" alt="After: New CraneBoard solid core siding">
+        </div>
+        <div class="ba-divider"></div>
+      </div>
+      <div class="ba-card-body">
+        <h4>Complete Siding Transformation</h4>
+        <div class="ba-loc">New Berlin, WI &middot; CraneBoard Solid Core</div>
+        <div class="ba-stat">Home value increase: <span>+$18K</span></div>
+      </div>
+    </div>
+    <div class="ba-card fade-in">
+      <div class="ba-slider-wrap" data-ba-slider>
+        <span class="ba-label-before">Before</span>
+        <span class="ba-label-after">After</span>
+        <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2021/12/Provia_shake-House-1.jpg" alt="Before: Worn entry door in Menomonee Falls" class="ba-before-img">
+        <div class="ba-after-wrap">
+          <img src="https://windowdepotmilwaukee.com/wp-content/uploads/2022/07/Provia_Signet03jpg.jpg" alt="After: ProVia Signet fiberglass entry door">
+        </div>
+        <div class="ba-divider"></div>
+      </div>
+      <div class="ba-card-body">
+        <h4>Entry Door &amp; Sidelite Upgrade</h4>
+        <div class="ba-loc">Menomonee Falls, WI &middot; ProVia Signet</div>
+        <div class="ba-stat">ROI on resale: <span>74%</span></div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:40px">
+    <a href="#booking" class="btn-primary">&#128247; Want This for Your Home? Book FREE Estimate</a>
   </div>
 </section>
 
@@ -2453,6 +3117,135 @@ document.querySelectorAll(".nate-stats .stat-box .num").forEach(el => {
     el.addEventListener("input", updateWA);
   });
   updateWA();
+})();
+
+// ===== BEFORE/AFTER SLIDERS =====
+(function(){
+  document.querySelectorAll("[data-ba-slider]").forEach(function(slider){
+    var afterWrap = slider.querySelector(".ba-after-wrap");
+    var divider = slider.querySelector(".ba-divider");
+    var dragging = false;
+
+    function setPosition(x){
+      var rect = slider.getBoundingClientRect();
+      var pct = Math.max(0, Math.min(1, (x - rect.left) / rect.width));
+      afterWrap.style.width = (pct * 100) + "%";
+      divider.style.left = (pct * 100) + "%";
+    }
+
+    slider.addEventListener("mousedown", function(e){ dragging = true; setPosition(e.clientX); e.preventDefault(); });
+    document.addEventListener("mousemove", function(e){ if(dragging) setPosition(e.clientX); });
+    document.addEventListener("mouseup", function(){ dragging = false; });
+
+    slider.addEventListener("touchstart", function(e){ dragging = true; setPosition(e.touches[0].clientX); }, {passive:true});
+    document.addEventListener("touchmove", function(e){ if(dragging) setPosition(e.touches[0].clientX); }, {passive:true});
+    document.addEventListener("touchend", function(){ dragging = false; });
+  });
+})();
+
+// ===== DESIGN GALLERY FILTERS =====
+(function(){
+  var filters = document.querySelectorAll(".dg-filter");
+  var items = document.querySelectorAll(".dg-item");
+  filters.forEach(function(btn){
+    btn.addEventListener("click", function(){
+      filters.forEach(function(b){ b.classList.remove("active"); });
+      btn.classList.add("active");
+      var cat = btn.dataset.filter;
+      items.forEach(function(item){
+        if(cat === "all" || item.dataset.category === cat){
+          item.style.display = "";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+  });
+})();
+
+// ===== DESIGN GALLERY LIGHTBOX =====
+(function(){
+  var lightbox = document.getElementById("dgLightbox");
+  var lbImg = document.getElementById("dgLightboxImg");
+  var lbTitle = document.getElementById("dgLightboxTitle");
+  var lbDesc = document.getElementById("dgLightboxDesc");
+  var lbClose = document.getElementById("dgLightboxClose");
+  if(!lightbox) return;
+
+  document.querySelectorAll(".dg-item").forEach(function(item){
+    item.addEventListener("click", function(){
+      var img = item.querySelector("img");
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbTitle.textContent = item.dataset.title || "";
+      lbDesc.textContent = item.dataset.desc || "";
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  function closeLB(){
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+  }
+  lbClose.addEventListener("click", closeLB);
+  lightbox.addEventListener("click", function(e){ if(e.target === lightbox) closeLB(); });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape") closeLB(); });
+})();
+
+// ===== FINANCING CALCULATOR =====
+(function(){
+  var finType = document.getElementById("finType");
+  var finUnits = document.getElementById("finUnits");
+  var finTerm = document.getElementById("finTerm");
+  var fillType = document.getElementById("finFillType");
+  var fillUnits = document.getElementById("finFillUnits");
+  var fillTerm = document.getElementById("finFillTerm");
+  if(!finType) return;
+
+  var projectTypes = ["Windows", "Doors", "Siding", "Full Home"];
+  var baseCosts = [650, 2200, 12000, 28000];
+  var unitLabels = ["windows", "doors", "sides", "package"];
+  var energySavings = [56, 25, 35, 95];
+
+  function updateFin(){
+    var t = parseInt(finType.value);
+    var u = parseInt(finUnits.value);
+    var term = parseInt(finTerm.value);
+
+    document.getElementById("finTypeVal").textContent = projectTypes[t];
+    document.getElementById("finUnitsVal").textContent = u;
+    var termYr = Math.round(term / 12);
+    document.getElementById("finTermVal").textContent = term + " months (" + termYr + "yr)";
+
+    var totalCost;
+    if(t === 3){
+      totalCost = baseCosts[3];
+    } else if(t === 2){
+      totalCost = baseCosts[2] * Math.max(1, u / 4);
+    } else {
+      totalCost = baseCosts[t] * u;
+    }
+
+    var monthly = Math.round(totalCost / term);
+    var daily = (monthly / 30).toFixed(2);
+    var savingsPerMonth = t === 3 ? 95 : energySavings[t] * (t < 2 ? u : 1);
+    var payoffYears = (totalCost / (savingsPerMonth * 12)).toFixed(1);
+
+    document.getElementById("finMonthly").innerHTML = "$<span class='gold-text'>" + monthly.toLocaleString() + "</span>/mo";
+    document.getElementById("finDaily").innerHTML = "$<span class='gold-text'>" + daily + "</span>/day";
+    document.getElementById("finSavingsOffset").innerHTML = "$<span class='gold-text'>" + savingsPerMonth + "</span>/mo";
+    document.getElementById("finPayoffText").textContent = "in approximately " + payoffYears + " years through energy savings alone";
+
+    updateFill(finType, fillType);
+    updateFill(finUnits, fillUnits);
+    updateFill(finTerm, fillTerm);
+  }
+
+  finType.addEventListener("input", updateFin);
+  finUnits.addEventListener("input", updateFin);
+  finTerm.addEventListener("input", updateFin);
+  updateFin();
 })();
 
 // ===== PUSH CHAT WIDGET ABOVE MOBILE CTA BAR =====
