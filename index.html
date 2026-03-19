@@ -4,14 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Window Depot USA Milwaukee — Book a FREE Estimate with Nate</title>
-  <meta name="description" content="Book a FREE in-home estimate with Nate at Window Depot USA Milwaukee. Windows, Doors, Roofing, Siding, Flooring and Bathroom Remodels. Get $1000 off your estimate if you book now.">
+  <meta name="description" content="Book a FREE in-home estimate with Nate at Window Depot USA Milwaukee. Windows, Doors, Roofing, Siding, Flooring and Bathroom Remodels. $500 gift card when you book your estimate.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700;6..12,800&family=Bebas+Neue&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{
-      --navy:#0A1628;--navy2:#1A2F50;--blue:#1565C0;
+      --navy:#0A1628;--navy2:#1A2F50;--navy-primary:#122040;
+      --brand-blue:#1E50A0;--light-blue:#64A0DC;--blue:#1565C0;
       --gold:#B8900A;--gold2:#D4AF37;--gold-pale:#FDF8EC;
       --ivory:#FAFAF6;--cream:#F0EDE5;--white:#FFFFFF;
       --gray:#64748B;--gray-mid:#94A3B8;--border:#E5E0D5;
@@ -23,6 +24,8 @@
     }
     html{scroll-behavior:smooth}
     body{font-family:"Nunito Sans",sans-serif;background:var(--ivory);color:var(--navy);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    a[href^="tel"]{color:var(--light-blue);font-weight:700;text-decoration:none;transition:color 0.2s}
+    a[href^="tel"]:hover{color:var(--brand-blue)}
 
     .promo-banner{
       background:var(--navy);color:var(--gold2);
@@ -55,14 +58,14 @@
     .nav-link:hover{color:var(--navy)}
     .nav-cta{
       display:inline-flex;align-items:center;gap:8px;
-      background:var(--navy);color:var(--white);
+      background:var(--brand-blue);color:var(--white);
       font-family:"Nunito Sans",sans-serif;
       font-weight:800;font-size:13px;letter-spacing:0.04em;
       padding:11px 24px;border-radius:8px;text-decoration:none;
       transition:all 0.2s;white-space:nowrap;
       box-shadow:var(--shadow-md);
     }
-    .nav-cta:hover{background:var(--navy2);transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+    .nav-cta:hover{background:var(--navy-primary);transform:translateY(-1px);box-shadow:var(--shadow-lg)}
     .nav-cta .pip{width:7px;height:7px;border-radius:50%;background:var(--gold2);flex-shrink:0}
 
     /* HERO */
@@ -123,7 +126,7 @@
 
     .btn-primary{
       display:inline-flex;align-items:center;gap:8px;
-      background:var(--navy);color:var(--white);
+      background:var(--brand-blue);color:var(--white);
       font-family:"Nunito Sans",sans-serif;
       font-weight:800;font-size:15px;
       padding:16px 32px;border-radius:10px;
@@ -131,7 +134,7 @@
       transition:all 0.25s;letter-spacing:0.02em;
       box-shadow:var(--shadow-md);
     }
-    .btn-primary:hover{background:var(--navy2);transform:translateY(-2px);box-shadow:var(--shadow-xl)}
+    .btn-primary:hover{background:var(--navy-primary);transform:translateY(-2px);box-shadow:var(--shadow-xl)}
     .btn-ghost{
       display:inline-flex;align-items:center;gap:8px;
       background:transparent;color:var(--navy);
@@ -142,6 +145,8 @@
       cursor:pointer;transition:all 0.25s;
     }
     .btn-ghost:hover{border-color:var(--navy);background:var(--cream)}
+    a.btn-ghost[href^="tel"]{color:var(--light-blue);border-color:var(--light-blue)}
+    a.btn-ghost[href^="tel"]:hover{color:var(--brand-blue);border-color:var(--brand-blue)}
 
     .hero-right{
       position:relative;z-index:2;
@@ -785,10 +790,10 @@
       animation:ctaPulse 2.8s ease-in-out infinite;
     }
     .mcta-call{
-      display:flex;align-items:center;justify-content:center;
-      width:52px;background:#22C55E;border:none;
-      border-radius:8px;text-decoration:none;font-size:20px;color:#fff;
-      flex-shrink:0;transition:all 0.2s;
+      display:flex;align-items:center;justify-content:center;gap:4px;
+      padding:14px 16px;background:#22C55E;border:none;
+      border-radius:8px;text-decoration:none;font-size:14px;font-weight:800;color:#fff;
+      flex-shrink:0;transition:all 0.2s;white-space:nowrap;
     }
     .mcta-call:hover{background:#16A34A}
     @media(max-width:960px){
@@ -1214,7 +1219,7 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
 
 <div class="scroll-progress" id="scrollProgress"></div>
 <div class="promo-banner">
-  &#127873; <strong>SPECIAL OFFER:</strong> $1000 Off of Your Estimate - <strong>IF YOU BOOK NOW!</strong>
+  &#127873; <strong>SPECIAL OFFER:</strong> $500 Gift Card When You Book Your Estimate
   <span class="countdown" id="countdown">
     <span class="cd-block" id="cdH">23</span><span class="cd-sep">:</span>
     <span class="cd-block" id="cdM">59</span><span class="cd-sep">:</span>
@@ -1252,21 +1257,22 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
   <div class="hero-glow"></div>
   <div class="hero-left">
     <div class="hero-eyebrow">Window Depot USA Milwaukee</div>
-    <h1 class="hero-headline">Milwaukee's Most<br><em>Trusted Home</em><br>Improvement Expert</h1>
-    <div class="hero-sub">Windows &middot; Doors &middot; Siding &middot; Roofing &middot; Flooring &middot; Bath</div>
-    <p class="hero-desc">Book directly with Nate for a <strong>FREE in-home estimate</strong> &mdash; honest pricing, zero pressure, and <strong>$1000 Off of Your Estimate - IF YOU BOOK NOW!</strong> Serving all of SE Wisconsin from 7 convenient showroom locations.</p>
+    <h1 class="hero-headline"><em>Triple-Pane Windows</em><br>at Dual-Pane Prices</h1>
+    <div class="hero-sub">America's Triple Pane Company &middot; Milwaukee's Trusted Expert</div>
+    <p class="hero-desc">Book directly with Nate for a <strong>FREE in-home estimate</strong> &mdash; honest pricing, zero pressure, and a <strong>$500 gift card</strong> when you book. Serving all of SE Wisconsin from 7 convenient showroom locations.</p>
     <div class="hero-trust-row">
       <span class="trust-pill"><span class="pip"></span>&#11088; 4.9 Google (1,000+ reviews)</span>
       <span class="trust-pill"><span class="pip"></span>&#127942; Top 500 National &mdash; #3</span>
       <span class="trust-pill"><span class="pip"></span>&#9989; A+ BBB Rated</span>
       <span class="trust-pill"><span class="pip"></span>&#128205; 7 SE WI Showrooms</span>
+      <span class="trust-pill"><span class="pip"></span>&#128274; 12-Month Price Lock</span>
     </div>
     <div class="hero-ctas">
       <a href="#booking" class="btn-primary">&#128197; Book Your FREE Estimate</a>
       <a href="tel:4143125213" class="btn-ghost">&#128242; (414) 312-5213</a>
     </div>
   </div>
-  <div class="gift-tag">$1000 Off of Your Estimate - IF YOU BOOK NOW!</div>
+  <div class="gift-tag">$500 Gift Card When You Book</div>
   <div class="hero-right" id="booking">
     <div class="booking-card">
       <div class="booking-card-header">
@@ -1546,7 +1552,7 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
       <p style="font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px">Our Innergy thermal reinforcement is <strong>700x more insulating</strong> than aluminum. Combined with Neopor foam and bulb seals, every window is a fortress against Wisconsin winters.</p>
       <p style="font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px">Available in 8 styles: Double Hung, Casement, Sliding, Picture, Bay &amp; Bow, Garden, Awning, and Hopper &mdash; all custom-made to your home's exact dimensions.</p>
       <div class="inline-cta">
-        <p><span>&#127873; $1000 Off of Your Estimate</span> - IF YOU BOOK NOW! Zero pressure.</p>
+        <p><span>&#127873; $500 Gift Card</span> when you book your estimate. Zero pressure.</p>
         <a href="#booking" class="btn-primary">&#128197; Book FREE Estimate</a>
       </div>
     </div>
@@ -1975,7 +1981,7 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
     <div class="fr-step">
       <div class="fr-step-time">12+ MONTHS FROM NOW</div>
       <h4>Compounding Damage Risk</h4>
-      <p>Failed seals lead to moisture infiltration. Rotting frames compromise structural integrity. One bad Wisconsin storm can turn a window replacement into a wall repair. The $1000 you saved becomes $5,000+ in damage.</p>
+      <p>Failed seals lead to moisture infiltration. Rotting frames compromise structural integrity. One bad Wisconsin storm can turn a window replacement into a wall repair. The money you "saved" by waiting becomes $5,000+ in damage.</p>
       <div class="fr-cost">⚠ Potential damage: $5,000+</div>
     </div>
   </div>
@@ -2017,7 +2023,7 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
   <div class="nate-text fade-in">
     <div class="section-label">Your Local Expert</div>
     <h2 class="section-title">Meet Nate &mdash;<br>Your Window Depot Rep</h2>
-    <p>I'm not a call center. I'm Nate &mdash; a real home improvement consultant who lives and works right here in SE Wisconsin. When you book directly with me, you get my personal cell, my honest assessment, and <strong>$1000 Off of Your Estimate - IF YOU BOOK NOW!</strong></p>
+    <p>I'm not a call center. I'm Nate &mdash; a real home improvement consultant who lives and works right here in SE Wisconsin. When you book directly with me, you get my personal cell, my honest assessment, and a <strong>$500 gift card</strong> when you book your estimate</p>
     <p>My consultations are relaxed, informative, and 100% obligation-free. I bring everything to your home &mdash; samples, brochures, measurement tools. No showroom pressure, no games.</p>
     <div class="nate-stats">
       <div class="stat-box"><div class="num">1,000<span class="gold-text">+</span></div><div class="lbl">5-Star Reviews</div></div>
@@ -2138,14 +2144,14 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
       <div class="sc-trust-item"><strong>$0</strong>Estimate Cost</div>
     </div>
     <a href="#booking" class="btn-gold" style="font-size:17px;padding:20px 48px">📅 Book Your FREE Estimate</a>
-    <p style="font-size:13px;color:var(--gray-mid);margin-top:16px">Plus $1000 Off of Your Estimate — IF YOU BOOK NOW</p>
+    <p style="font-size:13px;color:var(--gray-mid);margin-top:16px">Plus $500 gift card when you book</p>
   </div>
 </section>
 
 <!-- FINAL CTA -->
 <section id="final-cta">
   <h2 class="section-title">Ready to Transform<br><em>Your Milwaukee Home?</em></h2>
-  <p>Book a FREE in-home estimate with Nate. No pressure, no obligation &mdash; <strong>$1000 Off of Your Estimate - IF YOU BOOK NOW!</strong></p>
+  <p>Book a FREE in-home estimate with Nate. No pressure, no obligation &mdash; a <strong>$500 gift card</strong> when you book</p>
   <div class="cta-group">
     <a href="#booking" class="btn-gold">&#128197; Book Your FREE Estimate Now</a>
     <a href="tel:4143125213" class="btn-outline-white">&#128242; Call Nate: (414) 312-5213</a>
@@ -2161,8 +2167,8 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
 <!-- Sticky Mobile CTA Bar -->
 <div class="mobile-cta-bar">
   <div class="mobile-cta-inner">
-    <a href="#booking" class="mcta-book">&#128197; Book FREE Estimate &mdash; $1000 Off</a>
-    <a href="tel:4143125213" class="mcta-call">&#128222;</a>
+    <a href="#booking" class="mcta-book">&#128197; Book FREE Estimate &mdash; $500 Gift Card</a>
+    <a href="tel:4143125213" class="mcta-call">&#128222; (414) 312-5213</a>
   </div>
 </div>
 
@@ -2177,7 +2183,7 @@ src="https://www.facebook.com/tr?id=232929617735426&ev=PageView&noscript=1"
 
 <!-- Exit Intent Banner -->
 <div class="exit-banner" id="exitBanner">
-  <p>Wait! Don't miss <span>$1000 Off Your Estimate</span> &mdash;</p>
+  <p>Wait! Don't miss your <span>$500 gift card</span> when you book &mdash;</p>
   <a href="#booking">&#128197; Book Now</a>
   <button class="eb-close" id="ebClose">&times;</button>
 </div>
