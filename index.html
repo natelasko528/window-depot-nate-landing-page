@@ -1205,9 +1205,9 @@
       position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;
     }
     .ba-after-wrap{
-      position:absolute;top:0;left:0;width:50%;height:100%;overflow:hidden;
+      position:absolute;top:0;left:0;width:100%;height:100%;
+      clip-path:inset(0 0 0 50%);
     }
-    .ba-after-wrap img{width:200%;max-width:none}
     .ba-divider{
       position:absolute;top:0;bottom:0;left:50%;width:4px;
       background:var(--gold2);transform:translateX(-50%);z-index:5;
@@ -3143,7 +3143,7 @@ document.querySelectorAll(".nate-stats .stat-box .num").forEach(el => {
     function setPosition(x){
       var rect = slider.getBoundingClientRect();
       var pct = Math.max(0, Math.min(1, (x - rect.left) / rect.width));
-      afterWrap.style.width = (pct * 100) + "%";
+      afterWrap.style.clipPath = "inset(0 0 0 " + (pct * 100) + "%)";
       divider.style.left = (pct * 100) + "%";
     }
 
