@@ -1204,9 +1204,11 @@
     .ba-slider-wrap img{
       position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;
     }
+    .ba-before-img{
+      z-index:2;clip-path:inset(0 50% 0 0);
+    }
     .ba-after-wrap{
-      position:absolute;top:0;left:0;width:100%;height:100%;
-      clip-path:inset(0 0 0 50%);
+      position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;
     }
     .ba-divider{
       position:absolute;top:0;bottom:0;left:50%;width:4px;
@@ -3136,14 +3138,14 @@ document.querySelectorAll(".nate-stats .stat-box .num").forEach(el => {
 // ===== BEFORE/AFTER SLIDERS =====
 (function(){
   document.querySelectorAll("[data-ba-slider]").forEach(function(slider){
-    var afterWrap = slider.querySelector(".ba-after-wrap");
+    var beforeImg = slider.querySelector(".ba-before-img");
     var divider = slider.querySelector(".ba-divider");
     var dragging = false;
 
     function setPosition(x){
       var rect = slider.getBoundingClientRect();
       var pct = Math.max(0, Math.min(1, (x - rect.left) / rect.width));
-      afterWrap.style.clipPath = "inset(0 0 0 " + (pct * 100) + "%)";
+      beforeImg.style.clipPath = "inset(0 " + ((1 - pct) * 100) + "% 0 0)";
       divider.style.left = (pct * 100) + "%";
     }
 
